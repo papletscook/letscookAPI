@@ -5,8 +5,7 @@
  */
 package br.edu.up.letscook.test.usuario;
 
-import br.edu.up.dao.DaoInterface;
-import br.edu.up.dao.UsuarioDao;
+import br.edu.up.dao.UsuarioDAO;
 import br.edu.up.entity.Usuario;
 import java.util.Calendar;
 import org.junit.After;
@@ -15,6 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import br.edu.up.dao.InterfaceDAO;
 
 /**
  *
@@ -22,7 +22,7 @@ import org.junit.Test;
  */
 public class UsuarioJUnitTest {
 
-    private DaoInterface<Usuario> dao = new UsuarioDao();
+    private InterfaceDAO<Usuario> dao = new UsuarioDAO();
 
     public UsuarioJUnitTest() {
     }

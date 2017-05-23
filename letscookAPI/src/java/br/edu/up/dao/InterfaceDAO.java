@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public interface DaoInterface<T> {
+public interface InterfaceDAO<T> {
 
     public T cadastrar(T t);
 
