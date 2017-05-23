@@ -52,12 +52,10 @@ public class UsuarioJUnitTest {
         u.setSenha("lihslkjfsa");
         u.setDataNasc(Calendar.getInstance().getTime());
         u.setTelefone("2187364873264");
-
-        try {
-            Assert.assertEquals(true, dao.cadastrar(u).getId() != null);
-        } catch (Exception e) {
-            Assert.fail();
-        }
+        
+        dao.cadastrar(u);
+        
+        Assert.assertEquals(true, u.getId() != null);
 
     }
 }

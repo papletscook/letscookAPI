@@ -10,10 +10,11 @@ import java.util.List;
 /**
  *
  * @author G0042204
+ * @param <T>
  */
 public interface InterfaceDAO<T> {
 
-    public T cadastrar(T t);
+    public void cadastrar(T t);
 
     public void excluir(T t);
 
