@@ -5,7 +5,7 @@ import br.edu.up.entity.Usuario;
 public class FactoryDAO {
 
     public static InterfaceDAO<Usuario> createUsuarioDAO() {
-        return new UsuarioDAO2();
+        return new UsuarioDAO();
     }
 
 }

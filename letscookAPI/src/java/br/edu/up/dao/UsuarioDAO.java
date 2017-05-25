@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class UsuarioDAO2 implements InterfaceDAO<Usuario> {
+public class UsuarioDAO implements InterfaceDAO<Usuario> {
 
     @Override
     public void cadastrar(Usuario t) {
