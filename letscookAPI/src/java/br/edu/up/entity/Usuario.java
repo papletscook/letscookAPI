@@ -6,26 +6,23 @@
 package br.edu.up.entity;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author G0042204
  */
-public class Usuario {
+@Entity
+@Table(name = "LETSCOOK_USUARIO")
+public class Usuario extends AbstractEntity {
 
-    private Long id;
     private String email, senha, telefone;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataNasc;
 
     public Usuario() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -44,20 +41,20 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Date getDataNasc() {
-        return dataNasc;
-    }
-
-    public void setDataNasc(Date dataNasc) {
-        this.dataNasc = dataNasc;
-    }
-
     public String getTelefone() {
         return telefone;
     }
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Date getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
 }
