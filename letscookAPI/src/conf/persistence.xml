@@ -11,7 +11,7 @@
                   <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
     </persistence-unit>-->
-    <persistence-unit name="localPU" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="letscookAPIPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="hibernate.id.new_generator_mappings" value="false"/>
