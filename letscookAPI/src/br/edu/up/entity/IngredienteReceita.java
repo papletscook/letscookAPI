@@ -19,7 +19,7 @@ public class IngredienteReceita extends AbstractEntity {
     private String nome;
 
     private Receita receita;
-
+    
     public IngredienteReceita() {
     }
 
