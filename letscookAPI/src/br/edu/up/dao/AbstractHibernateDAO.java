@@ -13,7 +13,7 @@ import javax.persistence.EntityManager;
  */
 public abstract class AbstractHibernateDAO {
 
-    protected EntityManager em = Conexao.getInstance();
+    protected EntityManager em = ConexaoSingleton.getInstance();
 
     public void persist(Object o) {
         em.getTransaction().begin();

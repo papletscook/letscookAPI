@@ -7,6 +7,7 @@ package br.edu.up.letscook.test.receita;
 
 import br.edu.up.dao.FactoryDAO;
 import br.edu.up.dao.InterfaceDAO;
+import br.edu.up.entity.IngredienteReceita;
 import br.edu.up.entity.NascionalidadeEnum;
 import br.edu.up.entity.Receita;
 import br.edu.up.entity.Usuario;
@@ -55,8 +56,12 @@ public class CadastrarReceitaJUnitTest {
             Usuario u = new Usuario();
             u.setEmail("henmerlin@gmail.com");
             uDao.cadastrar(u);
-
             assertTrue(u.getId() != null);
+            
+            IngredienteReceita carne = new IngredienteReceita();
+            carne.setNome("Carne");
+            
+           
 
             Receita r = new Receita();
             r.setNome("Nome da Receita");
@@ -64,12 +69,14 @@ public class CadastrarReceitaJUnitTest {
             r.setFoto("foto");
             r.setNasc(NascionalidadeEnum.AFGHAN);
             r.setCriador(u);
+            r.adicionarIngrediente(carne);
 
             dao.cadastrar(r);
 
             assertTrue(r.getId() != null);
+            
+            
         } catch (Exception e) {
-            e.printStackTrace();
             fail();
         }
 

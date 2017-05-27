@@ -5,18 +5,12 @@
  */
 package br.edu.up.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 /**
  *
  * @author G0042204
  */
-
-@Entity
-@Table(name = "LETSCOOK_CATEGORIA_RECEITA")
-public class CategoriaReceita extends AbstractEntity{
+public enum UnidadeMedidaEnum {
     
-    private String nome;
+    ml, l, g, kg;
     
 }

@@ -13,11 +13,30 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_INGREDIENTE")
-public class IngredienteReceita extends AbstractEntity{
-    
+@Table(name = "LETSCOOK_INGREDIENTE_RECEITA")
+public class IngredienteReceita extends AbstractEntity {
+
     private String nome;
-    
+
     private Receita receita;
-    
+
+    public IngredienteReceita() {
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Receita getReceita() {
+        return receita;
+    }
+
+    public void setReceita(Receita receita) {
+        this.receita = receita;
+    }
+
 }

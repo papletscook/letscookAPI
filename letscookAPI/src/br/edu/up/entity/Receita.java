@@ -44,6 +44,10 @@ public class Receita extends AbstractEntity {
     public Receita() {
         ingts = new ArrayList<>();
     }
+    
+    public void adicionarIngrediente(IngredienteReceita i){
+        ingts.add(i);
+    }
 
     public String getNome() {
         return nome;
