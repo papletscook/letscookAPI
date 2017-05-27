@@ -21,5 +21,7 @@ public interface InterfaceDAO<T> {
     public T editar(T t);
 
     public List<T> listar(T t);
+    
+    public T buscarPorId(T t);
 
 }

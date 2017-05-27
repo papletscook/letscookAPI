@@ -5,39 +5,43 @@
  */
 package br.edu.up.dao;
 
-import br.edu.up.entity.Usuario;
+import br.edu.up.entity.Receita;
 import java.util.List;
 
 /**
  *
  * @author G0042204
  */
-public class UsuarioDAO extends AbstractHibernateDAO implements InterfaceDAO<Usuario> {
+public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceDAO<Receita> {
 
+    /**
+     *
+     * @param t
+     */
     @Override
-    public void cadastrar(Usuario t) {
+    public void cadastrar(Receita t) {
         super.persist(t);
     }
 
     @Override
-    public void excluir(Usuario t) {
+    public void excluir(Receita t) {
         super.remove(t);
     }
 
     @Override
-    public Usuario editar(Usuario t) {
+    public Receita editar(Receita t) {
         super.merge(t);
         return t;
     }
 
     @Override
-    public List<Usuario> listar(Usuario t) {
+    public List<Receita> listar(Receita t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Usuario buscarPorId(Usuario t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Receita buscarPorId(Receita t) {
+        return em.find(Receita.class, t.getId());
     }
 
 }

@@ -20,11 +20,11 @@ import br.edu.up.dao.InterfaceDAO;
  *
  * @author G0042204
  */
-public class UsuarioJUnitTest {
+public class CadastrarUsuarioJUnitTest {
 
     private InterfaceDAO<Usuario> dao = FactoryDAO.createUsuarioDAO();
 
-    public UsuarioJUnitTest() {
+    public CadastrarUsuarioJUnitTest() {
     }
 
     @BeforeClass
