@@ -6,6 +6,7 @@
 package br.edu.up.model.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +19,7 @@ public class IngredienteReceita extends AbstractEntity {
 
     private String nome;
 
+    @ManyToOne
     private Receita receita;
     
     public IngredienteReceita() {

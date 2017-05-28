@@ -18,8 +18,14 @@ public class ReceitaService implements InterfaceService<Receita>{
     private InterfaceDAO<Receita> dao = FactoryDAO.createReceitaDAO();
 
     @Override
-    public void cadastrar(Receita r) {
+    public void cadastrar(Receita r) throws Exception{
+        
+        if(r.getIngts().isEmpty() || r.getEtapas().isEmpty()){
+            throw new ServiceException("RN002 - Validação de receitas");
+        }      
+        
         dao.cadastrar(r);
+        
     }
 
 }

@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import br.edu.up.dao.InterfaceDAO;
+import br.edu.up.model.util.UsuarioDecorator;
 
 /**
  *
@@ -45,12 +46,8 @@ public class CadastrarUsuarioJUnitTest {
 
     @Test
     public void test() {
-
-        Usuario u = new Usuario();
-
-        u.setEmail("email@gmail.com");
-        u.setSenha("lihslkjfsa");
-        u.setDataNasc(Calendar.getInstance().getTime());
+        
+        Usuario u = UsuarioDecorator.criar();
         
         dao.cadastrar(u);
         

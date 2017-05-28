@@ -6,6 +6,7 @@
 package br.edu.up.model.util;
 
 import br.edu.up.model.entity.Usuario;
+import java.util.Calendar;
 
 /**
  *
@@ -13,10 +14,11 @@ import br.edu.up.model.entity.Usuario;
  */
 public class UsuarioDecorator {
 
-    public Usuario criar() {
+    public static Usuario criar() {
         Usuario u = new Usuario();
         u.setEmail("henmerlin@gmail.com");
-        u.setSenha("d20m08");
+        u.setSenha("senha");
+        u.setDataNasc(Calendar.getInstance().getTime());
         return u;
 
     }

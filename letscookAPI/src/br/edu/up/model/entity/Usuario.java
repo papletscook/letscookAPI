@@ -5,8 +5,12 @@
  */
 package br.edu.up.model.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -22,7 +26,11 @@ public class Usuario extends AbstractEntity {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataNasc;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "criador")
+    private List<Receita> receitas;
+
     public Usuario() {
+        receitas = new ArrayList<>();
     }
 
     public String getEmail() {
@@ -47,6 +55,14 @@ public class Usuario extends AbstractEntity {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
+    }
+
+    public List<Receita> getReceitas() {
+        return receitas;
+    }
+
+    public void setReceitas(List<Receita> receitas) {
+        this.receitas = receitas;
     }
 
 }

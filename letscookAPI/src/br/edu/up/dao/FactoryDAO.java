@@ -1,5 +1,6 @@
 package br.edu.up.dao;
 
+import br.edu.up.model.entity.CategoriaReceita;
 import br.edu.up.model.entity.Receita;
 import br.edu.up.model.entity.Usuario;
 
@@ -11,6 +12,10 @@ public class FactoryDAO {
 
     public static InterfaceDAO<Receita> createReceitaDAO() {
         return new ReceitaDAO();
+    }
+
+    public static InterfaceDAO<CategoriaReceita> createCategoriaReceitaDAO() {
+        return new CategoriaReceitaDAO();
     }
 
 }

@@ -8,9 +8,10 @@ package br.edu.up.model.service;
 /**
  *
  * @author G0042204
+ * @param <T>
  */
 public interface InterfaceService <T>{
     
-    public void cadastrar(T t);
+    public void cadastrar(T t) throws Exception;
     
 }
