@@ -5,6 +5,7 @@
  */
 package br.edu.up.model.entity;
 
+import br.edu.up.model.enums.NascionalidadeEnum;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
