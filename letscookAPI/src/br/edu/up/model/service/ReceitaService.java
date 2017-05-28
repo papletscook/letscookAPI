@@ -6,8 +6,9 @@
 package br.edu.up.model.service;
 
 import br.edu.up.dao.FactoryDAO;
-import br.edu.up.dao.InterfaceDAO;
+import br.edu.up.dao.InterfaceReceitaDAO;
 import br.edu.up.model.entity.Receita;
+import java.util.List;
 
 /**
  *
@@ -15,7 +16,7 @@ import br.edu.up.model.entity.Receita;
  */
 public class ReceitaService implements InterfaceService<Receita>{
 
-    private InterfaceDAO<Receita> dao = FactoryDAO.createReceitaDAO();
+    private InterfaceReceitaDAO<Receita> dao = FactoryDAO.createInterfaceReceitaDAO();
 
     @Override
     public void cadastrar(Receita r) throws Exception{
@@ -23,9 +24,12 @@ public class ReceitaService implements InterfaceService<Receita>{
         if(r.getIngts().isEmpty() || r.getEtapas().isEmpty()){
             throw new ServiceException("RN002 - Validação de receitas");
         }      
-        
         dao.cadastrar(r);
-        
     }
+    
+    private List<Receita> buscarPorNome(String nome){
+        return dao.buscarPorNome(nome);
+    }
+            
 
 }

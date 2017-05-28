@@ -6,13 +6,15 @@
 package br.edu.up.dao;
 
 import br.edu.up.model.entity.Receita;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
  * @author G0042204
  */
-public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceDAO<Receita> {
+public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceitaDAO<Receita> {
 
     /**
      *
@@ -42,6 +44,17 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceDAO<Rec
     @Override
     public Receita buscarPorId(Receita t) {
         return em.find(Receita.class, t.getId());
+    }
+
+    @Override
+    public List<Receita> buscarPorNome(String nome) {
+        try {
+            Query query = em.createQuery("FROM Receita r WHERE r.nome LIKE :param");
+            query.setParameter("param", "%" + nome + "%");
+            return query.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
 }

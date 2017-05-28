@@ -14,6 +14,10 @@ public class FactoryDAO {
         return new ReceitaDAO();
     }
 
+    public static InterfaceReceitaDAO<Receita> createInterfaceReceitaDAO() {
+        return new ReceitaDAO();
+    }
+
     public static InterfaceDAO<CategoriaReceita> createCategoriaReceitaDAO() {
         return new CategoriaReceitaDAO();
     }

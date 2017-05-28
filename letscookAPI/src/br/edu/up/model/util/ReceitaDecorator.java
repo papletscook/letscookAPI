@@ -11,6 +11,7 @@ import br.edu.up.model.entity.IngredienteReceita;
 import br.edu.up.model.entity.PassoEtapa;
 import br.edu.up.model.entity.Receita;
 import br.edu.up.model.entity.Usuario;
+import br.edu.up.model.enums.NascionalidadeEnum;
 
 /**
  *
@@ -32,6 +33,8 @@ public class ReceitaDecorator {
         
         Usuario u = new Usuario();
         u.setId(1l);
+        r.setCriador(u);
+        r.setNasc(NascionalidadeEnum.BRASIL);
        
         r.setNome("TORTA DE MARACUJÁ");
         r.setMinsPreparo(45);

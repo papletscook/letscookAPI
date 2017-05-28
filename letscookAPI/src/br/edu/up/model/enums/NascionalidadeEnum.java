@@ -13,7 +13,8 @@ public enum NascionalidadeEnum {
 
     AFGHAN("Afeganistão"),
     SOUTH_AFRICAN("África do Sul"),
-    ALBANIAN("Albânia");
+    ALBANIAN("Albânia"),
+    BRASIL("Brasil");
 
     private String nome;
 
