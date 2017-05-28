@@ -6,7 +6,7 @@
 package br.edu.up.letscook.test.usuario;
 
 import br.edu.up.dao.FactoryDAO;
-import br.edu.up.entity.Usuario;
+import br.edu.up.model.entity.Usuario;
 import java.util.Calendar;
 import org.junit.After;
 import org.junit.AfterClass;

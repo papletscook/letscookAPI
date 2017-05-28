@@ -1,7 +1,7 @@
 package br.edu.up.dao;
 
-import br.edu.up.entity.Receita;
-import br.edu.up.entity.Usuario;
+import br.edu.up.model.entity.Receita;
+import br.edu.up.model.entity.Usuario;
 
 public class FactoryDAO {
 

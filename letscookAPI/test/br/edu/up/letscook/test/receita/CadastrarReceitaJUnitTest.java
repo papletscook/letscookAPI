@@ -7,10 +7,12 @@ package br.edu.up.letscook.test.receita;
 
 import br.edu.up.dao.FactoryDAO;
 import br.edu.up.dao.InterfaceDAO;
-import br.edu.up.entity.IngredienteReceita;
-import br.edu.up.entity.NascionalidadeEnum;
-import br.edu.up.entity.Receita;
-import br.edu.up.entity.Usuario;
+import br.edu.up.model.entity.IngredienteReceita;
+import br.edu.up.model.entity.NascionalidadeEnum;
+import br.edu.up.model.entity.Receita;
+import br.edu.up.model.entity.Usuario;
+import br.edu.up.model.service.FactoryService;
+import br.edu.up.model.service.InterfaceService;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +27,7 @@ import org.junit.Test;
  */
 public class CadastrarReceitaJUnitTest {
 
-    private InterfaceDAO<Receita> dao = FactoryDAO.createReceitaDAO();
+    private InterfaceService<Receita> serv = FactoryService.createReceitaService();
 
     private InterfaceDAO<Usuario> uDao = FactoryDAO.createUsuarioDAO();
 
@@ -71,7 +73,7 @@ public class CadastrarReceitaJUnitTest {
             r.setCriador(u);
             r.adicionarIngrediente(carne);
 
-            dao.cadastrar(r);
+            serv.cadastrar(r);
 
             assertTrue(r.getId() != null);
             

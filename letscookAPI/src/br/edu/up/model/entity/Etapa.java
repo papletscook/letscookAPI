@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.entity;
+package br.edu.up.model.entity;
 
 /**
  *
  * @author G0042204
  */
-public class Geladeira {
-
-    private Usuario dono;
+public class Etapa extends AbstractEntity{
+    
+    private String nome;
     
 }

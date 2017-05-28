@@ -5,7 +5,7 @@
  */
 package br.edu.up.dao;
 
-import br.edu.up.entity.Usuario;
+import br.edu.up.model.entity.Usuario;
 import java.util.List;
 
 /**

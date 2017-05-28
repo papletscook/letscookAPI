@@ -3,20 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.entity;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
+package br.edu.up.model.entity;
 
 /**
  *
  * @author G0042204
  */
-
-@Entity
-@Table(name = "LETSCOOK_CATEGORIA_RECEITA")
-public class CategoriaReceita extends AbstractEntity{
+public enum UnidadeMedidaEnum {
     
-    private String nome;
+    ml, l, g, kg;
     
 }

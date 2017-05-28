@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.entity;
+package br.edu.up.model.service;
 
 /**
  *
  * @author G0042204
  */
-public enum FaixaCustoEnum {
-    BAIXA, MEDIA, ALTA;
+public interface InterfaceService <T>{
+    
+    public void cadastrar(T t);
+    
 }
