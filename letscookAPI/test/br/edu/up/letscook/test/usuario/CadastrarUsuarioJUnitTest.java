@@ -51,7 +51,6 @@ public class CadastrarUsuarioJUnitTest {
         u.setEmail("email@gmail.com");
         u.setSenha("lihslkjfsa");
         u.setDataNasc(Calendar.getInstance().getTime());
-        u.setTelefone("2187364873264");
         
         dao.cadastrar(u);
         

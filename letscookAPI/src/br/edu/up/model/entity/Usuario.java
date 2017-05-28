@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
 @Table(name = "LETSCOOK_USUARIO")
 public class Usuario extends AbstractEntity {
 
-    private String email, senha, telefone;
+    private String email, senha;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataNasc;
 
@@ -39,14 +39,6 @@ public class Usuario extends AbstractEntity {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public Date getDataNasc() {

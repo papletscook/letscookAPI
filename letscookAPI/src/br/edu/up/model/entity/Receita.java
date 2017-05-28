@@ -32,21 +32,31 @@ public class Receita extends AbstractEntity {
 
     private String foto;
 
+    private Integer minsPreparo;
+
     @Enumerated(EnumType.STRING)
     private NascionalidadeEnum nasc;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "receita")
     private List<IngredienteReceita> ingts;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "receita")
+    private List<Etapa> etapas;
+
     @ManyToOne
     private Usuario criador;
 
     public Receita() {
         ingts = new ArrayList<>();
+        etapas = new ArrayList<>();
     }
-    
-    public void adicionarIngrediente(IngredienteReceita i){
+
+    public void adicionarIngrediente(IngredienteReceita i) {
         ingts.add(i);
+    }
+
+    public void adicionarEtapa(Etapa e) {
+        etapas.add(e);
     }
 
     public String getNome() {
@@ -79,6 +89,22 @@ public class Receita extends AbstractEntity {
 
     public void setNasc(NascionalidadeEnum nasc) {
         this.nasc = nasc;
+    }
+
+    public Integer getMinsPreparo() {
+        return minsPreparo;
+    }
+
+    public void setMinsPreparo(Integer minsPreparo) {
+        this.minsPreparo = minsPreparo;
+    }
+
+    public List<Etapa> getEtapas() {
+        return etapas;
+    }
+
+    public void setEtapas(List<Etapa> etapas) {
+        this.etapas = etapas;
     }
 
     public Usuario getCriador() {
