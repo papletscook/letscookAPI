@@ -61,12 +61,13 @@ public class ManipularGeladeiraJUnitTest {
 
             IngredienteGeladeira i = new IngredienteGeladeira();
             i.setGeladeira(g);
-            i.setNome("Arroz");
+            i.setNome("Feijão");
             dao.cadastrar(i);
             
             g.adicionarIngredientes(i);
             
             assertTrue(qtde+1 == g.getIngs().size());
+            assertTrue(i.getId() != null);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
