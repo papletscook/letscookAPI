@@ -49,10 +49,11 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceita
     @Override
     public List<Receita> buscarPorNome(String nome) {
         try {
-            Query query = em.createQuery("FROM Receita r WHERE r.nome LIKE :param");
-            query.setParameter("param", "%" + nome + "%");
-            return query.getResultList();
+            return em.createQuery("FROM Receita r WHERE UPPER(r.nome) LIKE UPPER(:param)")
+                    .setParameter("param", "%" + nome + "%")
+                    .getResultList();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return new ArrayList<>();
         }
     }

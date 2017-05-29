@@ -5,18 +5,23 @@
  */
 package br.edu.up.letscook.test.receita;
 
+import br.edu.up.model.entity.Receita;
+import br.edu.up.model.service.FactoryService;
+import br.edu.up.model.service.InterfaceReceitaService;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author G0042204
  */
 public class BuscarReceitaJUnitTest {
+
+    private InterfaceReceitaService<Receita> serv = FactoryService.createReceitaService();
 
     public BuscarReceitaJUnitTest() {
     }
@@ -39,16 +44,17 @@ public class BuscarReceitaJUnitTest {
 
     @Test
     public void buscarPorNome() {
+        assertTrue(!serv.buscarPorNome("TORTA").isEmpty());
     }
 
     @Test
     public void buscarPorIngredientes() {
-
+        assertTrue(false);
     }
 
     @Test
-    public void buscarPorNascionalidade() {
-
+    public void buscarPorNacionalidade() {
+        assertTrue(false);
     }
 
 }

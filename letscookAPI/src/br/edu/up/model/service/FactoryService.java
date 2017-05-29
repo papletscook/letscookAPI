@@ -5,7 +5,7 @@ import br.edu.up.model.entity.Receita;
 
 public class FactoryService {
 
-    public static InterfaceService<Receita> createReceitaService() {
+    public static InterfaceReceitaService<Receita> createReceitaService() {
         return new ReceitaService();
     }
 
