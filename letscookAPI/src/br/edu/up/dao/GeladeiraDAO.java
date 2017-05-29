@@ -3,32 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.model.service;
+package br.edu.up.dao;
 
-import br.edu.up.dao.FactoryDAO;
-import br.edu.up.dao.InterfaceDAO;
-import br.edu.up.model.entity.CategoriaReceita;
+import br.edu.up.model.entity.Geladeira;
+import java.util.List;
 
 /**
  *
  * @author G0042204
  */
-public class CategoriaReceitaService implements InterfaceService<CategoriaReceita> {
-
-    private InterfaceDAO<CategoriaReceita> dao = FactoryDAO.createCategoriaReceitaDAO();
+public class GeladeiraDAO extends AbstractHibernateDAO implements InterfaceGeladeiraDAO<Geladeira> {
 
     @Override
-    public void cadastrar(CategoriaReceita c) throws Exception {
-        dao.cadastrar(c);
+    public void cadastrar(Geladeira g) {
+        super.persist(g);
     }
 
     @Override
-    public CategoriaReceita editar(CategoriaReceita t) {
+    public void excluir(Geladeira g) {
+        super.remove(g);
+    }
+
+    @Override
+    public Geladeira editar(Geladeira g) {
+        super.merge(g);
+        return g;
+    }
+
+    @Override
+    public List<Geladeira> listar(Geladeira g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void excluir(CategoriaReceita t) {
+    public Geladeira buscarPorId(Geladeira g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

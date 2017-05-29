@@ -6,30 +6,37 @@
 package br.edu.up.model.service;
 
 import br.edu.up.dao.FactoryDAO;
-import br.edu.up.dao.InterfaceDAO;
-import br.edu.up.model.entity.CategoriaReceita;
+import br.edu.up.dao.InterfaceGeladeiraDAO;
+import br.edu.up.model.entity.Geladeira;
 
 /**
  *
  * @author G0042204
  */
-public class CategoriaReceitaService implements InterfaceService<CategoriaReceita> {
+public class GeladeiraService implements InterfaceGeladeiraService<Geladeira> {
 
-    private InterfaceDAO<CategoriaReceita> dao = FactoryDAO.createCategoriaReceitaDAO();
+    private InterfaceGeladeiraDAO<Geladeira> dao = FactoryDAO.createInterfaceGeladeiraDAO();
 
-    @Override
-    public void cadastrar(CategoriaReceita c) throws Exception {
-        dao.cadastrar(c);
+    public GeladeiraService() {
     }
 
     @Override
-    public CategoriaReceita editar(CategoriaReceita t) {
+    public void cadastrar(Geladeira t) throws Exception {
+        dao.cadastrar(t);
+    }
+
+    @Override
+    public Geladeira editar(Geladeira t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void excluir(CategoriaReceita t) {
+    public void excluir(Geladeira t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+    
+    
 
 }

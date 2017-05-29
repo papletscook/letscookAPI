@@ -8,14 +8,10 @@ package br.edu.up.model.service;
 /**
  *
  * @author G0042204
- * @param <T>
+ * @param <Receita>
  */
-public interface InterfaceService<T> {
+public interface InterfaceGeladeiraService<Geladeira> extends InterfaceService<Geladeira> {
 
-    public void cadastrar(T t) throws Exception;
 
-    public void excluir(T t);
 
-    public T editar(T t);
-    
 }

@@ -39,13 +39,19 @@ public class ReceitaService implements InterfaceReceitaService<Receita> {
         return dao.buscarPorNacionalidade(nasc);
     }
 
-
-
     @Override
     public List<Receita> buscarPorCategoria(CategoriaReceita cat) {
         return dao.buscarPorCategoria(cat);
     }
-    
-    
+
+    @Override
+    public Receita editar(Receita t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void excluir(Receita t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

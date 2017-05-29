@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.model.service;
+package br.edu.up.model;
+
+import br.edu.up.model.entity.IngredienteGeladeira;
 
 /**
  *
  * @author G0042204
- * @param <T>
  */
-public interface InterfaceService<T> {
+public class Tomate extends IngredienteGeladeira{
 
-    public void cadastrar(T t) throws Exception;
-
-    public void excluir(T t);
-
-    public T editar(T t);
+    public Tomate() {
+        this.setNome("Tomate");
+    }
     
 }

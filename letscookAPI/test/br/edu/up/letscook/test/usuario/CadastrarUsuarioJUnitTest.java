@@ -7,7 +7,6 @@ package br.edu.up.letscook.test.usuario;
 
 import br.edu.up.dao.FactoryDAO;
 import br.edu.up.model.entity.Usuario;
-import java.util.Calendar;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -46,11 +45,11 @@ public class CadastrarUsuarioJUnitTest {
 
     @Test
     public void test() {
-        
+
         Usuario u = UsuarioDecorator.criar();
-        
+
         dao.cadastrar(u);
-        
+
         Assert.assertEquals(true, u.getId() != null);
 
     }
