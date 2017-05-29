@@ -2,6 +2,7 @@ package br.edu.up.dao;
 
 import br.edu.up.model.entity.CategoriaReceita;
 import br.edu.up.model.entity.Geladeira;
+import br.edu.up.model.entity.IngredienteGeladeira;
 import br.edu.up.model.entity.Receita;
 import br.edu.up.model.entity.Usuario;
 
@@ -22,9 +23,13 @@ public class FactoryDAO {
     public static InterfaceDAO<CategoriaReceita> createCategoriaReceitaDAO() {
         return new CategoriaReceitaDAO();
     }
-    
-        public static InterfaceGeladeiraDAO<Geladeira> createInterfaceGeladeiraDAO() {
+
+    public static InterfaceGeladeiraDAO<Geladeira> createInterfaceGeladeiraDAO() {
         return new GeladeiraDAO();
+    }
+
+    public static InterfaceDAO<IngredienteGeladeira> createInterfaceDAOIngredienteDAO() {
+        return new IngredienteDAO();
     }
 
 }

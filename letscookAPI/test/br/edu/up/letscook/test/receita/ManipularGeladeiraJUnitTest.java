@@ -5,6 +5,8 @@
  */
 package br.edu.up.letscook.test.receita;
 
+import br.edu.up.dao.FactoryDAO;
+import br.edu.up.dao.InterfaceDAO;
 import br.edu.up.model.Tomate;
 import br.edu.up.model.entity.Geladeira;
 import br.edu.up.model.entity.IngredienteGeladeira;
@@ -26,7 +28,9 @@ import org.junit.Test;
 public class ManipularGeladeiraJUnitTest {
 
     private InterfaceGeladeiraService<Geladeira> serv = FactoryService.createInterfaceGeladeiraService();
-
+    
+    private InterfaceDAO<IngredienteGeladeira> dao = FactoryDAO.createInterfaceDAOIngredienteDAO();
+    
     public ManipularGeladeiraJUnitTest() {
     }
 
@@ -47,26 +51,28 @@ public class ManipularGeladeiraJUnitTest {
     }
 
     @Test
-    public void cadastrarIngrediente() {
+    public void cadastrarIngredienteGeladeira() {
         try {
-            Geladeira g = new Geladeira();
             Usuario u = new Usuario();
             u.setId(1l);
-            u.setGeladeira(g);
-            g.setDono(u);
+            Geladeira g = serv.buscarPorUsuario(u);
+            
+            Integer qtde = g.getIngs().size();
 
-            IngredienteGeladeira i = new Tomate();
+            IngredienteGeladeira i = new IngredienteGeladeira();
             i.setGeladeira(g);
+            i.setNome("Arroz");
+            dao.cadastrar(i);
+            
             g.adicionarIngredientes(i);
-
-            serv.cadastrar(g);
-            assertTrue(g.getId() != null);
+            
+            assertTrue(qtde+1 == g.getIngs().size());
         } catch (Exception e) {
+            e.printStackTrace();
             fail();
         }
     }
-    
-    
+
     @Test
     public void geladeira() {
         try {
@@ -74,6 +80,7 @@ public class ManipularGeladeiraJUnitTest {
             u.setId(1l);
             assertTrue(!serv.buscarPorUsuario(u).getIngs().isEmpty());
         } catch (Exception e) {
+            e.printStackTrace();
             fail();
         }
     }

@@ -26,7 +26,7 @@ public class Geladeira extends AbstractEntity {
     @OneToOne
     private Usuario dono;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "geladeira", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "geladeira", cascade = CascadeType.PERSIST)
     private List<IngredienteGeladeira> ings;
 
     public Geladeira() {

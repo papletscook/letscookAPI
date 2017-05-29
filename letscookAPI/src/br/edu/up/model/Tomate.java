@@ -6,15 +6,16 @@
 package br.edu.up.model;
 
 import br.edu.up.model.entity.IngredienteGeladeira;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author G0042204
  */
-public class Tomate extends IngredienteGeladeira{
+public class Tomate extends IngredienteGeladeira {
 
     public Tomate() {
         this.setNome("Tomate");
     }
-    
+
 }
