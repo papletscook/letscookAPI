@@ -53,7 +53,7 @@ public class CadastrarReceitaDecoratorJUnitTest {
             serv.cadastrar(r);
             assertTrue(r.getId() != null);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             fail();
         }
     }

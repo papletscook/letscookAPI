@@ -56,18 +56,12 @@ public class CadastrarReceitaJUnitTest {
         try {
 
             Usuario u = new Usuario();
-            u.setEmail("henmerlin@gmail.com");
-            uDao.cadastrar(u);
-            assertTrue(u.getId() != null);
+            u.setId(1l);
             
             IngredienteReceita carne = new IngredienteReceita();
-            carne.setNome("Carne");
-            
-           
-
+            carne.setNome("Carne");          
             Receita r = new Receita();
             r.setNome("Nome da Receita");
-            r.setCriador(null);
             r.setFoto("foto");
             r.setNasc(NacionalidadeEnum.AFGHAN);
             r.setCriador(u);
@@ -79,6 +73,7 @@ public class CadastrarReceitaJUnitTest {
             
             
         } catch (Exception e) {
+            e.printStackTrace();
             fail();
         }
 
