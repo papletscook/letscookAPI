@@ -8,35 +8,41 @@ package br.edu.up.model.service;
 import br.edu.up.dao.FactoryDAO;
 import br.edu.up.dao.InterfaceGeladeiraDAO;
 import br.edu.up.model.entity.Geladeira;
+import br.edu.up.model.entity.Usuario;
 
 /**
  *
  * @author G0042204
  */
 public class GeladeiraService implements InterfaceGeladeiraService<Geladeira> {
-
+    
     private InterfaceGeladeiraDAO<Geladeira> dao = FactoryDAO.createInterfaceGeladeiraDAO();
-
+    
     public GeladeiraService() {
     }
-
+    
     @Override
     public void cadastrar(Geladeira t) throws Exception {
+        if(t.getId() != null){
+            dao.editar(t);
+            return;
+        }
         dao.cadastrar(t);
     }
-
+    
     @Override
     public Geladeira editar(Geladeira t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.editar(t);
+    }
+    
+    @Override
+    public void excluir(Geladeira t) {
+        dao.excluir(t);
     }
 
     @Override
-    public void excluir(Geladeira t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Geladeira buscarPorUsuario(Usuario u) {
+        return dao.buscarPorUsuario(u);
     }
     
-    
-    
-    
-
 }

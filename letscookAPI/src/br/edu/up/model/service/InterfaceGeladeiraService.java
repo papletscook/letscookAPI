@@ -5,6 +5,8 @@
  */
 package br.edu.up.model.service;
 
+import br.edu.up.model.entity.Usuario;
+
 /**
  *
  * @author G0042204
@@ -12,6 +14,6 @@ package br.edu.up.model.service;
  */
 public interface InterfaceGeladeiraService<Geladeira> extends InterfaceService<Geladeira> {
 
-
+    public Geladeira buscarPorUsuario(Usuario u);
 
 }

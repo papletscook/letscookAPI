@@ -48,28 +48,33 @@ public class ManipularGeladeiraJUnitTest {
 
     @Test
     public void cadastrarIngrediente() {
-
         try {
             Geladeira g = new Geladeira();
             Usuario u = new Usuario();
             u.setId(1l);
+            u.setGeladeira(g);
             g.setDono(u);
-            
-            
+
             IngredienteGeladeira i = new Tomate();
             i.setGeladeira(g);
-            
             g.adicionarIngredientes(i);
-            
-            u.setGeladeira(g);
-            
-            
+
             serv.cadastrar(g);
             assertTrue(g.getId() != null);
         } catch (Exception e) {
-            e.printStackTrace();
             fail();
         }
-
+    }
+    
+    
+    @Test
+    public void geladeira() {
+        try {
+            Usuario u = new Usuario();
+            u.setId(1l);
+            assertTrue(!serv.buscarPorUsuario(u).getIngs().isEmpty());
+        } catch (Exception e) {
+            fail();
+        }
     }
 }

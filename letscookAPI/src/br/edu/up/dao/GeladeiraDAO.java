@@ -6,6 +6,7 @@
 package br.edu.up.dao;
 
 import br.edu.up.model.entity.Geladeira;
+import br.edu.up.model.entity.Usuario;
 import java.util.List;
 
 /**
@@ -37,7 +38,19 @@ public class GeladeiraDAO extends AbstractHibernateDAO implements InterfaceGelad
 
     @Override
     public Geladeira buscarPorId(Geladeira g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(Geladeira.class, g.getId());
+    }
+
+    @Override
+    public Geladeira buscarPorUsuario(Usuario u) {
+        try {
+            return (Geladeira) em.createQuery("FROM Geladeira g WHERE g.dono = :param")
+                    .setParameter("param", u)
+                    .getSingleResult();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
 }

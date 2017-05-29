@@ -46,12 +46,12 @@ public class ReceitaService implements InterfaceReceitaService<Receita> {
 
     @Override
     public Receita editar(Receita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.editar(t);
     }
 
     @Override
     public void excluir(Receita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.excluir(t);
     }
 
 }

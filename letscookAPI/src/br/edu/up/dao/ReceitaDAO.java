@@ -39,7 +39,12 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceita
 
     @Override
     public List<Receita> listar(Receita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return em.createQuery("FROM Receita r")
+                    .getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     @Override
