@@ -9,7 +9,7 @@ package br.edu.up.model.enums;
  *
  * @author G0042204
  */
-public enum NascionalidadeEnum {
+public enum NacionalidadeEnum {
 
     AFGHAN("Afeganistão"),
     SOUTH_AFRICAN("África do Sul"),
@@ -18,7 +18,7 @@ public enum NascionalidadeEnum {
 
     private String nome;
 
-    private NascionalidadeEnum(String nome) {
+    private NacionalidadeEnum(String nome) {
         this.nome = nome;
     }
 

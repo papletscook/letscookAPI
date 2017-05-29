@@ -5,6 +5,8 @@
  */
 package br.edu.up.dao;
 
+import br.edu.up.model.entity.CategoriaReceita;
+import br.edu.up.model.enums.NacionalidadeEnum;
 import java.util.List;
 
 /**
@@ -13,5 +15,11 @@ import java.util.List;
  * @param <Receita>
  */
 public interface InterfaceReceitaDAO<Receita> extends InterfaceDAO<Receita> {
+
     public List<Receita> buscarPorNome(String nome);
+
+    public List<Receita> buscarPorCategoria(CategoriaReceita categoria);
+
+    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc);
+    
 }

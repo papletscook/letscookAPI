@@ -5,10 +5,11 @@
  */
 package br.edu.up.dao;
 
+import br.edu.up.model.entity.CategoriaReceita;
 import br.edu.up.model.entity.Receita;
+import br.edu.up.model.enums.NacionalidadeEnum;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Query;
 
 /**
  *
@@ -51,6 +52,30 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceita
         try {
             return em.createQuery("FROM Receita r WHERE UPPER(r.nome) LIKE UPPER(:param)")
                     .setParameter("param", "%" + nome + "%")
+                    .getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public List<Receita> buscarPorCategoria(CategoriaReceita categoria) {
+        try {
+            return em.createQuery("FROM Receita r WHERE r.categoria = :param")
+                    .setParameter("param", categoria)
+                    .getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
+        try {
+            return em.createQuery("FROM Receita r WHERE r.nasc = :param")
+                    .setParameter("param", nasc)
                     .getResultList();
         } catch (Exception e) {
             System.out.println(e.getMessage());

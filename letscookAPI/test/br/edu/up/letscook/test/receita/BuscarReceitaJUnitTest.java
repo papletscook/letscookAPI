@@ -5,7 +5,9 @@
  */
 package br.edu.up.letscook.test.receita;
 
+import br.edu.up.model.entity.CategoriaReceita;
 import br.edu.up.model.entity.Receita;
+import br.edu.up.model.enums.NacionalidadeEnum;
 import br.edu.up.model.service.FactoryService;
 import br.edu.up.model.service.InterfaceReceitaService;
 import org.junit.After;
@@ -49,12 +51,14 @@ public class BuscarReceitaJUnitTest {
 
     @Test
     public void buscarPorIngredientes() {
-        assertTrue(false);
+        CategoriaReceita cat = new CategoriaReceita();
+        cat.setId(1l);
+        assertTrue(!serv.buscarPorCategoria(cat).isEmpty());
     }
 
     @Test
     public void buscarPorNacionalidade() {
-        assertTrue(false);
+        assertTrue(!serv.buscarPorNacionalidade(NacionalidadeEnum.BRASIL).isEmpty());
     }
 
 }

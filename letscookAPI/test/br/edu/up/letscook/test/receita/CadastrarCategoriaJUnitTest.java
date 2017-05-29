@@ -9,7 +9,7 @@ import br.edu.up.dao.FactoryDAO;
 import br.edu.up.dao.InterfaceDAO;
 import br.edu.up.model.entity.CategoriaReceita;
 import br.edu.up.model.entity.IngredienteReceita;
-import br.edu.up.model.enums.NascionalidadeEnum;
+import br.edu.up.model.enums.NacionalidadeEnum;
 import br.edu.up.model.entity.Receita;
 import br.edu.up.model.entity.Usuario;
 import br.edu.up.model.service.FactoryService;

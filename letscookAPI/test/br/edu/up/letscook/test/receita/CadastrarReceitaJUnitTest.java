@@ -8,7 +8,7 @@ package br.edu.up.letscook.test.receita;
 import br.edu.up.dao.FactoryDAO;
 import br.edu.up.dao.InterfaceDAO;
 import br.edu.up.model.entity.IngredienteReceita;
-import br.edu.up.model.enums.NascionalidadeEnum;
+import br.edu.up.model.enums.NacionalidadeEnum;
 import br.edu.up.model.entity.Receita;
 import br.edu.up.model.entity.Usuario;
 import br.edu.up.model.service.FactoryService;
@@ -69,7 +69,7 @@ public class CadastrarReceitaJUnitTest {
             r.setNome("Nome da Receita");
             r.setCriador(null);
             r.setFoto("foto");
-            r.setNasc(NascionalidadeEnum.AFGHAN);
+            r.setNasc(NacionalidadeEnum.AFGHAN);
             r.setCriador(u);
             r.adicionarIngrediente(carne);
 

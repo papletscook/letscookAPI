@@ -9,7 +9,7 @@ import br.edu.up.dao.FactoryDAO;
 import br.edu.up.dao.InterfaceReceitaDAO;
 import br.edu.up.model.entity.CategoriaReceita;
 import br.edu.up.model.entity.Receita;
-import br.edu.up.model.enums.NascionalidadeEnum;
+import br.edu.up.model.enums.NacionalidadeEnum;
 import java.util.List;
 
 /**
@@ -35,13 +35,15 @@ public class ReceitaService implements InterfaceReceitaService<Receita> {
     }
 
     @Override
-    public List<Receita> buscarPorNascionalidade(NascionalidadeEnum nasc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
+        return dao.buscarPorNacionalidade(nasc);
     }
+
+
 
     @Override
     public List<Receita> buscarPorCategoria(CategoriaReceita cat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.buscarPorCategoria(cat);
     }
     
     

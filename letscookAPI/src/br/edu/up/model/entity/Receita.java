@@ -5,7 +5,7 @@
  */
 package br.edu.up.model.entity;
 
-import br.edu.up.model.enums.NascionalidadeEnum;
+import br.edu.up.model.enums.NacionalidadeEnum;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -37,7 +37,7 @@ public class Receita extends AbstractEntity {
     private Integer minsPreparo;
 
     @Enumerated(EnumType.STRING)
-    private NascionalidadeEnum nasc;
+    private NacionalidadeEnum nasc;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "receita", cascade = CascadeType.PERSIST)
     private List<IngredienteReceita> ingts;
@@ -85,11 +85,11 @@ public class Receita extends AbstractEntity {
         this.foto = foto;
     }
 
-    public NascionalidadeEnum getNasc() {
+    public NacionalidadeEnum getNasc() {
         return nasc;
     }
 
-    public void setNasc(NascionalidadeEnum nasc) {
+    public void setNasc(NacionalidadeEnum nasc) {
         this.nasc = nasc;
     }
 
