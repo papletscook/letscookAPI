@@ -18,15 +18,12 @@ public class GeladeiraService implements InterfaceGeladeiraService<Geladeira> {
     
     private InterfaceGeladeiraDAO<Geladeira> dao = FactoryDAO.createInterfaceGeladeiraDAO();
     
+    
     public GeladeiraService() {
     }
     
     @Override
     public void cadastrar(Geladeira t) throws Exception {
-        if(t.getId() != null){
-            dao.editar(t);
-            return;
-        }
         dao.cadastrar(t);
     }
     

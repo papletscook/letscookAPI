@@ -31,6 +31,7 @@ public abstract class AbstractHibernateDAO {
         em.getTransaction().begin();
         em.merge(o);
         em.getTransaction().commit();
+        em.close();
     }
 
 }

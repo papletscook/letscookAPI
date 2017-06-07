@@ -66,6 +66,7 @@ public class CadastrarCategoriaJUnitTest {
             assertTrue(cat.getId() != null);
 
         } catch (Exception e) {
+            e.printStackTrace();
             fail();
         }
     }
