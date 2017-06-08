@@ -5,14 +5,14 @@
  */
 package br.edu.up.letscook.test.receita;
 
-import br.edu.up.dao.FactoryDAO;
-import br.edu.up.dao.InterfaceDAO;
-import br.edu.up.model.Tomate;
-import br.edu.up.model.entity.Geladeira;
-import br.edu.up.model.entity.IngredienteGeladeira;
-import br.edu.up.model.entity.Usuario;
-import br.edu.up.model.service.FactoryService;
-import br.edu.up.model.service.InterfaceGeladeiraService;
+import br.edu.up.letscook.dao.FactoryDAO;
+import br.edu.up.letscook.dao.InterfaceDAO;
+import br.edu.up.letscook.model.Tomate;
+import br.edu.up.letscook.model.entity.Geladeira;
+import br.edu.up.letscook.model.entity.IngredienteGeladeira;
+import br.edu.up.letscook.model.entity.Usuario;
+import br.edu.up.letscook.model.service.FactoryService;
+import br.edu.up.letscook.model.service.InterfaceGeladeiraService;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;

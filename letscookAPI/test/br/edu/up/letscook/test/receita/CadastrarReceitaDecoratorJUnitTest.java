@@ -5,11 +5,11 @@
  */
 package br.edu.up.letscook.test.receita;
 
-import br.edu.up.model.entity.CategoriaReceita;
-import br.edu.up.model.entity.Receita;
-import br.edu.up.model.service.FactoryService;
-import br.edu.up.model.service.InterfaceService;
-import br.edu.up.model.util.ReceitaDecorator;
+import br.edu.up.letscook.model.entity.CategoriaReceita;
+import br.edu.up.letscook.model.entity.Receita;
+import br.edu.up.letscook.model.service.FactoryService;
+import br.edu.up.letscook.model.service.InterfaceService;
+import br.edu.up.letscook.model.util.ReceitaDecorator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
