@@ -28,24 +28,30 @@ public class ReceitaController {
     }
 
     @POST
-    @Path("/add")
+    @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
     public Receita cadastrar(Receita r) {
         try {
             serv.cadastrar(r);
             return r;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
 
     @GET
-    @Path("/{id}")
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Receita getReceita(@PathParam("id") int id) {
-        Receita r = new Receita();
-        r.setId(new Long(id));
-        return serv.buscarPorId(r);
+        try {
+            Receita r = new Receita();
+            r.setId(new Long(id));
+            return serv.buscarPorId(r);
+        } catch (Exception e) {
+            System.out.println(e.getCause());
+            return null;
+        }
     }
 
 }

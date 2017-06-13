@@ -12,6 +12,7 @@ import br.edu.up.letscook.model.service.FactoryService;
 import br.edu.up.letscook.model.service.InterfaceReceitaService;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -43,7 +44,13 @@ public class BuscarReceitaJUnitTest {
     @After
     public void tearDown() {
     }
-    
+
+    @Test
+    public void buscarPorId() {
+        Receita g = new Receita();
+        g.setId(3l);
+        Assert.assertNotNull(serv.buscarPorId(g));
+    }
 
     @Test
     public void buscarPorNome() {

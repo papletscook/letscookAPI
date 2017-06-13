@@ -16,20 +16,21 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  *
  * @author G0042204
  */
-@XmlRootElement(name = "receita")
 @Entity
 @Table(name = "LETSCOOK_RECEITA")
 public class Receita extends AbstractEntity {
 
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private CategoriaReceita categoria;
 
     private String descricao;
@@ -42,12 +43,15 @@ public class Receita extends AbstractEntity {
     private NacionalidadeEnum nasc;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "receita", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
     private List<IngredienteReceita> ingts;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "rec", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
     private List<Etapa> etapas;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Usuario criador;
 
     public Receita() {

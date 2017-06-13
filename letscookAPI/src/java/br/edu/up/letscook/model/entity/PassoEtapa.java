@@ -6,8 +6,10 @@
 package br.edu.up.letscook.model.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonBackReference;
 
 /**
  *
@@ -19,7 +21,8 @@ public class PassoEtapa extends AbstractEntity {
 
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Etapa etapa;
 
     public PassoEtapa() {
@@ -27,7 +30,7 @@ public class PassoEtapa extends AbstractEntity {
 
     public PassoEtapa(String nome) {
         this.nome = nome;
-    }    
+    }
 
     public String getNome() {
         return nome;

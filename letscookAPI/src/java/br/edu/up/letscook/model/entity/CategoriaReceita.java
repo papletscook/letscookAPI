@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  *
@@ -23,6 +24,7 @@ public class CategoriaReceita extends AbstractEntity{
     private String nome;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
+    @JsonManagedReference
     private List<Receita> receitas;
 
     public CategoriaReceita() {

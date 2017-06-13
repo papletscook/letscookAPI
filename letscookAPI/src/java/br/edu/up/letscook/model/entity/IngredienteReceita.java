@@ -6,8 +6,10 @@
 package br.edu.up.letscook.model.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  *
@@ -19,9 +21,10 @@ public class IngredienteReceita extends AbstractEntity {
 
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Receita receita;
-    
+
     public IngredienteReceita() {
     }
 
