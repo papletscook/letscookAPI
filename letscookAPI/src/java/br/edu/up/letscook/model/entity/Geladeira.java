@@ -10,7 +10,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.MapsId;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,10 +24,12 @@ import javax.persistence.Table;
 @Table(name = "LETSCOOK_GELADEIRA_USUARIO")
 public class Geladeira extends AbstractEntity {
 
-    @OneToOne
+    @OneToOne(targetEntity = Usuario.class)
     private Usuario dono;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "geladeira", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "LETSCOOK_INGREDIENTE_GELADEIRA",
+            joinColumns = @JoinColumn(name = "id"))
     private List<IngredienteGeladeira> ings;
 
     public Geladeira() {

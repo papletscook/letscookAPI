@@ -6,7 +6,6 @@
 package br.edu.up.letscook.model.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,18 +16,7 @@ import javax.persistence.Table;
 @Table(name = "LETSCOOK_INGREDIENTE_GELADEIRA")
 public class IngredienteGeladeira extends Ingrediente {
 
-    @ManyToOne
-    private Geladeira geladeira;
-
     public IngredienteGeladeira() {
-    }
-
-    public Geladeira getGeladeira() {
-        return geladeira;
-    }
-
-    public void setGeladeira(Geladeira geladeira) {
-        this.geladeira = geladeira;
     }
 
 }

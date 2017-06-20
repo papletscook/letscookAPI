@@ -13,11 +13,11 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.codehaus.jackson.annotate.JsonBackReference;
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  *
@@ -29,8 +29,7 @@ public class Receita extends AbstractEntity {
 
     private String nome;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @ManyToOne(targetEntity = CategoriaReceita.class)
     private CategoriaReceita categoria;
 
     private String descricao;
@@ -42,16 +41,15 @@ public class Receita extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private NacionalidadeEnum nasc;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "receita", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "RECEITA_ID")
     private List<IngredienteReceita> ingts;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rec", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "RECEITA_ID")
     private List<Etapa> etapas;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonManagedReference
     private Usuario criador;
 
     public Receita() {

@@ -59,7 +59,6 @@ public class ManipularGeladeiraJUnitTest {
 
             
             IngredienteGeladeira i = new IngredienteGeladeira();
-            i.setGeladeira(g);
             i.setNome("Feijão");
             
             g.adicionarIngredientes(i);

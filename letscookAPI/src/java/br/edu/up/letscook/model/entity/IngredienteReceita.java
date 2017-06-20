@@ -6,10 +6,7 @@
 package br.edu.up.letscook.model.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  *
@@ -17,31 +14,9 @@ import org.codehaus.jackson.annotate.JsonManagedReference;
  */
 @Entity
 @Table(name = "LETSCOOK_INGREDIENTE_RECEITA")
-public class IngredienteReceita extends AbstractEntity {
-
-    private String nome;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private Receita receita;
+public class IngredienteReceita extends Ingrediente {
 
     public IngredienteReceita() {
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Receita getReceita() {
-        return receita;
-    }
-
-    public void setReceita(Receita receita) {
-        this.receita = receita;
     }
 
 }

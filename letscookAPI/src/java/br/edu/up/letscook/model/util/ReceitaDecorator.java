@@ -21,21 +21,20 @@ public class ReceitaDecorator {
 
     public static Receita criarBolo() {
         Receita r = new Receita();
-        
+
         IngredienteReceita ir = new IngredienteReceita();
         ir.setNome("Maracujá");
-        ir.setReceita(r);
         r.adicionarIngrediente(ir);
-        
+
         CategoriaReceita cat = new CategoriaReceita();
         cat.setId(1l);
         r.setCategoria(cat);
-        
+
         Usuario u = new Usuario();
         u.setId(1l);
         r.setCriador(u);
         r.setNasc(NacionalidadeEnum.BRASIL);
-       
+
         r.setNome("TORTA DE MARACUJÁ");
         r.setMinsPreparo(45);
 
@@ -48,7 +47,6 @@ public class ReceitaDecorator {
         e.adicionarPasso(new PassoEtapa("Leve ao freezer por 30 minutos enquanto prepara o mouse"));
 
         r.adicionarEtapa(e);
-        e.setRec(r);
 
         Etapa e1 = new Etapa();
         e1.setNome("RECHEIOS");
@@ -66,7 +64,6 @@ public class ReceitaDecorator {
         e1.adicionarPasso(new PassoEtapa("Volte ao freezer enquanto prepara a calda"));
 
         r.adicionarEtapa(e1);
-        e1.setRec(r);
 
         Etapa e2 = new Etapa();
         e2.setNome("CALDA");
@@ -76,19 +73,17 @@ public class ReceitaDecorator {
         e2.adicionarPasso(new PassoEtapa("Pode deixar na geladeira a partir dessa etapa e espere a gelatina endurecer para servir (umas 2 horas)"));
 
         r.adicionarEtapa(e2);
-        e2.setRec(r);
 
         return r;
     }
-    
+
     public static Receita criarPudim() {
         Receita r = new Receita();
-        
+
         IngredienteReceita ir = new IngredienteReceita();
         ir.setNome("Maracujá");
-        ir.setReceita(r);
         r.adicionarIngrediente(ir);
-       
+
         r.setNome("TORTA DE MARACUJÁ");
         r.setMinsPreparo(45);
 
@@ -101,7 +96,6 @@ public class ReceitaDecorator {
         e.adicionarPasso(new PassoEtapa("Leve ao freezer por 30 minutos enquanto prepara o mouse"));
 
         r.adicionarEtapa(e);
-        e.setRec(r);
 
         Etapa e1 = new Etapa();
         e1.setNome("RECHEIOS");
@@ -119,7 +113,6 @@ public class ReceitaDecorator {
         e1.adicionarPasso(new PassoEtapa("Volte ao freezer enquanto prepara a calda"));
 
         r.adicionarEtapa(e1);
-        e1.setRec(r);
 
         Etapa e2 = new Etapa();
         e2.setNome("CALDA");
@@ -129,10 +122,8 @@ public class ReceitaDecorator {
         e2.adicionarPasso(new PassoEtapa("Pode deixar na geladeira a partir dessa etapa e espere a gelatina endurecer para servir (umas 2 horas)"));
 
         r.adicionarEtapa(e2);
-        e2.setRec(r);
 
         return r;
     }
-    
 
 }

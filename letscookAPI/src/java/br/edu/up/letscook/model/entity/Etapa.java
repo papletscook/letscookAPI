@@ -9,13 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.codehaus.jackson.annotate.JsonBackReference;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  *
@@ -27,12 +24,8 @@ public class Etapa extends AbstractEntity {
 
     private String nome;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
-    private Receita rec;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "etapa", cascade = CascadeType.PERSIST)
-    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn
     private List<PassoEtapa> passos;
 
     public Etapa() {
@@ -57,15 +50,6 @@ public class Etapa extends AbstractEntity {
 
     public void setPassos(List<PassoEtapa> passos) {
         this.passos = passos;
-    }
-
-    @JsonIgnore
-    public Receita getRec() {
-        return rec;
-    }
-
-    public void setRec(Receita rec) {
-        this.rec = rec;
     }
 
 }

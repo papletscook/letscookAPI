@@ -70,7 +70,6 @@ public class CadastrarReceitaJUnitTest {
             r.adicionarIngrediente(carne);
 
             Etapa e = new Etapa();
-            e.setRec(r);
             e.adicionarPasso(new PassoEtapa("Passo 1"));
 
             r.adicionarEtapa(e);

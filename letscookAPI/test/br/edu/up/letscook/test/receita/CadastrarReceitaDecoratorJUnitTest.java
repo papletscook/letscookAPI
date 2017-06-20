@@ -5,14 +5,12 @@
  */
 package br.edu.up.letscook.test.receita;
 
-import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.service.FactoryService;
 import br.edu.up.letscook.model.service.InterfaceService;
 import br.edu.up.letscook.model.util.ReceitaDecorator;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Before;
