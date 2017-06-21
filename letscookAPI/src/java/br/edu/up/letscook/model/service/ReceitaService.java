@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class ReceitaService implements InterfaceReceitaService<Receita> {
 
-    private InterfaceReceitaDAO<Receita> dao = FactoryDAO.createInterfaceReceitaDAO();
+    private final InterfaceReceitaDAO<Receita> dao = FactoryDAO.createInterfaceReceitaDAO();
 
     @Override
     public void cadastrar(Receita r) throws Exception {

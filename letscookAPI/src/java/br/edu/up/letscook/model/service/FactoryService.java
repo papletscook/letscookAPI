@@ -13,9 +13,13 @@ public class FactoryService {
     public static InterfaceService<CategoriaReceita> createCategoriaReceitaService() {
         return new CategoriaReceitaService();
     }
-    
-    public static InterfaceGeladeiraService<Geladeira> createInterfaceGeladeiraService(){
+
+    public static InterfaceGeladeiraService<Geladeira> createInterfaceGeladeiraService() {
         return new GeladeiraService();
+    }
+
+    public static InterfaceUsuarioService createInterfaceUsuarioService() {
+        return new UsuarioService();
     }
 
 }

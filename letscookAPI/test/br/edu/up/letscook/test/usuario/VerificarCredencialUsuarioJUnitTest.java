@@ -14,18 +14,19 @@ import org.junit.Test;
 import br.edu.up.letscook.model.service.FactoryService;
 import br.edu.up.letscook.model.service.InterfaceUsuarioService;
 import br.edu.up.letscook.model.util.UsuarioDecorator;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
  *
  * @author G0042204
  */
-public class CadastrarUsuarioJUnitTest {
+public class VerificarCredencialUsuarioJUnitTest {
 
     private InterfaceUsuarioService serv = FactoryService.createInterfaceUsuarioService();
 
-    public CadastrarUsuarioJUnitTest() {
+    public VerificarCredencialUsuarioJUnitTest() {
     }
 
     @BeforeClass
@@ -45,16 +46,28 @@ public class CadastrarUsuarioJUnitTest {
     }
 
     @Test
-    public void test() {
-
+    public void loginOk() {
         Usuario u = UsuarioDecorator.criar();
+        u.setId(1l);
 
         try {
-            serv.cadastrar(u);
-            assertEquals(true, u.getId() != null);
+            assertTrue(serv.verificarCredencial(u));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            fail(ex.getMessage());
+        }
+    }
+
+    @Test
+    public void senhaIncorreta() {
+        Usuario u = UsuarioDecorator.criar();
+        u.setId(1l);
+        u.setSenha("ASJsanjifn");
+
+        try {
+            assertFalse(serv.verificarCredencial(u));
         } catch (Exception ex) {
             fail(ex.getMessage());
         }
-
     }
 }

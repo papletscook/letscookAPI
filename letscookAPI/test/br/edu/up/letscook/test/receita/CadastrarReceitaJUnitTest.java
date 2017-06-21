@@ -29,9 +29,7 @@ import org.junit.Test;
  */
 public class CadastrarReceitaJUnitTest {
 
-    private InterfaceService<Receita> serv = FactoryService.createReceitaService();
-
-    private InterfaceDAO<Usuario> uDao = FactoryDAO.createUsuarioDAO();
+    private final InterfaceService<Receita> serv = FactoryService.createReceitaService();
 
     public CadastrarReceitaJUnitTest() {
     }

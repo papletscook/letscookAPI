@@ -10,7 +10,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,9 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "LETSCOOK_ETAPA_RECEITA")
-public class Etapa extends AbstractEntity {
-
-    private String nome;
+public class Etapa extends AbstractNamedEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn
@@ -34,14 +31,6 @@ public class Etapa extends AbstractEntity {
 
     public void adicionarPasso(PassoEtapa p) {
         passos.add(p);
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public List<PassoEtapa> getPassos() {

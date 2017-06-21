@@ -5,6 +5,7 @@
  */
 package br.edu.up.letscook.model.entity;
 
+import br.edu.up.letscook.model.util.Md5Util;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -26,7 +27,7 @@ public class Usuario extends AbstractEntity {
 
     public Usuario() {
     }
-    
+
     public String getEmail() {
         return email;
     }

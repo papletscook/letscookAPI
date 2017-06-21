@@ -5,22 +5,23 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author G0042204
  */
-@Entity
-@Table(name = "LETSCOOK_PASSO_ETAPA")
-public class PassoEtapa extends AbstractNamedEntity {
-    
-    public PassoEtapa() {
+@MappedSuperclass
+public abstract class AbstractNamedEntity extends AbstractEntity {
+
+    private String nome;
+
+    public String getNome() {
+        return nome;
     }
-    
-    public PassoEtapa(String nome) {
-        this.setNome(nome);
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-    
+
 }

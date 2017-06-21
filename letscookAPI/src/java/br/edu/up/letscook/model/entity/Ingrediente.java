@@ -12,23 +12,9 @@ import javax.persistence.MappedSuperclass;
  * @author G0042204
  */
 @MappedSuperclass
-public abstract class Ingrediente extends AbstractEntity {
-
-    private String nome;
+public abstract class Ingrediente extends AbstractNamedEntity {
 
     public Ingrediente() {
-    }
-
-    public Ingrediente(String nome) {
-        this.nome = nome;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
 }

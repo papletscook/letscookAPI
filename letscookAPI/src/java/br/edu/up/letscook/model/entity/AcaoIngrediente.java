@@ -5,10 +5,18 @@
  */
 package br.edu.up.letscook.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  *
  * @author G0042204
  */
-public class AcaoIngrediente {
-    
+@Entity
+@Table(name = "LETSCOOK_ACAO_INGREDIENTE")
+public class AcaoIngrediente extends AbstractNamedEntity {
+
+    public AcaoIngrediente() {
+    }
+
 }

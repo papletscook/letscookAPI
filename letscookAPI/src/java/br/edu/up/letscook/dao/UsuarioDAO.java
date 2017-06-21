@@ -6,6 +6,7 @@
 package br.edu.up.letscook.dao;
 
 import br.edu.up.letscook.model.entity.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,12 +33,17 @@ public class UsuarioDAO extends AbstractHibernateDAO implements InterfaceDAO<Usu
 
     @Override
     public List<Usuario> listar(Usuario t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return em.createQuery("FROM Usuario r")
+                    .getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     @Override
     public Usuario buscarPorId(Usuario t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(Usuario.class, t.getId());
     }
 
 }
