@@ -8,12 +8,15 @@ package br.edu.up.letscook.controller;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.service.FactoryService;
 import br.edu.up.letscook.model.service.InterfaceService;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 /**
  *
@@ -30,27 +33,27 @@ public class ReceitaController {
     @POST
     @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
-    public Receita cadastrar(Receita r) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response cadastrar(Receita r) {
         try {
             serv.cadastrar(r);
-            return r;
+            return Response.status(Status.OK).entity(r).build();
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Receita getReceita(@PathParam("id") int id) {
+    public Response getReceita(@PathParam("id") int id) {
         try {
             Receita r = new Receita();
             r.setId(new Long(id));
-            return serv.buscarPorId(r);
+            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
         } catch (Exception e) {
-            System.out.println(e.getCause());
-            return null;
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
 

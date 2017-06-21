@@ -16,9 +16,15 @@ public abstract class AbstractHibernateDAO {
     protected EntityManager em = ConexaoSingleton.getInstance();
 
     public void persist(Object o) {
-        em.getTransaction().begin();
-        em.persist(o);
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.persist(o);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+
     }
 
     public void remove(Object o) {
@@ -26,8 +32,8 @@ public abstract class AbstractHibernateDAO {
         em.remove(em.merge(o));
         em.getTransaction().commit();
     }
-    
-    public void merge(Object o){
+
+    public void merge(Object o) {
         em.getTransaction().begin();
         em.merge(o);
         em.getTransaction().commit();

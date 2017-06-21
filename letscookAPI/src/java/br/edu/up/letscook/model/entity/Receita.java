@@ -14,10 +14,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
@@ -49,7 +49,7 @@ public class Receita extends AbstractEntity {
     @JoinColumn(name = "RECEITA_ID")
     private List<Etapa> etapas;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Usuario criador;
 
     public Receita() {
@@ -136,5 +136,6 @@ public class Receita extends AbstractEntity {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    
 
 }
