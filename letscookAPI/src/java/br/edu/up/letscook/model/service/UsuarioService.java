@@ -6,7 +6,7 @@
 package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.InterfaceDAO;
+import br.edu.up.letscook.dao.InterfaceUsuarioDAO;
 import br.edu.up.letscook.model.entity.Usuario;
 
 /**
@@ -15,7 +15,7 @@ import br.edu.up.letscook.model.entity.Usuario;
  */
 public class UsuarioService implements InterfaceService<Usuario>, InterfaceUsuarioService {
 
-    private InterfaceDAO<Usuario> dao = FactoryDAO.createUsuarioDAO();
+    private InterfaceUsuarioDAO dao = FactoryDAO.createUsuarioDAO();
 
     public UsuarioService() {
     }
@@ -42,9 +42,7 @@ public class UsuarioService implements InterfaceService<Usuario>, InterfaceUsuar
 
     @Override
     public Boolean verificarCredencial(Usuario u) throws Exception {
-        // Casting 
-        u.setSenha(u.getSenha());
-        return this.buscarPorId(u).getSenha().equals(u.getSenha());
+        return dao.buscarPorEmail(u).getSenha().equals(u.getSenha());
     }
 
 }

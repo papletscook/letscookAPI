@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.letscook.model.service;
+package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.UsuarioInexistenteException;
 import br.edu.up.letscook.model.entity.Usuario;
 
 /**
  *
  * @author G0042204
  */
-public interface InterfaceUsuarioService extends InterfaceService<Usuario> {
+public interface InterfaceUsuarioDAO extends InterfaceDAO<Usuario> {
 
-    public Boolean verificarCredencial(Usuario u) throws Exception;
+    public Usuario buscarPorEmail(Usuario u) throws UsuarioInexistenteException;
 
 }

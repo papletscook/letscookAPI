@@ -5,6 +5,7 @@
  */
 package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.UsuarioInexistenteException;
 import br.edu.up.letscook.model.entity.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class UsuarioDAO extends AbstractHibernateDAO implements InterfaceDAO<Usuario> {
+public class UsuarioDAO extends AbstractHibernateDAO implements InterfaceUsuarioDAO {
 
     @Override
     public void cadastrar(Usuario t) {
@@ -44,6 +45,16 @@ public class UsuarioDAO extends AbstractHibernateDAO implements InterfaceDAO<Usu
     @Override
     public Usuario buscarPorId(Usuario t) {
         return em.find(Usuario.class, t.getId());
+    }
+
+    @Override
+    public Usuario buscarPorEmail(Usuario u) throws UsuarioInexistenteException {
+        try {
+            return (Usuario) em.createQuery("FROM Usuario u WHERE u.email =:param1")
+                    .setParameter("param1", u.getEmail()).getSingleResult();
+        } catch (Exception e) {
+            throw new UsuarioInexistenteException();
+        }
     }
 
 }

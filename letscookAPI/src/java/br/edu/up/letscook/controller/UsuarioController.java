@@ -5,10 +5,8 @@
  */
 package br.edu.up.letscook.controller;
 
-import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.entity.Usuario;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceService;
 import br.edu.up.letscook.model.service.InterfaceUsuarioService;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;

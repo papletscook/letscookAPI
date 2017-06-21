@@ -4,11 +4,10 @@ import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Geladeira;
 import br.edu.up.letscook.model.entity.IngredienteGeladeira;
 import br.edu.up.letscook.model.entity.Receita;
-import br.edu.up.letscook.model.entity.Usuario;
 
 public class FactoryDAO {
 
-    public static InterfaceDAO<Usuario> createUsuarioDAO() {
+    public static InterfaceUsuarioDAO createUsuarioDAO() {
         return new UsuarioDAO();
     }
 
