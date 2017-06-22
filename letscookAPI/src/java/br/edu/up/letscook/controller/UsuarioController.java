@@ -52,8 +52,7 @@ public class UsuarioController {
         try {
             return Response.status(Status.OK).entity(serv.verificarCredencial(u)).build();
         } catch (Exception e) {
-            e.printStackTrace();
-            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+            return Response.status(Status.BAD_REQUEST).entity(e).build();
         }
     }
 
