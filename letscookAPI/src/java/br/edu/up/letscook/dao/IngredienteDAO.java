@@ -5,40 +5,56 @@
  */
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.model.entity.Geladeira;
-import br.edu.up.letscook.model.entity.IngredienteGeladeira;
+import br.edu.up.letscook.model.entity.Ingrediente;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author G0042204
  */
-public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceDAO<IngredienteGeladeira> {
+public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceIngredienteDAO {
 
     @Override
-    public void cadastrar(IngredienteGeladeira t) {
+    public void cadastrar(Ingrediente t) {
         super.persist(t);
     }
 
     @Override
-    public void excluir(IngredienteGeladeira t) {
+    public void excluir(Ingrediente t) {
         super.remove(t);
     }
 
     @Override
-    public IngredienteGeladeira editar(IngredienteGeladeira t) {
+    public Ingrediente editar(Ingrediente t) {
         super.merge(t);
         return t;
     }
 
     @Override
-    public List<IngredienteGeladeira> listar(IngredienteGeladeira t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Ingrediente> listar(Ingrediente t) {
+        try {
+            return em.createQuery("FROM Ingrediente i").getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     @Override
-    public IngredienteGeladeira buscarPorId(IngredienteGeladeira t) {
-        return em.find(IngredienteGeladeira.class, t.getId());
+    public Ingrediente buscarPorId(Ingrediente t) {
+        return em.find(Ingrediente.class, t.getId());
+    }
+
+    @Override
+    public List<Ingrediente> buscarPorNome(String nome) {
+        try {
+            return em.createQuery("FROM Ingrediente r WHERE UPPER(r.nome) LIKE UPPER(:param)")
+                    .setParameter("param", "%" + nome + "%")
+                    .getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
 }

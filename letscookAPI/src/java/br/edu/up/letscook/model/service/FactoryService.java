@@ -1,7 +1,8 @@
 package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
-import br.edu.up.letscook.model.entity.Geladeira;
+import br.edu.up.letscook.model.entity.Dispensa;
+import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.Receita;
 
 public class FactoryService {
@@ -14,12 +15,16 @@ public class FactoryService {
         return new CategoriaReceitaService();
     }
 
-    public static InterfaceGeladeiraService<Geladeira> createInterfaceGeladeiraService() {
+    public static InterfaceDispensaService<Dispensa> createInterfaceGeladeiraService() {
         return new GeladeiraService();
     }
 
     public static InterfaceUsuarioService createInterfaceUsuarioService() {
         return new UsuarioService();
+    }
+    
+    public static InterfaceService<Ingrediente>  createInterfaceIngredienteService() {
+        return new IngredienteService();
     }
 
 }

@@ -5,7 +5,7 @@
  */
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.model.entity.Geladeira;
+import br.edu.up.letscook.model.entity.Dispensa;
 import br.edu.up.letscook.model.entity.Usuario;
 import java.util.List;
 
@@ -13,38 +13,38 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class GeladeiraDAO extends AbstractHibernateDAO implements InterfaceGeladeiraDAO<Geladeira> {
+public class GeladeiraDAO extends AbstractHibernateDAO implements InterfaceGeladeiraDAO<Dispensa> {
 
     @Override
-    public void cadastrar(Geladeira g) {
+    public void cadastrar(Dispensa g) {
         super.persist(g);
     }
 
     @Override
-    public void excluir(Geladeira g) {
+    public void excluir(Dispensa g) {
         super.remove(g);
     }
 
     @Override
-    public Geladeira editar(Geladeira g) {
+    public Dispensa editar(Dispensa g) {
         super.merge(g);
         return g;
     }
 
     @Override
-    public List<Geladeira> listar(Geladeira g) {
+    public List<Dispensa> listar(Dispensa g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Geladeira buscarPorId(Geladeira g) {
-        return em.find(Geladeira.class, g.getId());
+    public Dispensa buscarPorId(Dispensa g) {
+        return em.find(Dispensa.class, g.getId());
     }
 
     @Override
-    public Geladeira buscarPorUsuario(Usuario u) {
+    public Dispensa buscarPorUsuario(Usuario u) {
         try {
-            return (Geladeira) em.createQuery("FROM Geladeira g WHERE g.dono = :param")
+            return (Dispensa) em.createQuery("FROM Geladeira g WHERE g.dono = :param")
                     .setParameter("param", u)
                     .getSingleResult();
         } catch (Exception e) {

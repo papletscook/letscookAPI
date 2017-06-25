@@ -7,6 +7,7 @@ package br.edu.up.letscook.model.util;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Etapa;
+import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.entity.PassoEtapa;
 import br.edu.up.letscook.model.entity.Receita;
@@ -23,7 +24,10 @@ public class ReceitaDecorator {
         Receita r = new Receita();
 
         IngredienteReceita ir = new IngredienteReceita();
-        ir.setNome("Maracujá");
+
+        Ingrediente in = new Ingrediente();
+        in.setNome("Maracujá");
+        ir.setI(in);
         r.adicionarIngrediente(ir);
 
         CategoriaReceita cat = new CategoriaReceita();
@@ -81,7 +85,10 @@ public class ReceitaDecorator {
         Receita r = new Receita();
 
         IngredienteReceita ir = new IngredienteReceita();
-        ir.setNome("Maracujá");
+
+        Ingrediente in = new Ingrediente();
+        in.setNome("Maracujá");
+        ir.setI(in);
         r.adicionarIngrediente(ir);
 
         r.setNome("TORTA DE MARACUJÁ");

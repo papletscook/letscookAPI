@@ -5,9 +5,8 @@
  */
 package br.edu.up.letscook.test.receita;
 
-import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.InterfaceDAO;
 import br.edu.up.letscook.model.entity.Etapa;
+import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.entity.PassoEtapa;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
@@ -58,14 +57,18 @@ public class CadastrarReceitaJUnitTest {
             Usuario u = new Usuario();
             u.setId(1l);
 
-            IngredienteReceita carne = new IngredienteReceita();
-            carne.setNome("Carne");
+            IngredienteReceita ir = new IngredienteReceita();
+
+            Ingrediente in = new Ingrediente();
+            in.setNome("Carne");
+            ir.setI(in);
+            
             Receita r = new Receita();
             r.setNome("Nome da Receita");
             r.setFoto("foto");
             r.setNasc(NacionalidadeEnum.AFGHAN);
             r.setCriador(u);
-            r.adicionarIngrediente(carne);
+            r.adicionarIngrediente(ir);
 
             Etapa e = new Etapa();
             e.adicionarPasso(new PassoEtapa("Passo 1"));

@@ -7,12 +7,11 @@ package br.edu.up.letscook.test.receita;
 
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.InterfaceDAO;
-import br.edu.up.letscook.model.Tomate;
-import br.edu.up.letscook.model.entity.Geladeira;
-import br.edu.up.letscook.model.entity.IngredienteGeladeira;
+import br.edu.up.letscook.model.entity.Dispensa;
+import br.edu.up.letscook.model.entity.Ingrediente;
+import br.edu.up.letscook.model.entity.IngredienteDispensa;
 import br.edu.up.letscook.model.entity.Usuario;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceGeladeiraService;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -20,6 +19,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import br.edu.up.letscook.model.service.InterfaceDispensaService;
 
 /**
  *
@@ -27,9 +27,9 @@ import org.junit.Test;
  */
 public class ManipularGeladeiraJUnitTest {
 
-    private InterfaceGeladeiraService<Geladeira> serv = FactoryService.createInterfaceGeladeiraService();
+    private final InterfaceDispensaService<Dispensa> serv = FactoryService.createInterfaceGeladeiraService();
 
-    private InterfaceDAO<IngredienteGeladeira> dao = FactoryDAO.createInterfaceDAOIngredienteDAO();
+    private final InterfaceDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
     public ManipularGeladeiraJUnitTest() {
     }
@@ -55,14 +55,15 @@ public class ManipularGeladeiraJUnitTest {
         try {
             Usuario u = new Usuario();
             u.setId(1l);
-            Geladeira g = serv.buscarPorUsuario(u);
+            Dispensa g = serv.buscarPorUsuario(u);
 
-            
-            IngredienteGeladeira i = new IngredienteGeladeira();
+            Ingrediente i = new Ingrediente();
             i.setNome("Feijão");
-            
-            g.adicionarIngredientes(i);
 
+            IngredienteDispensa id = new IngredienteDispensa();
+            id.setI(i);
+
+            g.adicionarIngredientes(id);
 
             assertTrue(g.getId() != null);
         } catch (Exception e) {
@@ -80,20 +81,21 @@ public class ManipularGeladeiraJUnitTest {
             fail();
         }
     }
-    
-   @Test
+
+    @Test
     public void cadastrarGeladeira() {
         try {
             Usuario u = new Usuario();
             u.setId(1l);
-            Geladeira g = serv.buscarPorUsuario(u);
+            Dispensa g = serv.buscarPorUsuario(u);
 
-            if(g == null){
+            if (g == null) {
                 serv.cadastrar(g);
             }
-            
+
             assertTrue(g.getId() != null);
         } catch (Exception e) {
             fail();
         }
-    }}
+    }
+}

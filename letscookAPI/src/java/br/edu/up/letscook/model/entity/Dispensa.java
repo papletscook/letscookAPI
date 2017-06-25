@@ -21,22 +21,22 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_GELADEIRA_USUARIO")
-public class Geladeira extends AbstractEntity {
+@Table(name = "LETSCOOK_DISPENSA_USUARIO")
+public class Dispensa extends AbstractEntity {
 
     @OneToOne(targetEntity = Usuario.class)
     private Usuario dono;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "LETSCOOK_INGREDIENTE_GELADEIRA",
+    @JoinTable(name = "LETSCOOK_INGREDIENTE_DISPENSA",
             joinColumns = @JoinColumn(name = "id"))
-    private List<IngredienteGeladeira> ings;
+    private List<IngredienteDispensa> ings;
 
-    public Geladeira() {
+    public Dispensa() {
         ings = new ArrayList<>();
     }
 
-    public void adicionarIngredientes(IngredienteGeladeira g) {
+    public void adicionarIngredientes(IngredienteDispensa g) {
         ings.add(g);
     }
 
@@ -48,11 +48,11 @@ public class Geladeira extends AbstractEntity {
         this.dono = dono;
     }
 
-    public List<IngredienteGeladeira> getIngs() {
+    public List<IngredienteDispensa> getIngs() {
         return ings;
     }
 
-    public void setIngs(List<IngredienteGeladeira> ings) {
+    public void setIngs(List<IngredienteDispensa> ings) {
         this.ings = ings;
     }
 

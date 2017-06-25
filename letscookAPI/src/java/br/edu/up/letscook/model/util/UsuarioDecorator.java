@@ -17,7 +17,7 @@ public class UsuarioDecorator {
     public static Usuario criar() {
         Usuario u = new Usuario();
         u.setEmail("henmerlin@gmail.com");
-        u.setSenha("senha");
+        u.setSenha("e8d95a51f3af4a3b134bf6bb680a213a");
         u.setDataNasc(Calendar.getInstance().getTime());
         return u;
 

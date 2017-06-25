@@ -5,14 +5,16 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author G0042204
  */
-@MappedSuperclass
-public abstract class Ingrediente extends AbstractNamedEntity {
+@Entity
+@Table(name = "LETSCOOK_INGREDIENTE")
+public class Ingrediente extends AbstractNamedEntity {
 
     public Ingrediente() {
     }

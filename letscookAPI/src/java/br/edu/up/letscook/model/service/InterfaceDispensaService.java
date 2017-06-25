@@ -12,7 +12,7 @@ import br.edu.up.letscook.model.entity.Usuario;
  * @author G0042204
  * @param <Receita>
  */
-public interface InterfaceGeladeiraService<Geladeira> extends InterfaceService<Geladeira> {
+public interface InterfaceDispensaService<Geladeira> extends InterfaceService<Geladeira> {
 
     public Geladeira buscarPorUsuario(Usuario u);
 

@@ -5,7 +5,6 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,14 +15,14 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_INGREDIENTE_RECEITA")
-public class IngredienteReceita extends AbstractEntity {
+@Table(name = "LETSCOOK_INGREDIENTE_DISPENSA")
+public class IngredienteDispensa extends AbstractEntity {
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "INGREDIENTE_ID")
     private Ingrediente i;
 
-    public IngredienteReceita() {
+    public IngredienteDispensa() {
     }
 
     public Ingrediente getI() {
