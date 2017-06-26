@@ -9,6 +9,7 @@ import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.InterfaceDAO;
 import br.edu.up.letscook.dao.InterfaceIngredienteDAO;
 import br.edu.up.letscook.model.entity.Ingrediente;
+import java.util.List;
 
 /**
  *
@@ -36,6 +37,11 @@ public class IngredienteService implements InterfaceService<Ingrediente> {
     @Override
     public Ingrediente buscarPorId(Ingrediente t) {
         return dao.buscarPorId(t);
+    }
+
+    @Override
+    public List<Ingrediente> listar() {
+        return dao.listar();
     }
 
 }

@@ -31,7 +31,7 @@ public class CategoriaReceitaDAO extends AbstractHibernateDAO implements Interfa
     }
 
     @Override
-    public List<CategoriaReceita> listar(CategoriaReceita t) {
+    public List<CategoriaReceita> listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

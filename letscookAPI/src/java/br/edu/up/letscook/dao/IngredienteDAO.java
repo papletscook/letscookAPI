@@ -32,10 +32,11 @@ public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceIng
     }
 
     @Override
-    public List<Ingrediente> listar(Ingrediente t) {
+    public List<Ingrediente> listar() {
         try {
             return em.createQuery("FROM Ingrediente i").getResultList();
         } catch (Exception e) {
+            e.printStackTrace();
             return new ArrayList<>();
         }
     }
@@ -52,7 +53,6 @@ public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceIng
                     .setParameter("param", "%" + nome + "%")
                     .getResultList();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return new ArrayList<>();
         }
     }

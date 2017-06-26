@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class GeladeiraDAO extends AbstractHibernateDAO implements InterfaceGeladeiraDAO<Dispensa> {
+public class DispensaDAO extends AbstractHibernateDAO implements InterfaceGeladeiraDAO<Dispensa> {
 
     @Override
     public void cadastrar(Dispensa g) {
@@ -32,8 +32,14 @@ public class GeladeiraDAO extends AbstractHibernateDAO implements InterfaceGelad
     }
 
     @Override
-    public List<Dispensa> listar(Dispensa g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Dispensa> listar() {
+
+        try {
+            return em.createQuery("FROM Dispensa d")
+                    .getResultList();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
@@ -44,7 +50,7 @@ public class GeladeiraDAO extends AbstractHibernateDAO implements InterfaceGelad
     @Override
     public Dispensa buscarPorUsuario(Usuario u) {
         try {
-            return (Dispensa) em.createQuery("FROM Geladeira g WHERE g.dono = :param")
+            return (Dispensa) em.createQuery("FROM Dispensa g WHERE g.dono = :param")
                     .setParameter("param", u)
                     .getSingleResult();
         } catch (Exception e) {

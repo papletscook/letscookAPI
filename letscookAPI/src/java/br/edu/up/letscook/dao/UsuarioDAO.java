@@ -33,7 +33,7 @@ public class UsuarioDAO extends AbstractHibernateDAO implements InterfaceUsuario
     }
 
     @Override
-    public List<Usuario> listar(Usuario t) {
+    public List<Usuario> listar() {
         try {
             return em.createQuery("FROM Usuario r")
                     .getResultList();

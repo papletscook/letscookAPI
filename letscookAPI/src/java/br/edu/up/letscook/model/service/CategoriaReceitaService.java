@@ -8,6 +8,7 @@ package br.edu.up.letscook.model.service;
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.InterfaceDAO;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
+import java.util.List;
 
 /**
  *
@@ -36,6 +37,12 @@ public class CategoriaReceitaService implements InterfaceService<CategoriaReceit
     public CategoriaReceita buscarPorId(CategoriaReceita t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<CategoriaReceita> listar() {
+        return dao.listar();
+    }
+    
     
     
 

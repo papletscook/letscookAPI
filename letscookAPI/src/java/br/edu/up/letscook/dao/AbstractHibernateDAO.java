@@ -21,8 +21,9 @@ public abstract class AbstractHibernateDAO {
             em.persist(o);
             em.getTransaction().commit();
         } catch (Exception e) {
-            e.printStackTrace();
             em.getTransaction().rollback();
+        } finally {
+            em.close();
         }
 
     }
@@ -31,6 +32,7 @@ public abstract class AbstractHibernateDAO {
         em.getTransaction().begin();
         em.remove(em.merge(o));
         em.getTransaction().commit();
+        em.close();
     }
 
     public void merge(Object o) {

@@ -23,9 +23,9 @@ import javax.ws.rs.core.Response.Status;
  * @author G0042204
  */
 @Path("/ingrediente")
-public class IngredienteController {
+public class IngredienteController implements InterfaceRest<Ingrediente> {
 
-    private InterfaceService<Ingrediente> serv = FactoryService.createInterfaceIngredienteService();
+    private InterfaceService<Ingrediente> serv;
 
     public IngredienteController() {
     }
@@ -34,8 +34,25 @@ public class IngredienteController {
     @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Override
     public Response cadastrar(Ingrediente r) {
         try {
+            serv = FactoryService.createInterfaceIngredienteService();
+            serv.cadastrar(r);
+            return Response.status(Status.OK).entity(r).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
+    @POST
+    @Path("atualizar")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Override
+    public Response atualizar(Ingrediente r) {
+        try {
+            serv = FactoryService.createInterfaceIngredienteService();
             serv.cadastrar(r);
             return Response.status(Status.OK).entity(r).build();
         } catch (Exception e) {
@@ -44,13 +61,43 @@ public class IngredienteController {
     }
 
     @GET
+    @Path("list")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Override
+    public Response list() {
+        try {
+            serv = FactoryService.createInterfaceIngredienteService();
+            return Response.status(Status.OK).entity(serv.listar()).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
+    @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getIngrediente(@PathParam("id") int id) {
+    @Override
+    public Response get(@PathParam("id") int id) {
         try {
+            serv = FactoryService.createInterfaceIngredienteService();
             Ingrediente r = new Ingrediente();
             r.setId(new Long(id));
             return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
+    @POST
+    @Path("remover")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Override
+    public Response remover(Ingrediente i) {
+        try {
+            serv = FactoryService.createInterfaceIngredienteService();
+            serv.excluir(i);
+            return Response.status(Status.OK).entity(true).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }

@@ -16,7 +16,7 @@ public class FactoryService {
     }
 
     public static InterfaceDispensaService<Dispensa> createInterfaceGeladeiraService() {
-        return new GeladeiraService();
+        return new DispensaService();
     }
 
     public static InterfaceUsuarioService createInterfaceUsuarioService() {

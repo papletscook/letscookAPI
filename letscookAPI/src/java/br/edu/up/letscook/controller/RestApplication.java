@@ -22,6 +22,7 @@ public class RestApplication extends Application {
     public RestApplication() {
         singletons.add(new ReceitaController());
         singletons.add(new UsuarioController());
+        singletons.add(new IngredienteController());
     }
 
     @Override

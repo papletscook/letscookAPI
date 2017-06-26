@@ -23,7 +23,7 @@ public class FactoryDAO {
     }
 
     public static InterfaceGeladeiraDAO<Dispensa> createInterfaceGeladeiraDAO() {
-        return new GeladeiraDAO();
+        return new DispensaDAO();
     }
 
     public static InterfaceIngredienteDAO createInterfaceIngredienteDAO() {

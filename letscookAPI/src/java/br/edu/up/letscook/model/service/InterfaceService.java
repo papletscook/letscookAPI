@@ -5,6 +5,8 @@
  */
 package br.edu.up.letscook.model.service;
 
+import java.util.List;
+
 /**
  *
  * @author G0042204
@@ -17,7 +19,9 @@ public interface InterfaceService<T> {
     public void excluir(T t);
 
     public T editar(T t);
-    
+
+    public List<T> listar();
+
     public T buscarPorId(T t);
-    
+
 }

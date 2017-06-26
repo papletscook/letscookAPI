@@ -25,13 +25,13 @@ import br.edu.up.letscook.model.service.InterfaceDispensaService;
  *
  * @author G0042204
  */
-public class ManipularGeladeiraJUnitTest {
+public class ManipularDispensaJUnitTest {
 
     private final InterfaceDispensaService<Dispensa> serv = FactoryService.createInterfaceGeladeiraService();
 
     private final InterfaceDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
-    public ManipularGeladeiraJUnitTest() {
+    public ManipularDispensaJUnitTest() {
     }
 
     @BeforeClass
@@ -90,12 +90,18 @@ public class ManipularGeladeiraJUnitTest {
             Dispensa g = serv.buscarPorUsuario(u);
 
             if (g == null) {
+
+                g = new Dispensa();
+                
+                g.setDono(u);
+
                 serv.cadastrar(g);
             }
 
             assertTrue(g.getId() != null);
         } catch (Exception e) {
-            fail();
+            e.printStackTrace();
+            fail(e.getMessage());
         }
     }
 }

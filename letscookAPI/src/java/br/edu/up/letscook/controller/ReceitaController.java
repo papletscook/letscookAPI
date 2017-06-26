@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response.Status;
  * @author G0042204
  */
 @Path("/receita")
-public class ReceitaController {
+public class ReceitaController implements InterfaceRest<Receita> {
 
     private InterfaceService<Receita> serv = FactoryService.createReceitaService();
 
@@ -34,6 +34,7 @@ public class ReceitaController {
     @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Override
     public Response cadastrar(Receita r) {
         try {
             serv.cadastrar(r);
@@ -47,7 +48,8 @@ public class ReceitaController {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getReceita(@PathParam("id") int id) {
+    @Override
+    public Response get(@PathParam("id") int id) {
         try {
             Receita r = new Receita();
             r.setId(new Long(id));
@@ -56,5 +58,22 @@ public class ReceitaController {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
+
+    @Override
+    public Response atualizar(Receita t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Response list() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Response remover(Receita t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 
 }

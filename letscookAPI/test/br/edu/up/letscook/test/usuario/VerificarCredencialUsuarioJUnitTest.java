@@ -51,8 +51,6 @@ public class VerificarCredencialUsuarioJUnitTest {
         Usuario u = UsuarioDecorator.criar();
         u.setId(1l);
         try {
-            // Simula MD5 Cliente
-            u.setSenha(Md5Util.hash(u.getSenha()));
             assertTrue(serv.verificarCredencial(u));
         } catch (Exception ex) {
             ex.printStackTrace();

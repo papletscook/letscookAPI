@@ -38,7 +38,7 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceita
     }
 
     @Override
-    public List<Receita> listar(Receita t) {
+    public List<Receita> listar() {
         try {
             return em.createQuery("FROM Receita r")
                     .getResultList();

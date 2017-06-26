@@ -58,7 +58,10 @@ public class ReceitaService implements InterfaceReceitaService<Receita> {
     public Receita buscarPorId(Receita t) {
         return dao.buscarPorId(t);
     }
-    
-    
+
+    @Override
+    public List<Receita> listar() {
+        return dao.listar();
+    }
 
 }

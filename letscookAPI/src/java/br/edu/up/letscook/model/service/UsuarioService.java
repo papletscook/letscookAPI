@@ -8,6 +8,7 @@ package br.edu.up.letscook.model.service;
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.InterfaceUsuarioDAO;
 import br.edu.up.letscook.model.entity.Usuario;
+import java.util.List;
 
 /**
  *
@@ -43,6 +44,11 @@ public class UsuarioService implements InterfaceService<Usuario>, InterfaceUsuar
     @Override
     public Boolean verificarCredencial(Usuario u) throws Exception {
         return dao.buscarPorEmail(u).getSenha().equals(u.getSenha());
+    }
+
+    @Override
+    public List<Usuario> listar() {
+        return dao.listar();
     }
 
 }

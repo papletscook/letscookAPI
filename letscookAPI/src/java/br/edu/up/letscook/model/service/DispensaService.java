@@ -9,17 +9,18 @@ import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.InterfaceGeladeiraDAO;
 import br.edu.up.letscook.model.entity.Dispensa;
 import br.edu.up.letscook.model.entity.Usuario;
+import java.util.List;
 
 /**
  *
  * @author G0042204
  */
-public class GeladeiraService implements InterfaceDispensaService<Dispensa> {
+public class DispensaService implements InterfaceDispensaService<Dispensa> {
     
     private InterfaceGeladeiraDAO<Dispensa> dao = FactoryDAO.createInterfaceGeladeiraDAO();
     
     
-    public GeladeiraService() {
+    public DispensaService() {
     }
     
     @Override
@@ -46,5 +47,12 @@ public class GeladeiraService implements InterfaceDispensaService<Dispensa> {
     public Dispensa buscarPorId(Dispensa t) {
         return dao.buscarPorId(t);
     }
+
+    @Override
+    public List<Dispensa> listar() {
+        return dao.listar();
+    }
+    
+    
     
 }
