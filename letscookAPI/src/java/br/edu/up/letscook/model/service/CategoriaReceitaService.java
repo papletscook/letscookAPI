@@ -25,17 +25,17 @@ public class CategoriaReceitaService implements InterfaceService<CategoriaReceit
 
     @Override
     public CategoriaReceita editar(CategoriaReceita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.editar(t);
     }
 
     @Override
     public void excluir(CategoriaReceita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.excluir(t);
     }
 
     @Override
     public CategoriaReceita buscarPorId(CategoriaReceita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.buscarPorId(t);
     }
 
     @Override

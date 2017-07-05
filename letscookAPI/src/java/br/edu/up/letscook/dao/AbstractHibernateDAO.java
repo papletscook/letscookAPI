@@ -23,23 +23,28 @@ public abstract class AbstractHibernateDAO {
         } catch (Exception e) {
             em.getTransaction().rollback();
         } finally {
-            em.close();
+            close();
         }
-
     }
 
     public void remove(Object o) {
         em.getTransaction().begin();
         em.remove(em.merge(o));
         em.getTransaction().commit();
-        em.close();
+        close();
     }
 
     public void merge(Object o) {
         em.getTransaction().begin();
         em.merge(o);
         em.getTransaction().commit();
-        em.close();
+        close();
+    }
+
+    public void close() {
+        if (em.isOpen()) {
+            em.close();
+        }
     }
 
 }

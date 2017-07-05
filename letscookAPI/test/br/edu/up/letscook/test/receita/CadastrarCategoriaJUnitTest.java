@@ -64,6 +64,7 @@ public class CadastrarCategoriaJUnitTest {
             serv.cadastrar(cat1);
 
             assertTrue(cat.getId() != null);
+            assertTrue(cat1.getId() != null);
 
         } catch (Exception e) {
             e.printStackTrace();

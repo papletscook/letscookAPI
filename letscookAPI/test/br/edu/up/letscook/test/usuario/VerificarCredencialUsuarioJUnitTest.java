@@ -13,7 +13,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import br.edu.up.letscook.model.service.FactoryService;
 import br.edu.up.letscook.model.service.InterfaceUsuarioService;
-import br.edu.up.letscook.model.util.Md5Util;
 import br.edu.up.letscook.model.util.UsuarioDecorator;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

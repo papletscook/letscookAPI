@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response.Status;
 @Path("/usuario")
 public class UsuarioController implements InterfaceRest<Usuario> {
 
-    private InterfaceUsuarioService serv = FactoryService.createInterfaceUsuarioService();
+    private InterfaceUsuarioService serv;
 
     public UsuarioController() {
     }
@@ -37,6 +37,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Override
     public Response cadastrar(Usuario u) {
         try {
+            serv = FactoryService.createInterfaceUsuarioService();
             serv.cadastrar(u);
             return Response.status(Status.OK).entity(u).build();
         } catch (Exception e) {
@@ -50,6 +51,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response verificarCredencial(Usuario u) {
         try {
+            serv = FactoryService.createInterfaceUsuarioService();
             return Response.status(Status.OK).entity(serv.verificarCredencial(u)).build();
         } catch (Exception e) {
             return Response.status(Status.BAD_REQUEST).entity(e).build();
@@ -62,6 +64,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Override
     public Response get(@PathParam("id") int id) {
         try {
+            serv = FactoryService.createInterfaceUsuarioService();
             Usuario r = new Usuario();
             r.setId(new Long(id));
             return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();

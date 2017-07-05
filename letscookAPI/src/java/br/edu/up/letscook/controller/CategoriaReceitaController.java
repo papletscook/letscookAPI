@@ -5,7 +5,7 @@
  */
 package br.edu.up.letscook.controller;
 
-import br.edu.up.letscook.model.entity.Ingrediente;
+import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.service.FactoryService;
 import br.edu.up.letscook.model.service.InterfaceService;
 import javax.ws.rs.Consumes;
@@ -22,12 +22,12 @@ import javax.ws.rs.core.Response.Status;
  *
  * @author G0042204
  */
-@Path("/ingrediente")
-public class IngredienteController implements InterfaceRest<Ingrediente> {
+@Path("/categoriaReceita")
+public class CategoriaReceitaController implements InterfaceRest<CategoriaReceita> {
 
-    private InterfaceService<Ingrediente> serv;
+    private InterfaceService<CategoriaReceita> serv;
 
-    public IngredienteController() {
+    public CategoriaReceitaController() {
     }
 
     @POST
@@ -35,11 +35,26 @@ public class IngredienteController implements InterfaceRest<Ingrediente> {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response cadastrar(Ingrediente r) {
+    public Response cadastrar(CategoriaReceita u) {
         try {
-            serv = FactoryService.createInterfaceIngredienteService();
-            serv.cadastrar(r);
-            return Response.status(Status.OK).entity(r).build();
+            serv = FactoryService.createCategoriaReceitaService();
+            serv.cadastrar(u);
+            return Response.status(Status.OK).entity(u).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Override
+    public Response get(@PathParam("id") int id) {
+        try {
+            serv = FactoryService.createCategoriaReceitaService();
+            CategoriaReceita r = new CategoriaReceita();
+            r.setId(new Long(id));
+            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
@@ -50,9 +65,9 @@ public class IngredienteController implements InterfaceRest<Ingrediente> {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response atualizar(Ingrediente r) {
+    public Response atualizar(CategoriaReceita r) {
         try {
-            serv = FactoryService.createInterfaceIngredienteService();
+            serv = FactoryService.createCategoriaReceitaService();
             serv.editar(r);
             return Response.status(Status.OK).entity(r).build();
         } catch (Exception e) {
@@ -66,23 +81,8 @@ public class IngredienteController implements InterfaceRest<Ingrediente> {
     @Override
     public Response list() {
         try {
-            serv = FactoryService.createInterfaceIngredienteService();
+            serv = FactoryService.createCategoriaReceitaService();
             return Response.status(Status.OK).entity(serv.listar()).build();
-        } catch (Exception e) {
-            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
-        }
-    }
-
-    @GET
-    @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Override
-    public Response get(@PathParam("id") int id) {
-        try {
-            serv = FactoryService.createInterfaceIngredienteService();
-            Ingrediente r = new Ingrediente();
-            r.setId(new Long(id));
-            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
@@ -93,9 +93,9 @@ public class IngredienteController implements InterfaceRest<Ingrediente> {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response remover(Ingrediente i) {
+    public Response remover(CategoriaReceita i) {
         try {
-            serv = FactoryService.createInterfaceIngredienteService();
+            serv = FactoryService.createCategoriaReceitaService();
             serv.excluir(i);
             return Response.status(Status.OK).entity(true).build();
         } catch (Exception e) {

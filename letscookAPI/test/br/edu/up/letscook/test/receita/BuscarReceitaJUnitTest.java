@@ -48,7 +48,7 @@ public class BuscarReceitaJUnitTest {
     @Test
     public void buscarPorId() {
         Receita g = new Receita();
-        g.setId(3l);
+        g.setId(4l);
         Assert.assertNotNull(serv.buscarPorId(g));
     }
 

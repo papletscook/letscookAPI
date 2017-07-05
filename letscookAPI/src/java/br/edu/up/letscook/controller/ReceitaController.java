@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response.Status;
 @Path("/receita")
 public class ReceitaController implements InterfaceRest<Receita> {
 
-    private InterfaceService<Receita> serv = FactoryService.createReceitaService();
+    private InterfaceService<Receita> serv;
 
     public ReceitaController() {
     }
@@ -37,6 +37,7 @@ public class ReceitaController implements InterfaceRest<Receita> {
     @Override
     public Response cadastrar(Receita r) {
         try {
+            serv = FactoryService.createReceitaService();
             serv.cadastrar(r);
             return Response.status(Status.OK).entity(r).build();
         } catch (Exception e) {
@@ -51,6 +52,7 @@ public class ReceitaController implements InterfaceRest<Receita> {
     @Override
     public Response get(@PathParam("id") int id) {
         try {
+            serv = FactoryService.createReceitaService();
             Receita r = new Receita();
             r.setId(new Long(id));
             return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();

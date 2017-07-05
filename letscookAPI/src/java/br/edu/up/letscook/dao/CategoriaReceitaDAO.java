@@ -6,6 +6,7 @@
 package br.edu.up.letscook.dao;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,12 +33,16 @@ public class CategoriaReceitaDAO extends AbstractHibernateDAO implements Interfa
 
     @Override
     public List<CategoriaReceita> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return em.createQuery("FROM CategoriaReceita c").getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     @Override
     public CategoriaReceita buscarPorId(CategoriaReceita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(CategoriaReceita.class, t.getId());
     }
 
 }

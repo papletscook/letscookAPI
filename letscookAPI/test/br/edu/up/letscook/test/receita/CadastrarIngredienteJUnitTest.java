@@ -5,7 +5,6 @@
  */
 package br.edu.up.letscook.test.receita;
 
-import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.service.FactoryService;
 import br.edu.up.letscook.model.service.InterfaceService;
