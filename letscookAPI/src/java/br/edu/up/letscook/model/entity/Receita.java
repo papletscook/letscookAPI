@@ -6,6 +6,7 @@
 package br.edu.up.letscook.model.entity;
 
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
+import br.edu.up.letscook.model.enums.StatusPublicacao;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -38,6 +39,9 @@ public class Receita extends AbstractEntity {
     private Integer minsPreparo;
 
     @Enumerated(EnumType.STRING)
+    private StatusPublicacao status;
+
+    @Enumerated(EnumType.STRING)
     private NacionalidadeEnum nasc = NacionalidadeEnum.BRASIL;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -54,6 +58,7 @@ public class Receita extends AbstractEntity {
     public Receita() {
         ingts = new ArrayList<>();
         etapas = new ArrayList<>();
+        status = StatusPublicacao.PENDENTE;
     }
 
     public void adicionarIngrediente(IngredienteReceita i) {
@@ -135,6 +140,13 @@ public class Receita extends AbstractEntity {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
+
+    public StatusPublicacao getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPublicacao status) {
+        this.status = status;
+    }
 
 }
