@@ -38,7 +38,7 @@ public class Receita extends AbstractEntity {
     private Integer minsPreparo;
 
     @Enumerated(EnumType.STRING)
-    private NacionalidadeEnum nasc;
+    private NacionalidadeEnum nasc = NacionalidadeEnum.BRASIL;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "RECEITA_ID")

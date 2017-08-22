@@ -5,7 +5,10 @@
  */
 package br.edu.up.letscook.model.entity;
 
+import br.edu.up.letscook.model.enums.TipoIngrediente;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 /**
@@ -16,7 +19,18 @@ import javax.persistence.Table;
 @Table(name = "LETSCOOK_INGREDIENTE")
 public class Ingrediente extends AbstractNamedEntity {
 
+    @Enumerated(EnumType.STRING)
+    private TipoIngrediente tipo;
+
     public Ingrediente() {
+    }
+
+    public TipoIngrediente getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoIngrediente tipo) {
+        this.tipo = tipo;
     }
 
 }

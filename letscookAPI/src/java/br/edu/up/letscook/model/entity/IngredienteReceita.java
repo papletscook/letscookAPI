@@ -5,8 +5,11 @@
  */
 package br.edu.up.letscook.model.entity;
 
+import br.edu.up.letscook.model.enums.UnidadeMedidaEnum;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -23,6 +26,11 @@ public class IngredienteReceita extends AbstractEntity {
     @JoinColumn(name = "INGREDIENTE_ID")
     private Ingrediente i;
 
+    @Enumerated(EnumType.STRING)
+    private UnidadeMedidaEnum uMedida;
+
+    private Double quant;
+
     public IngredienteReceita() {
     }
 
@@ -32,6 +40,22 @@ public class IngredienteReceita extends AbstractEntity {
 
     public void setI(Ingrediente i) {
         this.i = i;
+    }
+
+    public UnidadeMedidaEnum getuMedida() {
+        return uMedida;
+    }
+
+    public void setuMedida(UnidadeMedidaEnum uMedida) {
+        this.uMedida = uMedida;
+    }
+
+    public Double getQuant() {
+        return quant;
+    }
+
+    public void setQuant(Double quant) {
+        this.quant = quant;
     }
 
 }
