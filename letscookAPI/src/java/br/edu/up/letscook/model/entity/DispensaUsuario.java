@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "LETSCOOK_DISPENSA_USUARIO")
-public class Dispensa extends AbstractEntity {
+public class DispensaUsuario extends AbstractEntity {
 
     @OneToOne(targetEntity = Usuario.class)
     private Usuario dono;
@@ -32,7 +32,7 @@ public class Dispensa extends AbstractEntity {
             joinColumns = @JoinColumn(name = "id"))
     private List<IngredienteDispensa> ings;
 
-    public Dispensa() {
+    public DispensaUsuario() {
         ings = new ArrayList<>();
     }
 

@@ -7,7 +7,7 @@ package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.InterfaceGeladeiraDAO;
-import br.edu.up.letscook.model.entity.Dispensa;
+import br.edu.up.letscook.model.entity.DispensaUsuario;
 import br.edu.up.letscook.model.entity.Usuario;
 import java.util.List;
 
@@ -15,41 +15,41 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class DispensaService implements InterfaceDispensaService<Dispensa> {
+public class DispensaService implements InterfaceDispensaService<DispensaUsuario> {
     
-    private InterfaceGeladeiraDAO<Dispensa> dao = FactoryDAO.createInterfaceGeladeiraDAO();
+    private InterfaceGeladeiraDAO<DispensaUsuario> dao = FactoryDAO.createInterfaceGeladeiraDAO();
     
     
     public DispensaService() {
     }
     
     @Override
-    public void cadastrar(Dispensa t) throws Exception {
+    public void cadastrar(DispensaUsuario t) throws Exception {
         dao.cadastrar(t);
     }
     
     @Override
-    public Dispensa editar(Dispensa t) {
+    public DispensaUsuario editar(DispensaUsuario t) {
         return dao.editar(t);
     }
     
     @Override
-    public void excluir(Dispensa t) {
+    public void excluir(DispensaUsuario t) {
         dao.excluir(t);
     }
 
     @Override
-    public Dispensa buscarPorUsuario(Usuario u) {
+    public DispensaUsuario buscarPorUsuario(Usuario u) {
         return dao.buscarPorUsuario(u);
     }
 
     @Override
-    public Dispensa buscarPorId(Dispensa t) {
+    public DispensaUsuario buscarPorId(DispensaUsuario t) {
         return dao.buscarPorId(t);
     }
 
     @Override
-    public List<Dispensa> listar() {
+    public List<DispensaUsuario> listar() {
         return dao.listar();
     }
     

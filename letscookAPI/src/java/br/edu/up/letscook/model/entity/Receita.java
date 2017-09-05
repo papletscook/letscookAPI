@@ -5,16 +5,17 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import br.edu.up.letscook.model.enums.StatusPublicacao;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -33,7 +34,9 @@ public class Receita extends AbstractEntity {
     private CategoriaReceita categoria;
 
     private String descricao;
-
+    
+    @Lob
+    @Column(columnDefinition = "LONGVARCHAR")
     private String foto;
 
     private Integer minsPreparo;
