@@ -49,11 +49,11 @@ public class CategoriaReceitaController implements InterfaceRest<CategoriaReceit
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public Response get(@PathParam("id") int id) {
+    public Response get(@PathParam("id") Long id) {
         try {
             serv = FactoryService.createCategoriaReceitaService();
             CategoriaReceita r = new CategoriaReceita();
-            r.setId(new Long(id));
+            r.setId(id);
             return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
@@ -97,7 +97,7 @@ public class CategoriaReceitaController implements InterfaceRest<CategoriaReceit
         try {
             serv = FactoryService.createCategoriaReceitaService();
             serv.excluir(i);
-            return Response.status(Status.OK).entity(true).build();
+            return Response.status(Status.OK).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }

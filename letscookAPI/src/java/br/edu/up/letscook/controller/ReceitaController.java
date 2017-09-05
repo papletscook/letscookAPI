@@ -50,32 +50,52 @@ public class ReceitaController implements InterfaceRest<Receita> {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public Response get(@PathParam("id") int id) {
+    public Response get(@PathParam("id") Long id) {
         try {
             serv = FactoryService.createReceitaService();
             Receita r = new Receita();
-            r.setId(new Long(id));
+            r.setId(id);
             return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
 
+    @POST
+    @Path("atualizar")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Override
     public Response atualizar(Receita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            serv = FactoryService.createReceitaService();
+            return Response.status(Status.OK).entity(serv.editar(t)).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
     }
 
+    @GET
+    @Path("list")
+    @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Response list() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @POST
+    @Path("remover")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Override
     public Response remover(Receita t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            serv = FactoryService.createReceitaService();
+            serv.excluir(t);
+            return Response.status(Status.OK).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
     }
-    
-    
 
 }

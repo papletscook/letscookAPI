@@ -77,7 +77,7 @@ public class IngredienteController implements InterfaceRest<Ingrediente> {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public Response get(@PathParam("id") int id) {
+    public Response get(@PathParam("id") Long id) {
         try {
             serv = FactoryService.createInterfaceIngredienteService();
             Ingrediente r = new Ingrediente();
@@ -97,7 +97,7 @@ public class IngredienteController implements InterfaceRest<Ingrediente> {
         try {
             serv = FactoryService.createInterfaceIngredienteService();
             serv.excluir(i);
-            return Response.status(Status.OK).entity(true).build();
+            return Response.status(Status.OK).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }

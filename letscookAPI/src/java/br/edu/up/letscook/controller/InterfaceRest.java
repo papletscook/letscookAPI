@@ -19,7 +19,7 @@ public interface InterfaceRest<T> {
 
     public Response list();
 
-    public Response get(@PathParam("id") int id);
+    public Response get(@PathParam("id") Long id);
 
     public Response atualizar(T t);
     
