@@ -14,19 +14,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "LETSCOOK_CATEGORIA_RECEITA")
-public class CategoriaReceita extends AbstractEntity {
-
-    private String nome;
+public class CategoriaReceita extends AbstractNamedEntity {
 
     public CategoriaReceita() {
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
 }

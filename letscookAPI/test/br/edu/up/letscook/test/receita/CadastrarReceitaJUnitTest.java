@@ -66,7 +66,6 @@ public class CadastrarReceitaJUnitTest {
             Receita r = new Receita();
             r.setNome("Nome da Receita");
             r.setFoto("foto");
-            r.setNasc(NacionalidadeEnum.AFGHAN);
             r.setCriador(u);
             r.adicionarIngrediente(ir);
 

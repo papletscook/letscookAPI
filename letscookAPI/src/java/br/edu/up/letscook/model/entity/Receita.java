@@ -41,9 +41,6 @@ public class Receita extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private StatusPublicacao status;
 
-    @Enumerated(EnumType.STRING)
-    private NacionalidadeEnum nasc = NacionalidadeEnum.BRASIL;
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "RECEITA_ID")
     private List<IngredienteReceita> ingts;
@@ -91,14 +88,6 @@ public class Receita extends AbstractEntity {
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public NacionalidadeEnum getNasc() {
-        return nasc;
-    }
-
-    public void setNasc(NacionalidadeEnum nasc) {
-        this.nasc = nasc;
     }
 
     public Integer getMinsPreparo() {
