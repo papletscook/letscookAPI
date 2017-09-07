@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
 public class Etapa extends AbstractNamedEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
+    @JoinColumn(foreignKey = @ForeignKey(name = "PASSOS_FK"))
     private List<PassoEtapa> passos;
 
     public Etapa() {

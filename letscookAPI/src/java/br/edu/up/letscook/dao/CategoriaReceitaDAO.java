@@ -34,7 +34,7 @@ public class CategoriaReceitaDAO extends AbstractHibernateDAO implements Interfa
     @Override
     public List<CategoriaReceita> listar() {
         try {
-            return em.createQuery("FROM CategoriaReceita c").getResultList();
+            return getEm().createQuery("FROM CategoriaReceita c").getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
         }
@@ -42,7 +42,7 @@ public class CategoriaReceitaDAO extends AbstractHibernateDAO implements Interfa
 
     @Override
     public CategoriaReceita buscarPorId(CategoriaReceita t) {
-        return em.find(CategoriaReceita.class, t.getId());
+        return getEm().find(CategoriaReceita.class, t.getId());
     }
 
 }

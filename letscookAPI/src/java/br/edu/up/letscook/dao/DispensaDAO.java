@@ -35,7 +35,7 @@ public class DispensaDAO extends AbstractHibernateDAO implements InterfaceGelade
     public List<DispensaUsuario> listar() {
 
         try {
-            return em.createQuery("FROM Dispensa d")
+            return getEm().createQuery("FROM Dispensa d")
                     .getResultList();
         } catch (Exception e) {
             return null;
@@ -44,13 +44,13 @@ public class DispensaDAO extends AbstractHibernateDAO implements InterfaceGelade
 
     @Override
     public DispensaUsuario buscarPorId(DispensaUsuario g) {
-        return em.find(DispensaUsuario.class, g.getId());
+        return getEm().find(DispensaUsuario.class, g.getId());
     }
 
     @Override
     public DispensaUsuario buscarPorUsuario(Usuario u) {
         try {
-            return (DispensaUsuario) em.createQuery("FROM Dispensa g WHERE g.dono = :param")
+            return (DispensaUsuario) getEm().createQuery("FROM Dispensa g WHERE g.dono = :param")
                     .setParameter("param", u)
                     .getSingleResult();
         } catch (Exception e) {

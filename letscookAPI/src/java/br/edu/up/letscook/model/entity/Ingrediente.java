@@ -25,7 +25,7 @@ public class Ingrediente extends AbstractNamedEntity {
     private TipoIngrediente tipo;
 
     @Lob
-    @Column(columnDefinition = "LONGVARCHAR")
+    @Column(columnDefinition = "LONG")
     private String foto;
 
     public Ingrediente() {

@@ -6,6 +6,8 @@
 package br.edu.up.letscook.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -13,37 +15,40 @@ import javax.persistence.EntityManager;
  */
 public abstract class AbstractHibernateDAO {
 
-    protected EntityManager em = ConexaoSingleton.getInstance();
+    private EntityManagerFactory emf;
 
-    public void persist(Object o) {
-        try {
-            em.getTransaction().begin();
-            em.persist(o);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-        } finally {
-            close();
+    private EntityManager em;
+
+    public void persist(Object obj) {
+        getEm().getTransaction().begin();
+        getEm().persist(obj);
+        getEm().getTransaction().commit();
+    }
+
+    public void remove(Object obj) {
+        getEm().getTransaction().begin();
+        getEm().remove(obj);
+        getEm().getTransaction().commit();
+    }
+
+    public void merge(Object obj) {
+        getEm().getTransaction().begin();
+        getEm().merge(obj);
+        getEm().getTransaction().commit();
+    }
+
+    public EntityManager getEm() {
+        if (emf == null) {
+            emf = Persistence.createEntityManagerFactory("letscookAPIPU");
+            em = emf.createEntityManager();
         }
-    }
-
-    public void remove(Object o) {
-        em.getTransaction().begin();
-        em.remove(em.merge(o));
-        em.getTransaction().commit();
-        close();
-    }
-
-    public void merge(Object o) {
-        em.getTransaction().begin();
-        em.merge(o);
-        em.getTransaction().commit();
-        close();
+        return em;
     }
 
     public void close() {
-        if (em.isOpen()) {
+        if (emf.isOpen()) {
             em.close();
+            emf.close();
         }
     }
 

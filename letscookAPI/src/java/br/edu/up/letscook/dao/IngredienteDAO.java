@@ -34,7 +34,7 @@ public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceIng
     @Override
     public List<Ingrediente> listar() {
         try {
-            return em.createQuery("FROM Ingrediente i").getResultList();
+            return getEm().createQuery("FROM Ingrediente i").getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();
@@ -43,13 +43,13 @@ public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceIng
 
     @Override
     public Ingrediente buscarPorId(Ingrediente t) {
-        return em.find(Ingrediente.class, t.getId());
+        return getEm().find(Ingrediente.class, t.getId());
     }
 
     @Override
     public List<Ingrediente> buscarPorNome(String nome) {
         try {
-            return em.createQuery("FROM Ingrediente r WHERE UPPER(r.nome) LIKE UPPER(:param)")
+            return getEm().createQuery("FROM Ingrediente r WHERE UPPER(r.nome) LIKE UPPER(:param)")
                     .setParameter("param", "%" + nome + "%")
                     .getResultList();
         } catch (Exception e) {

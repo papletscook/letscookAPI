@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -36,7 +37,7 @@ public class Receita extends AbstractEntity {
     private String descricao;
     
     @Lob
-    @Column(columnDefinition = "LONGVARCHAR")
+    @Column(columnDefinition = "LONG")
     private String foto;
 
     private Integer minsPreparo;
@@ -45,11 +46,11 @@ public class Receita extends AbstractEntity {
     private StatusPublicacao status;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "RECEITA_ID")
+    @JoinColumn(name = "RECEITA_ID", foreignKey = @ForeignKey(name = "FK_INGREDIENTE"))
     private List<IngredienteReceita> ingts;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "RECEITA_ID")
+    @JoinColumn(name = "RECEITA_ID", foreignKey = @ForeignKey(name = "FK_ETAPA"))
     private List<Etapa> etapas;
 
     @ManyToOne(fetch = FetchType.EAGER)

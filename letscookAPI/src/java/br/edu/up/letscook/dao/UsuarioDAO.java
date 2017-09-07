@@ -35,7 +35,7 @@ public class UsuarioDAO extends AbstractHibernateDAO implements InterfaceUsuario
     @Override
     public List<Usuario> listar() {
         try {
-            return em.createQuery("FROM Usuario r")
+            return getEm().createQuery("FROM Usuario r")
                     .getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
@@ -44,13 +44,13 @@ public class UsuarioDAO extends AbstractHibernateDAO implements InterfaceUsuario
 
     @Override
     public Usuario buscarPorId(Usuario t) {
-        return em.find(Usuario.class, t.getId());
+        return getEm().find(Usuario.class, t.getId());
     }
 
     @Override
     public Usuario buscarPorEmail(Usuario u) throws UsuarioInexistenteException {
         try {
-            return (Usuario) em.createQuery("FROM Usuario u WHERE u.email =:param1")
+            return (Usuario) getEm().createQuery("FROM Usuario u WHERE u.email =:param1")
                     .setParameter("param1", u.getEmail()).getSingleResult();
         } catch (Exception e) {
             throw new UsuarioInexistenteException();

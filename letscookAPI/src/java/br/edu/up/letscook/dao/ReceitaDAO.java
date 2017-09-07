@@ -40,7 +40,7 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceita
     @Override
     public List<Receita> listar() {
         try {
-            return em.createQuery("FROM Receita r")
+            return getEm().createQuery("FROM Receita r")
                     .getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
@@ -49,13 +49,13 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceita
 
     @Override
     public Receita buscarPorId(Receita t) {
-        return em.find(Receita.class, t.getId());
+        return getEm().find(Receita.class, t.getId());
     }
 
     @Override
     public List<Receita> buscarPorNome(String nome) {
         try {
-            return em.createQuery("FROM Receita r WHERE UPPER(r.nome) LIKE UPPER(:param)")
+            return getEm().createQuery("FROM Receita r WHERE UPPER(r.nome) LIKE UPPER(:param)")
                     .setParameter("param", "%" + nome + "%")
                     .getResultList();
         } catch (Exception e) {
@@ -67,7 +67,7 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceita
     @Override
     public List<Receita> buscarPorCategoria(CategoriaReceita categoria) {
         try {
-            return em.createQuery("FROM Receita r WHERE r.categoria = :param")
+            return getEm().createQuery("FROM Receita r WHERE r.categoria = :param")
                     .setParameter("param", categoria)
                     .getResultList();
         } catch (Exception e) {
@@ -79,7 +79,7 @@ public class ReceitaDAO extends AbstractHibernateDAO implements InterfaceReceita
     @Override
     public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
         try {
-            return em.createQuery("FROM Receita r WHERE r.nasc = :param")
+            return getEm().createQuery("FROM Receita r WHERE r.nasc = :param")
                     .setParameter("param", nasc)
                     .getResultList();
         } catch (Exception e) {
