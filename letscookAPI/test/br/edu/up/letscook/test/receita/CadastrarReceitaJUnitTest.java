@@ -5,7 +5,7 @@
  */
 package br.edu.up.letscook.test.receita;
 
-import br.edu.up.letscook.model.entity.Etapa;
+import br.edu.up.letscook.model.entity.EtapaReceita;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.entity.PassoEtapa;
@@ -69,7 +69,7 @@ public class CadastrarReceitaJUnitTest {
             r.setCriador(u);
             r.adicionarIngrediente(ir);
 
-            Etapa e = new Etapa();
+            EtapaReceita e = new EtapaReceita();
             e.adicionarPasso(new PassoEtapa("Passo 1"));
 
             r.adicionarEtapa(e);

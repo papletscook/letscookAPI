@@ -6,9 +6,13 @@
 package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
@@ -16,13 +20,20 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_USUARIO")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "senha"})
 public class Usuario extends AbstractEntity {
 
     private String email, senha;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataNasc;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private List<DispensaUsuario> dispensa;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private List<ListaCompras> listas;
 
     public Usuario() {
     }
@@ -50,4 +61,21 @@ public class Usuario extends AbstractEntity {
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
+
+    public List<DispensaUsuario> getDispensa() {
+        return dispensa;
+    }
+
+    public void setDispensa(List<DispensaUsuario> dispensa) {
+        this.dispensa = dispensa;
+    }
+
+    public List<ListaCompras> getListas() {
+        return listas;
+    }
+
+    public void setListas(List<ListaCompras> listas) {
+        this.listas = listas;
+    }
+
 }

@@ -11,9 +11,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,15 +20,14 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_DISPENSA_USUARIO")
+@Table(name = "dispensa_usuario")
 public class DispensaUsuario extends AbstractEntity {
 
-    @OneToOne(targetEntity = Usuario.class)
+    @JoinColumn(name = "dispensa_usuario_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
     private Usuario dono;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "LETSCOOK_INGREDIENTE_DISPENSA",
-            joinColumns = @JoinColumn(name = "id"))
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "id")
     private List<IngredienteDispensa> ings;
 
     public DispensaUsuario() {

@@ -5,7 +5,6 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 /**

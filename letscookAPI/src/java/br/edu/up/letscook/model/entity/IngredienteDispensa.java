@@ -15,11 +15,11 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_INGREDIENTE_DISPENSA")
+@Table(name = "ingrediente_dispensa")
 public class IngredienteDispensa extends AbstractEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "INGREDIENTE_ID")
+    @JoinColumn(name = "ingrediente_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
     private Ingrediente i;
 
     public IngredienteDispensa() {

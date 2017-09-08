@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_PASSO_ETAPA")
+@Table(name = "passo_etapa")
 public class PassoEtapa extends AbstractNamedEntity {
     
     public PassoEtapa() {

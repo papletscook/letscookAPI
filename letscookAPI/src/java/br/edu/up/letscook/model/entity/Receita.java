@@ -14,28 +14,28 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_RECEITA")
 public class Receita extends AbstractEntity {
 
+    @NotNull
     private String nome;
 
-    @ManyToOne(targetEntity = CategoriaReceita.class)
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
     private CategoriaReceita categoria;
 
     private String descricao;
-    
+
     @Lob
     @Column(columnDefinition = "LONG")
     private String foto;
@@ -46,14 +46,15 @@ public class Receita extends AbstractEntity {
     private StatusPublicacao status;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "RECEITA_ID", foreignKey = @ForeignKey(name = "FK_INGREDIENTE"))
+    @JoinColumn(name = "receita_id")
     private List<IngredienteReceita> ingts;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "RECEITA_ID", foreignKey = @ForeignKey(name = "FK_ETAPA"))
-    private List<Etapa> etapas;
+    @JoinColumn(name = "receita_id")
+    private List<EtapaReceita> etapas;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "criador_id", referencedColumnName = "id")
     private Usuario criador;
 
     public Receita() {
@@ -66,7 +67,7 @@ public class Receita extends AbstractEntity {
         ingts.add(i);
     }
 
-    public void adicionarEtapa(Etapa e) {
+    public void adicionarEtapa(EtapaReceita e) {
         etapas.add(e);
     }
 
@@ -102,11 +103,11 @@ public class Receita extends AbstractEntity {
         this.minsPreparo = minsPreparo;
     }
 
-    public List<Etapa> getEtapas() {
+    public List<EtapaReceita> getEtapas() {
         return etapas;
     }
 
-    public void setEtapas(List<Etapa> etapas) {
+    public void setEtapas(List<EtapaReceita> etapas) {
         this.etapas = etapas;
     }
 

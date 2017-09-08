@@ -7,6 +7,7 @@ package br.edu.up.letscook.model.entity;
 
 import br.edu.up.letscook.model.enums.UnidadeMedidaEnum;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,22 +16,25 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_INGREDIENTE_RECEITA")
+@Table(name = "ingrediente_receita")
 public class IngredienteReceita extends AbstractEntity {
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "INGREDIENTE_ID", foreignKey = @ForeignKey(name = "FK_INGREDIENTE", value = ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "ingrediente_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Ingrediente i;
 
+    @Column(name = "unidade_medida")
     @Enumerated(EnumType.STRING)
     private UnidadeMedidaEnum uMedida;
 
+    @NotNull
     private Double quant;
 
     public IngredienteReceita() {

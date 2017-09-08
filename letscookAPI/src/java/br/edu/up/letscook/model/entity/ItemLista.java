@@ -13,10 +13,11 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "categoria_receita")
-public class CategoriaReceita extends AbstractNamedEntity {
+@Table(name = "item_lista")
+public class ItemLista extends AbstractNamedEntity{
 
-    public CategoriaReceita() {
+    public ItemLista() {
     }
-
+    
+    
 }
