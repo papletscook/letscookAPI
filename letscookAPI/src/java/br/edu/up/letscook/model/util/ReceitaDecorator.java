@@ -12,7 +12,6 @@ import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.entity.PassoEtapa;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.entity.Usuario;
-import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 
 /**
  *
@@ -27,7 +26,7 @@ public class ReceitaDecorator {
 
         Ingrediente in = new Ingrediente();
         in.setNome("Maracujá");
-        ir.setI(in);
+        ir.setIngrediente(in);
         r.adicionarIngrediente(ir);
 
         CategoriaReceita cat = new CategoriaReceita();
@@ -87,7 +86,7 @@ public class ReceitaDecorator {
 
         Ingrediente in = new Ingrediente();
         in.setNome("Maracujá");
-        ir.setI(in);
+        ir.setIngrediente(in);
         r.adicionarIngrediente(ir);
 
         r.setNome("TORTA DE MARACUJÁ");

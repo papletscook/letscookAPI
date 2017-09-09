@@ -5,8 +5,13 @@
  */
 package br.edu.up.letscook.model.entity;
 
+import br.edu.up.letscook.model.enums.TipoPasso;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
@@ -14,13 +19,48 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "passo_etapa")
-public class PassoEtapa extends AbstractNamedEntity {
-    
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class PassoEtapa extends AbstractEntity {
+
+    @NotNull
+    private String desc;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private TipoPasso tipo;
+
+    private Double minPasso;
+
     public PassoEtapa() {
+        tipo = TipoPasso.NORMAL;
     }
-    
-    public PassoEtapa(String nome) {
-        this.setNome(nome);
+
+    public PassoEtapa(String desc) {
+        this.desc = desc;
     }
-    
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public TipoPasso getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoPasso tipo) {
+        this.tipo = tipo;
+    }
+
+    public Double getMinPasso() {
+        return minPasso;
+    }
+
+    public void setMinPasso(Double minPasso) {
+        this.minPasso = minPasso;
+    }
+
 }

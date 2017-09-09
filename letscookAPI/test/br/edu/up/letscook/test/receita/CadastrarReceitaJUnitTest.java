@@ -61,7 +61,7 @@ public class CadastrarReceitaJUnitTest {
 
             Ingrediente in = new Ingrediente();
             in.setNome("Carne");
-            ir.setI(in);
+            ir.setIngrediente(in);
             
             Receita r = new Receita();
             r.setNome("Nome da Receita");

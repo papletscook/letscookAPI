@@ -5,6 +5,7 @@
  */
 package br.edu.up.letscook.model.service;
 
+import br.edu.up.letscook.model.service.exception.ServiceException;
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.InterfaceReceitaDAO;
 import br.edu.up.letscook.model.entity.CategoriaReceita;

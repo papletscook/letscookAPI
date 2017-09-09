@@ -14,10 +14,20 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "item_lista")
-public class ItemLista extends AbstractNamedEntity{
+public class ItemLista extends AbstractNamedEntity {
+
+    private Boolean checked;
 
     public ItemLista() {
+        checked = false;
     }
-    
-    
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
+
 }

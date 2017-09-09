@@ -14,26 +14,28 @@ import java.util.List;
  */
 public enum UnidadeMedidaEnum {
 
-    XICARA("xícara"),
-    COLHER_SOPA("colher (sopa)"),
-    COLHER_CHA("colher (chá)"),
-    COLHER_SOBREMESA("colher (sobremesa)"),
-    PITADA("pitada"),
-    LITRO("litro"),
-    MILITITRO("mililitro (ml)"),
-    QUILO("quilograma (kg)"),
-    GRAMA("grama (g)"),
-    COPO("copo"),
-    UNIDADE("unidade"),
-    UNIDADE_PEQ("unidade (pequena)"),
-    UNIDADE_MED("unidade (média)"),
-    UNIDADE_GRD("unidade (grande)"),
-    DUZIA("dúzia");
+    XICARA("xícara", 25d),
+    COLHER_SOPA("colher (sopa)", 25d),
+    COLHER_CHA("colher (chá)", 25d),
+    COLHER_SOBREMESA("colher (sobremesa)", 25d),
+    PITADA("pitada", 10d),
+    LITRO("litro", 25d),
+    MILITITRO("mililitro (ml)", 5d),
+    QUILO("quilograma (kg)", 50d),
+    GRAMA("grama (g)", 15d),
+    COPO("copo", 50d),
+    UNIDADE("unidade", 50d),
+    UNIDADE_PEQ("unidade (pequena)", 25d),
+    UNIDADE_MED("unidade (média)", 100d),
+    UNIDADE_GRD("unidade (grande)", 150d),
+    DUZIA("dúzia", 1000d);
 
     String desc;
+    Double escala;
 
-    private UnidadeMedidaEnum(String desc) {
+    private UnidadeMedidaEnum(String desc, Double escala) {
         this.desc = desc;
+        this.escala = escala;
     }
 
     public String getDesc() {

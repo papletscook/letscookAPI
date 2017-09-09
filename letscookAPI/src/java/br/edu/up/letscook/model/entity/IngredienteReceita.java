@@ -6,29 +6,28 @@
 package br.edu.up.letscook.model.entity;
 
 import br.edu.up.letscook.model.enums.UnidadeMedidaEnum;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
  * @author G0042204
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "ingrediente_receita")
 public class IngredienteReceita extends AbstractEntity {
 
     @JoinColumn(name = "ingrediente_id", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private Ingrediente i;
+    @ManyToOne(optional = false)
+    private Ingrediente ingrediente;
 
     @Column(name = "unidade_medida")
     @Enumerated(EnumType.STRING)
@@ -40,12 +39,12 @@ public class IngredienteReceita extends AbstractEntity {
     public IngredienteReceita() {
     }
 
-    public Ingrediente getI() {
-        return i;
+    public Ingrediente getIngrediente() {
+        return ingrediente;
     }
 
-    public void setI(Ingrediente i) {
-        this.i = i;
+    public void setIngrediente(Ingrediente ingrediente) {
+        this.ingrediente = ingrediente;
     }
 
     public UnidadeMedidaEnum getuMedida() {

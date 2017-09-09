@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
@@ -19,6 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "etapa_receita")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EtapaReceita extends AbstractNamedEntity {
 
     @OneToMany(cascade = CascadeType.ALL)

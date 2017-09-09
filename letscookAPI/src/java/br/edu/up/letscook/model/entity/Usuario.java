@@ -20,20 +20,12 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  * @author G0042204
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "senha"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario extends AbstractEntity {
 
     private String email, senha;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNasc;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private List<DispensaUsuario> dispensa;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private List<ListaCompras> listas;
 
     public Usuario() {
     }
@@ -60,22 +52,6 @@ public class Usuario extends AbstractEntity {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
-    }
-
-    public List<DispensaUsuario> getDispensa() {
-        return dispensa;
-    }
-
-    public void setDispensa(List<DispensaUsuario> dispensa) {
-        this.dispensa = dispensa;
-    }
-
-    public List<ListaCompras> getListas() {
-        return listas;
-    }
-
-    public void setListas(List<ListaCompras> listas) {
-        this.listas = listas;
     }
 
 }

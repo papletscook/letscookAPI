@@ -6,6 +6,7 @@
 package br.edu.up.letscook.model.entity;
 
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -14,6 +15,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class AbstractNamedEntity extends AbstractEntity {
 
+    @NotNull
     private String nome;
 
     public String getNome() {

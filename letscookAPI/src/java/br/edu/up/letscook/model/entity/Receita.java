@@ -19,38 +19,39 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
  * @author G0042204
  */
 @Entity
-public class Receita extends AbstractEntity {
-
-    @NotNull
-    private String nome;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Receita extends AbstractNamedEntity {
 
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private CategoriaReceita categoria;
 
+    @NotNull
     private String descricao;
 
     @Lob
     @Column(columnDefinition = "LONG")
     private String foto;
 
+    @NotNull
     private Integer minsPreparo;
 
     @Enumerated(EnumType.STRING)
     private StatusPublicacao status;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "receita_id")
+    @JoinColumn(name = "receita_id", referencedColumnName = "id")
     private List<IngredienteReceita> ingts;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "receita_id")
+    @JoinColumn(name = "receita_id", referencedColumnName = "id")
     private List<EtapaReceita> etapas;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -58,25 +59,15 @@ public class Receita extends AbstractEntity {
     private Usuario criador;
 
     public Receita() {
-        ingts = new ArrayList<>();
-        etapas = new ArrayList<>();
-        status = StatusPublicacao.PENDENTE;
+        status = StatusPublicacao.DESATIVADA;
     }
 
     public void adicionarIngrediente(IngredienteReceita i) {
-        ingts.add(i);
+        getIngts().add(i);
     }
 
     public void adicionarEtapa(EtapaReceita e) {
-        etapas.add(e);
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+        getEtapas().add(e);
     }
 
     public CategoriaReceita getCategoria() {
@@ -104,6 +95,9 @@ public class Receita extends AbstractEntity {
     }
 
     public List<EtapaReceita> getEtapas() {
+        if (etapas == null) {
+            etapas = new ArrayList<>();
+        }
         return etapas;
     }
 
@@ -120,6 +114,9 @@ public class Receita extends AbstractEntity {
     }
 
     public List<IngredienteReceita> getIngts() {
+        if (ingts == null) {
+            ingts = new ArrayList<>();
+        }
         return ingts;
     }
 
