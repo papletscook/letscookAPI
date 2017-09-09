@@ -7,7 +7,7 @@ package br.edu.up.letscook.test.receita;
 
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.InterfaceDAO;
-import br.edu.up.letscook.model.entity.DispensaUsuario;
+import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.IngredienteDispensa;
 import br.edu.up.letscook.model.entity.Usuario;
@@ -27,7 +27,7 @@ import br.edu.up.letscook.model.service.InterfaceDispensaService;
  */
 public class ManipularDispensaJUnitTest {
 
-    private final InterfaceDispensaService<DispensaUsuario> serv = FactoryService.createInterfaceGeladeiraService();
+    private final InterfaceDispensaService<DespensaUsuario> serv = FactoryService.createInterfaceGeladeiraService();
 
     private final InterfaceDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
@@ -55,7 +55,7 @@ public class ManipularDispensaJUnitTest {
         try {
             Usuario u = new Usuario();
             u.setId(1l);
-            DispensaUsuario g = serv.buscarPorUsuario(u);
+            DespensaUsuario g = serv.buscarPorUsuario(u);
 
             Ingrediente i = new Ingrediente();
             i.setNome("Feijão");
@@ -87,11 +87,11 @@ public class ManipularDispensaJUnitTest {
         try {
             Usuario u = new Usuario();
             u.setId(1l);
-            DispensaUsuario g = serv.buscarPorUsuario(u);
+            DespensaUsuario g = serv.buscarPorUsuario(u);
 
             if (g == null) {
 
-                g = new DispensaUsuario();
+                g = new DespensaUsuario();
                 
                 g.setDono(u);
 

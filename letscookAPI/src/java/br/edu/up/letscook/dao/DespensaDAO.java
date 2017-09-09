@@ -5,7 +5,7 @@
  */
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.model.entity.DispensaUsuario;
+import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Usuario;
 import java.util.List;
 
@@ -13,26 +13,26 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class DispensaDAO extends AbstractHibernateDAO implements InterfaceGeladeiraDAO<DispensaUsuario> {
+public class DespensaDAO extends AbstractHibernateDAO implements InterfaceGeladeiraDAO<DespensaUsuario> {
 
     @Override
-    public void cadastrar(DispensaUsuario g) {
+    public void cadastrar(DespensaUsuario g) {
         super.persist(g);
     }
 
     @Override
-    public void excluir(DispensaUsuario g) {
+    public void excluir(DespensaUsuario g) {
         super.remove(g);
     }
 
     @Override
-    public DispensaUsuario editar(DispensaUsuario g) {
+    public DespensaUsuario editar(DespensaUsuario g) {
         super.merge(g);
         return g;
     }
 
     @Override
-    public List<DispensaUsuario> listar() {
+    public List<DespensaUsuario> listar() {
 
         try {
             return getEm().createQuery("FROM Dispensa d")
@@ -43,14 +43,14 @@ public class DispensaDAO extends AbstractHibernateDAO implements InterfaceGelade
     }
 
     @Override
-    public DispensaUsuario buscarPorId(DispensaUsuario g) {
-        return getEm().find(DispensaUsuario.class, g.getId());
+    public DespensaUsuario buscarPorId(DespensaUsuario g) {
+        return getEm().find(DespensaUsuario.class, g.getId());
     }
 
     @Override
-    public DispensaUsuario buscarPorUsuario(Usuario u) {
+    public DespensaUsuario buscarPorUsuario(Usuario u) {
         try {
-            return (DispensaUsuario) getEm().createQuery("FROM Dispensa g WHERE g.dono = :param")
+            return (DespensaUsuario) getEm().createQuery("FROM Dispensa g WHERE g.dono = :param")
                     .setParameter("param", u)
                     .getSingleResult();
         } catch (Exception e) {

@@ -36,7 +36,6 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <non-jta-data-source>java:/letscookds</non-jta-data-source>
     <class>br.edu.up.letscook.model.entity.CategoriaReceita</class>
-    <class>br.edu.up.letscook.model.entity.DispensaUsuario</class>
     <class>br.edu.up.letscook.model.entity.EtapaReceita</class>
     <class>br.edu.up.letscook.model.entity.Ingrediente</class>
     <class>br.edu.up.letscook.model.entity.IngredienteDispensa</class>
@@ -46,6 +45,7 @@
     <class>br.edu.up.letscook.model.entity.PassoEtapa</class>
     <class>br.edu.up.letscook.model.entity.Receita</class>
     <class>br.edu.up.letscook.model.entity.Usuario</class>
+    <class>br.edu.up.letscook.model.entity.DespensaUsuario</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>

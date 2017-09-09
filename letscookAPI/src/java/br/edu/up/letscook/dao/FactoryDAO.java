@@ -1,7 +1,7 @@
 package br.edu.up.letscook.dao;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
-import br.edu.up.letscook.model.entity.DispensaUsuario;
+import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Receita;
 
 public class FactoryDAO {
@@ -22,8 +22,8 @@ public class FactoryDAO {
         return new CategoriaReceitaDAO();
     }
 
-    public static InterfaceGeladeiraDAO<DispensaUsuario> createInterfaceGeladeiraDAO() {
-        return new DispensaDAO();
+    public static InterfaceGeladeiraDAO<DespensaUsuario> createInterfaceGeladeiraDAO() {
+        return new DespensaDAO();
     }
 
     public static InterfaceIngredienteDAO createInterfaceIngredienteDAO() {

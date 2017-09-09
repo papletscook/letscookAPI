@@ -20,17 +20,17 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "dispensa_usuario")
-public class DispensaUsuario extends AbstractEntity {
+@Table(name = "despensa_usuario")
+public class DespensaUsuario extends AbstractEntity {
 
-    @JoinColumn(name = "dispensa_usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "despensa_usuario_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuario dono;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "id")
     private List<IngredienteDispensa> ings;
 
-    public DispensaUsuario() {
+    public DespensaUsuario() {
         ings = new ArrayList<>();
     }
 
