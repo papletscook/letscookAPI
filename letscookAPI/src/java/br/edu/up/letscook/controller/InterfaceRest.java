@@ -21,9 +21,10 @@ public interface InterfaceRest<T> {
 
     public Response get(@PathParam("id") Long id);
 
+    public Response buscarPorNome(String nome);
+
     public Response atualizar(T t);
-    
+
     public Response remover(T t);
-          
-    
+
 }

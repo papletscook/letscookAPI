@@ -5,15 +5,14 @@
  */
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.model.entity.Ingrediente;
 import java.util.List;
 
 /**
  *
  * @author G0042204
  */
-public interface InterfaceIngredienteDAO extends InterfaceDAO<Ingrediente> {
-
-    public List<Ingrediente> buscarPorNome(String nome);
-
+public interface NamedEntityDAO<T> extends GenericDAO<T>{
+    
+    public List<T> listarPorNome(String nome);
+    
 }

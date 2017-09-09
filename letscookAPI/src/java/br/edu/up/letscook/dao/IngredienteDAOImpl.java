@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceIngredienteDAO {
+public class IngredienteDAOImpl extends AbstractHibernateDAO implements NamedEntityDAO<Ingrediente> {
 
     @Override
     public void cadastrar(Ingrediente t) {
@@ -36,18 +36,12 @@ public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceIng
         try {
             return getEm().createQuery("FROM Ingrediente i").getResultList();
         } catch (Exception e) {
-            e.printStackTrace();
             return new ArrayList<>();
         }
     }
 
     @Override
-    public Ingrediente buscarPorId(Ingrediente t) {
-        return getEm().find(Ingrediente.class, t.getId());
-    }
-
-    @Override
-    public List<Ingrediente> buscarPorNome(String nome) {
+    public List<Ingrediente> listarPorNome(String nome) {
         try {
             return getEm().createQuery("FROM Ingrediente r WHERE UPPER(r.nome) LIKE UPPER(:param)")
                     .setParameter("param", "%" + nome + "%")
@@ -55,6 +49,11 @@ public class IngredienteDAO extends AbstractHibernateDAO implements InterfaceIng
         } catch (Exception e) {
             return new ArrayList<>();
         }
+    }
+
+    @Override
+    public Ingrediente buscarPorId(Ingrediente t) {
+        return getEm().find(Ingrediente.class, t.getId());
     }
 
 }

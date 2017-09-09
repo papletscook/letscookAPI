@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class CategoriaReceitaDAO extends AbstractHibernateDAO implements InterfaceDAO<CategoriaReceita> {
+public class CategoriaReceitaDAO extends AbstractHibernateDAO implements GenericDAO<CategoriaReceita> {
 
     @Override
     public void cadastrar(CategoriaReceita t) {

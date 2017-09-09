@@ -7,7 +7,6 @@ package br.edu.up.letscook.test.receita;
 
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceService;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -15,6 +14,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import br.edu.up.letscook.model.service.GenericService;
 
 /**
  *
@@ -22,7 +22,7 @@ import org.junit.Test;
  */
 public class CadastrarIngredienteJUnitTest {
 
-    private InterfaceService<Ingrediente> serv = FactoryService.createInterfaceIngredienteService();
+    private GenericService<Ingrediente> serv = FactoryService.createInterfaceIngredienteService();
 
     public CadastrarIngredienteJUnitTest() {
     }

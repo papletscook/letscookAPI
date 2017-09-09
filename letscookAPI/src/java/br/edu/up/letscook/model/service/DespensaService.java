@@ -5,54 +5,15 @@
  */
 package br.edu.up.letscook.model.service;
 
-import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.InterfaceGeladeiraDAO;
-import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Usuario;
-import java.util.List;
 
 /**
  *
  * @author G0042204
+ * @param <Receita>
  */
-public class DespensaService implements InterfaceDispensaService<DespensaUsuario> {
-    
-    private InterfaceGeladeiraDAO<DespensaUsuario> dao = FactoryDAO.createInterfaceGeladeiraDAO();
-    
-    
-    public DespensaService() {
-    }
-    
-    @Override
-    public void cadastrar(DespensaUsuario t) throws Exception {
-        dao.cadastrar(t);
-    }
-    
-    @Override
-    public DespensaUsuario editar(DespensaUsuario t) {
-        return dao.editar(t);
-    }
-    
-    @Override
-    public void excluir(DespensaUsuario t) {
-        dao.excluir(t);
-    }
+public interface DespensaService<Geladeira> extends GenericService<Geladeira> {
 
-    @Override
-    public DespensaUsuario buscarPorUsuario(Usuario u) {
-        return dao.buscarPorUsuario(u);
-    }
+    public Geladeira buscarPorUsuario(Usuario u);
 
-    @Override
-    public DespensaUsuario buscarPorId(DespensaUsuario t) {
-        return dao.buscarPorId(t);
-    }
-
-    @Override
-    public List<DespensaUsuario> listar() {
-        return dao.listar();
-    }
-    
-    
-    
 }

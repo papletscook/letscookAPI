@@ -13,7 +13,6 @@ import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.entity.Usuario;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceService;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -21,6 +20,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import br.edu.up.letscook.model.service.GenericService;
 
 /**
  *
@@ -28,7 +28,7 @@ import org.junit.Test;
  */
 public class CadastrarReceitaJUnitTest {
 
-    private final InterfaceService<Receita> serv = FactoryService.createReceitaService();
+    private final GenericService<Receita> serv = FactoryService.createReceitaService();
 
     public CadastrarReceitaJUnitTest() {
     }

@@ -8,13 +8,13 @@ package br.edu.up.letscook.test.dao;
 import br.edu.up.letscook.dao.ConexaoSingleton;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceReceitaService;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import br.edu.up.letscook.model.service.ReceitaService;
 
 /**
  *
@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  */
 public class ConexaoDAOJUnitTest {
 
-    private InterfaceReceitaService<Receita> serv = FactoryService.createReceitaService();
+    private ReceitaService<Receita> serv = FactoryService.createReceitaService();
 
     public ConexaoDAOJUnitTest() {
     }

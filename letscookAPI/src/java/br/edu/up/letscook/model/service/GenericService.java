@@ -5,14 +5,24 @@
  */
 package br.edu.up.letscook.model.service;
 
-import br.edu.up.letscook.model.entity.Usuario;
+import java.util.List;
 
 /**
  *
  * @author G0042204
+ * @param <T>
  */
-public interface InterfaceUsuarioService extends InterfaceService<Usuario> {
+public interface GenericService<T> {
 
-    public Boolean verificarCredencial(Usuario u) throws Exception;
+    public void cadastrar(T t) throws Exception;
+
+    public void excluir(T t);
+
+    public T editar(T t);
+
+    public List<T> listar();
+
+    public T buscarPorId(T t);
+    
 
 }

@@ -6,8 +6,7 @@
 package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.InterfaceDAO;
-import br.edu.up.letscook.dao.InterfaceIngredienteDAO;
+import br.edu.up.letscook.dao.NamedEntityDAO;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import java.util.List;
 
@@ -15,9 +14,9 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class IngredienteService implements InterfaceService<Ingrediente> {
+public class IngredienteServiceImpl implements NamedEntityService<Ingrediente> {
 
-    private final InterfaceIngredienteDAO dao = FactoryDAO.createInterfaceIngredienteDAO();
+    private final NamedEntityDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
     @Override
     public void cadastrar(Ingrediente t) throws Exception {
@@ -37,6 +36,11 @@ public class IngredienteService implements InterfaceService<Ingrediente> {
     @Override
     public Ingrediente buscarPorId(Ingrediente t) {
         return dao.buscarPorId(t);
+    }
+
+    @Override
+    public List<Ingrediente> listarPorNome(String nome) {
+        return dao.listarPorNome(nome);
     }
 
     @Override

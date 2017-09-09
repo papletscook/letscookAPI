@@ -7,7 +7,6 @@ package br.edu.up.letscook.controller;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceService;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import br.edu.up.letscook.model.service.GenericService;
 
 /**
  *
@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response.Status;
 @Path("/categoriaReceita")
 public class CategoriaReceitaController implements InterfaceRest<CategoriaReceita> {
 
-    private InterfaceService<CategoriaReceita> serv;
+    private GenericService<CategoriaReceita> serv;
 
     public CategoriaReceitaController() {
     }
@@ -101,6 +101,11 @@ public class CategoriaReceitaController implements InterfaceRest<CategoriaReceit
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
+    }
+
+    @Override
+    public Response buscarPorNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

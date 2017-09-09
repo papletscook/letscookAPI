@@ -5,15 +5,14 @@
  */
 package br.edu.up.letscook.model.service;
 
-import br.edu.up.letscook.model.entity.Usuario;
+import java.util.List;
 
 /**
  *
  * @author G0042204
- * @param <Receita>
  */
-public interface InterfaceDispensaService<Geladeira> extends InterfaceService<Geladeira> {
+public interface NamedEntityService<T> extends GenericService<T> {
 
-    public Geladeira buscarPorUsuario(Usuario u);
+    public List<T> listarPorNome(String nome);
 
 }

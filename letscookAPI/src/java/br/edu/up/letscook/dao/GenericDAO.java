@@ -12,7 +12,7 @@ import java.util.List;
  * @author G0042204
  * @param <T>
  */
-public interface InterfaceDAO<T> {
+public interface GenericDAO<T> {
 
     public void cadastrar(T t);
 

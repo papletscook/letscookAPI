@@ -6,7 +6,6 @@
 package br.edu.up.letscook.test.receita;
 
 import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.InterfaceDAO;
 import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.IngredienteDispensa;
@@ -19,7 +18,8 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import br.edu.up.letscook.model.service.InterfaceDispensaService;
+import br.edu.up.letscook.dao.GenericDAO;
+import br.edu.up.letscook.model.service.DespensaService;
 
 /**
  *
@@ -27,9 +27,9 @@ import br.edu.up.letscook.model.service.InterfaceDispensaService;
  */
 public class ManipularDispensaJUnitTest {
 
-    private final InterfaceDispensaService<DespensaUsuario> serv = FactoryService.createInterfaceGeladeiraService();
+    private final DespensaService<DespensaUsuario> serv = FactoryService.createInterfaceGeladeiraService();
 
-    private final InterfaceDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
+    private final GenericDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
     public ManipularDispensaJUnitTest() {
     }

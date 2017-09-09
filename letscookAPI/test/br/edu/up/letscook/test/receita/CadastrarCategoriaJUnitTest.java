@@ -6,14 +6,12 @@
 package br.edu.up.letscook.test.receita;
 
 import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.InterfaceDAO;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.entity.Usuario;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceService;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -21,6 +19,8 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import br.edu.up.letscook.dao.GenericDAO;
+import br.edu.up.letscook.model.service.GenericService;
 
 /**
  *
@@ -28,7 +28,7 @@ import org.junit.Test;
  */
 public class CadastrarCategoriaJUnitTest {
 
-    private InterfaceService<CategoriaReceita> serv = FactoryService.createCategoriaReceitaService();
+    private GenericService<CategoriaReceita> serv = FactoryService.createCategoriaReceitaService();
 
     public CadastrarCategoriaJUnitTest() {
     }

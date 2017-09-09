@@ -5,50 +5,14 @@
  */
 package br.edu.up.letscook.model.service;
 
-import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.InterfaceUsuarioDAO;
 import br.edu.up.letscook.model.entity.Usuario;
-import java.util.List;
 
 /**
  *
  * @author G0042204
  */
-public class UsuarioService implements InterfaceService<Usuario>, InterfaceUsuarioService {
+public interface UsuarioService extends GenericService<Usuario> {
 
-    private InterfaceUsuarioDAO dao = FactoryDAO.createUsuarioDAO();
-
-    public UsuarioService() {
-    }
-
-    @Override
-    public void cadastrar(Usuario t) throws Exception {
-        dao.cadastrar(t);
-    }
-
-    @Override
-    public Usuario editar(Usuario t) {
-        return dao.editar(t);
-    }
-
-    @Override
-    public void excluir(Usuario t) {
-        dao.excluir(t);
-    }
-
-    @Override
-    public Usuario buscarPorId(Usuario t) {
-        return dao.buscarPorId(t);
-    }
-
-    @Override
-    public Boolean verificarCredencial(Usuario u) throws Exception {
-        return dao.buscarPorEmail(u).getSenha().equals(u.getSenha());
-    }
-
-    @Override
-    public List<Usuario> listar() {
-        return dao.listar();
-    }
+    public Boolean verificarCredencial(Usuario u) throws Exception;
 
 }

@@ -7,24 +7,24 @@ import br.edu.up.letscook.model.entity.Receita;
 
 public class FactoryService {
 
-    public static InterfaceReceitaService<Receita> createReceitaService() {
-        return new ReceitaService();
+    public static ReceitaService<Receita> createReceitaService() {
+        return new ReceitaServiceImpl();
     }
 
-    public static InterfaceService<CategoriaReceita> createCategoriaReceitaService() {
+    public static GenericService<CategoriaReceita> createCategoriaReceitaService() {
         return new CategoriaReceitaService();
     }
 
-    public static InterfaceDispensaService<DespensaUsuario> createInterfaceGeladeiraService() {
-        return new DespensaService();
+    public static DespensaService<DespensaUsuario> createInterfaceGeladeiraService() {
+        return new DespensaServiceImpl();
     }
 
-    public static InterfaceUsuarioService createInterfaceUsuarioService() {
-        return new UsuarioService();
+    public static UsuarioService createInterfaceUsuarioService() {
+        return new UsuarioServiceImpl();
     }
     
-    public static InterfaceService<Ingrediente>  createInterfaceIngredienteService() {
-        return new IngredienteService();
+    public static GenericService<Ingrediente>  createInterfaceIngredienteService() {
+        return new IngredienteServiceImpl();
     }
 
 }

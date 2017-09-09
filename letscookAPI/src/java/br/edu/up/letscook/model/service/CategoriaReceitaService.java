@@ -6,17 +6,17 @@
 package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.InterfaceDAO;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import java.util.List;
+import br.edu.up.letscook.dao.GenericDAO;
 
 /**
  *
  * @author G0042204
  */
-public class CategoriaReceitaService implements InterfaceService<CategoriaReceita> {
+public class CategoriaReceitaService implements GenericService<CategoriaReceita> {
 
-    private InterfaceDAO<CategoriaReceita> dao = FactoryDAO.createCategoriaReceitaDAO();
+    private GenericDAO<CategoriaReceita> dao = FactoryDAO.createCategoriaReceitaDAO();
 
     @Override
     public void cadastrar(CategoriaReceita c) throws Exception {
