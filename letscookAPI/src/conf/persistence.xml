@@ -35,18 +35,7 @@
   <persistence-unit name="letscookAPIPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <non-jta-data-source>java:/letscookds</non-jta-data-source>
-    <class>br.edu.up.letscook.model.entity.CategoriaReceita</class>
-    <class>br.edu.up.letscook.model.entity.EtapaReceita</class>
-    <class>br.edu.up.letscook.model.entity.Ingrediente</class>
-    <class>br.edu.up.letscook.model.entity.IngredienteDispensa</class>
-    <class>br.edu.up.letscook.model.entity.IngredienteReceita</class>
-    <class>br.edu.up.letscook.model.entity.ItemLista</class>
-    <class>br.edu.up.letscook.model.entity.ListaCompras</class>
-    <class>br.edu.up.letscook.model.entity.PassoEtapa</class>
-    <class>br.edu.up.letscook.model.entity.Receita</class>
-    <class>br.edu.up.letscook.model.entity.Usuario</class>
-    <class>br.edu.up.letscook.model.entity.DespensaUsuario</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
       <property name="hibernate.id.new_generator_mappings" value="false"/>
