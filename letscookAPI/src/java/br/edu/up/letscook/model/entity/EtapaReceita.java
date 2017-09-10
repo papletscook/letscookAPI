@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
@@ -27,6 +28,9 @@ public class EtapaReceita extends AbstractNamedEntity {
     @JoinColumn(name = "etapa_id", referencedColumnName = "id")
     private List<PassoEtapa> passos;
 
+    @NotNull
+    private Integer ordem;
+
     public EtapaReceita() {
         passos = new ArrayList<>();
     }
@@ -41,6 +45,14 @@ public class EtapaReceita extends AbstractNamedEntity {
 
     public void setPassos(List<PassoEtapa> passos) {
         this.passos = passos;
+    }
+
+    public Integer getOrdem() {
+        return ordem;
+    }
+
+    public void setOrdem(Integer ordem) {
+        this.ordem = ordem;
     }
 
 }

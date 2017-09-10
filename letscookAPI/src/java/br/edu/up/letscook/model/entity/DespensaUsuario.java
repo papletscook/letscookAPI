@@ -23,18 +23,19 @@ import javax.persistence.Table;
 @Table(name = "despensa_usuario")
 public class DespensaUsuario extends AbstractEntity {
 
-    @JoinColumn(name = "despensa_usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuario dono;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "id")
-    private List<IngredienteDispensa> ings;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "despensa_usuario_id", referencedColumnName = "id")
+    private List<IngredienteDespensa> ings;
 
     public DespensaUsuario() {
         ings = new ArrayList<>();
     }
 
-    public void adicionarIngredientes(IngredienteDispensa g) {
+    public void adicionarIngredientes(IngredienteDespensa g) {
         ings.add(g);
     }
 
@@ -46,11 +47,11 @@ public class DespensaUsuario extends AbstractEntity {
         this.dono = dono;
     }
 
-    public List<IngredienteDispensa> getIngs() {
+    public List<IngredienteDespensa> getIngs() {
         return ings;
     }
 
-    public void setIngs(List<IngredienteDispensa> ings) {
+    public void setIngs(List<IngredienteDespensa> ings) {
         this.ings = ings;
     }
 

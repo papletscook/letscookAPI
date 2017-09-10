@@ -13,23 +13,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class IngredienteDAOImpl extends AbstractHibernateDAO implements NamedEntityDAO<Ingrediente> {
-
-    @Override
-    public void cadastrar(Ingrediente t) {
-        super.persist(t);
-    }
-
-    @Override
-    public void excluir(Ingrediente t) {
-        super.remove(t);
-    }
-
-    @Override
-    public Ingrediente editar(Ingrediente t) {
-        super.merge(t);
-        return t;
-    }
+public class IngredienteDAOImpl extends GenericHibernateDAO<Ingrediente> implements NamedEntityDAO<Ingrediente> {
 
     @Override
     public List<Ingrediente> listar() {

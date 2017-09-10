@@ -13,29 +13,12 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class DespensaDAOImpl extends AbstractHibernateDAO implements DespensaDAO<DespensaUsuario> {
-
-    @Override
-    public void cadastrar(DespensaUsuario g) {
-        super.persist(g);
-    }
-
-    @Override
-    public void excluir(DespensaUsuario g) {
-        super.remove(g);
-    }
-
-    @Override
-    public DespensaUsuario editar(DespensaUsuario g) {
-        super.merge(g);
-        return g;
-    }
+public class DespensaDAOImpl extends GenericHibernateDAO<DespensaUsuario> implements DespensaDAO<DespensaUsuario> {
 
     @Override
     public List<DespensaUsuario> listar() {
-
         try {
-            return getEm().createQuery("FROM Dispensa d")
+            return getEm().createQuery("FROM DespensaUsuario d")
                     .getResultList();
         } catch (Exception e) {
             return null;
@@ -50,7 +33,7 @@ public class DespensaDAOImpl extends AbstractHibernateDAO implements DespensaDAO
     @Override
     public DespensaUsuario buscarPorUsuario(Usuario u) {
         try {
-            return (DespensaUsuario) getEm().createQuery("FROM Dispensa g WHERE g.dono = :param")
+            return (DespensaUsuario) getEm().createQuery("FROM DespensaUsuario g WHERE g.dono = :param")
                     .setParameter("param", u)
                     .getSingleResult();
         } catch (Exception e) {

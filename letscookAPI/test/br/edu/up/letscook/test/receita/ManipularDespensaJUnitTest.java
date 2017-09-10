@@ -8,7 +8,7 @@ package br.edu.up.letscook.test.receita;
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Ingrediente;
-import br.edu.up.letscook.model.entity.IngredienteDispensa;
+import br.edu.up.letscook.model.entity.IngredienteDespensa;
 import br.edu.up.letscook.model.entity.Usuario;
 import br.edu.up.letscook.model.service.FactoryService;
 import org.junit.After;
@@ -60,7 +60,7 @@ public class ManipularDespensaJUnitTest {
             Ingrediente i = new Ingrediente();
             i.setNome("Feijão");
 
-            IngredienteDispensa id = new IngredienteDispensa();
+            IngredienteDespensa id = new IngredienteDespensa();
             id.setI(i);
 
             g.adicionarIngredientes(id);

@@ -11,7 +11,6 @@ import br.edu.up.letscook.model.entity.Usuario;
 /**
  *
  * @author G0042204
- * @param <Receita>
  */
 public interface DespensaService extends GenericService<DespensaUsuario> {
 

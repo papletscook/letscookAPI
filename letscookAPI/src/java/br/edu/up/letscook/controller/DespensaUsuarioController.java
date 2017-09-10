@@ -6,7 +6,7 @@
 package br.edu.up.letscook.controller;
 
 import br.edu.up.letscook.model.entity.DespensaUsuario;
-import br.edu.up.letscook.model.entity.Ingrediente;
+import br.edu.up.letscook.model.entity.Usuario;
 import br.edu.up.letscook.model.service.DespensaService;
 import br.edu.up.letscook.model.service.FactoryService;
 import javax.ws.rs.Consumes;
@@ -41,6 +41,19 @@ public class DespensaUsuarioController implements InterfaceRest<DespensaUsuario>
             serv = FactoryService.createDespensaService();
             serv.cadastrar(r);
             return Response.status(Status.OK).entity(r).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+    
+    @POST
+    @Path("buscarPorUsuario")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response buscarPorUsuario(Usuario r) {
+        try {
+            serv = FactoryService.createDespensaService();
+            return Response.status(Status.OK).entity(serv.buscarPorUsuario(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }

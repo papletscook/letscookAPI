@@ -15,14 +15,14 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "ingrediente_dispensa")
-public class IngredienteDispensa extends AbstractEntity {
+@Table(name = "ingrediente_despensa")
+public class IngredienteDespensa extends AbstractEntity {
 
     @JoinColumn(name = "ingrediente_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Ingrediente i;
 
-    public IngredienteDispensa() {
+    public IngredienteDespensa() {
     }
 
     public Ingrediente getI() {

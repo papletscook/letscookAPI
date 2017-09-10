@@ -31,6 +31,9 @@ public class PassoEtapa extends AbstractEntity {
 
     private Double minPasso;
 
+    @NotNull
+    private Integer ordem;
+
     public PassoEtapa() {
         tipo = TipoPasso.NORMAL;
     }
@@ -61,6 +64,14 @@ public class PassoEtapa extends AbstractEntity {
 
     public void setMinPasso(Double minPasso) {
         this.minPasso = minPasso;
+    }
+
+    public Integer getOrdem() {
+        return ordem;
+    }
+
+    public void setOrdem(Integer ordem) {
+        this.ordem = ordem;
     }
 
 }
