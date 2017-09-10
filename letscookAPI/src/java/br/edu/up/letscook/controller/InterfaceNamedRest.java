@@ -13,16 +13,8 @@ import javax.ws.rs.core.Response;
  * @author G0042204
  * @param <T>
  */
-public interface InterfaceRest<T> {
+public interface InterfaceNamedRest<T> extends InterfaceRest<T>{
 
-    public Response cadastrar(T t);
-
-    public Response list();
-
-    public Response get(@PathParam("id") Long id);
-
-    public Response atualizar(T t);
-
-    public Response remover(T t);
+    public Response listarPorNome(String nome);
 
 }

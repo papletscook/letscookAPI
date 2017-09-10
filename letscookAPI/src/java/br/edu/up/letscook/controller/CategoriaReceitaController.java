@@ -23,7 +23,7 @@ import br.edu.up.letscook.model.service.GenericService;
  * @author G0042204
  */
 @Path("/categoriaReceita")
-public class CategoriaReceitaController implements InterfaceRest<CategoriaReceita> {
+public class CategoriaReceitaController implements InterfaceNamedRest<CategoriaReceita> {
 
     private GenericService<CategoriaReceita> serv;
 
@@ -104,7 +104,7 @@ public class CategoriaReceitaController implements InterfaceRest<CategoriaReceit
     }
 
     @Override
-    public Response buscarPorNome(String nome) {
+    public Response listarPorNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -15,7 +15,7 @@ import br.edu.up.letscook.dao.DespensaDAO;
  *
  * @author G0042204
  */
-public class DespensaServiceImpl implements DespensaService<DespensaUsuario> {
+public class DespensaServiceImpl implements DespensaService {
 
     private DespensaDAO<DespensaUsuario> dao = FactoryDAO.createInterfaceGeladeiraDAO();
 

@@ -6,7 +6,6 @@
 package br.edu.up.letscook.controller;
 
 import br.edu.up.letscook.model.entity.Ingrediente;
-import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.service.FactoryService;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -17,16 +16,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import br.edu.up.letscook.model.service.GenericService;
+import br.edu.up.letscook.model.service.NamedEntityService;
 
 /**
  *
  * @author G0042204
  */
 @Path("/ingrediente")
-public class IngredienteController implements InterfaceRest<Ingrediente> {
+public class IngredienteController implements InterfaceNamedRest<Ingrediente> {
 
-    private GenericService<Ingrediente> serv;
+    private NamedEntityService<Ingrediente> serv;
 
     public IngredienteController() {
     }
@@ -62,16 +61,14 @@ public class IngredienteController implements InterfaceRest<Ingrediente> {
     }
 
     @POST
-    @Path("buscarPorNome")
+    @Path("listarPorNome")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response buscarPorNome(String nome) {
+    public Response listarPorNome(String nome) {
         try {
             serv = FactoryService.createInterfaceIngredienteService();
-            Ingrediente r = new Ingrediente();
-            r.setNome(nome);
-            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
+            return Response.status(Status.OK).entity(serv.listarPorNome(nome)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }

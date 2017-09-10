@@ -5,7 +5,9 @@
  */
 package br.edu.up.letscook.controller;
 
-import br.edu.up.letscook.model.entity.Receita;
+import br.edu.up.letscook.model.entity.DespensaUsuario;
+import br.edu.up.letscook.model.entity.Ingrediente;
+import br.edu.up.letscook.model.service.DespensaService;
 import br.edu.up.letscook.model.service.FactoryService;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,18 +18,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import br.edu.up.letscook.model.service.GenericService;
 
 /**
  *
  * @author G0042204
  */
-@Path("/receita")
-public class ReceitaController implements InterfaceNamedRest<Receita> {
+@Path("/despensa")
+public class DespensaUsuarioController implements InterfaceRest<DespensaUsuario> {
 
-    private GenericService<Receita> serv;
+    private DespensaService serv;
 
-    public ReceitaController() {
+    public DespensaUsuarioController() {
     }
 
     @POST
@@ -35,43 +36,11 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response cadastrar(Receita r) {
+    public Response cadastrar(DespensaUsuario r) {
         try {
-            serv = FactoryService.createReceitaService();
+            serv = FactoryService.createDespensaService();
             serv.cadastrar(r);
             return Response.status(Status.OK).entity(r).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
-        }
-    }
-
-    @GET
-    @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Override
-    public Response get(@PathParam("id") Long id) {
-        try {
-            serv = FactoryService.createReceitaService();
-            Receita r = new Receita();
-            r.setId(id);
-            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
-        } catch (Exception e) {
-            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
-        }
-    }
-
-    @POST
-    @Path("buscarPorNome")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Override
-    public Response listarPorNome(String nome) {
-        try {
-            serv = FactoryService.createReceitaService();
-            Receita r = new Receita();
-            r.setNome(nome);
-            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
@@ -82,10 +51,41 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response atualizar(Receita t) {
+    public Response atualizar(DespensaUsuario r) {
         try {
-            serv = FactoryService.createReceitaService();
-            return Response.status(Status.OK).entity(serv.editar(t)).build();
+            serv = FactoryService.createDespensaService();
+            serv.editar(r);
+            return Response.status(Status.OK).entity(r).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Override
+    public Response get(@PathParam("id") Long id) {
+        try {
+            serv = FactoryService.createDespensaService();
+            DespensaUsuario r = new DespensaUsuario();
+            r.setId(id);
+            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
+    @POST
+    @Path("remover")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Override
+    public Response remover(DespensaUsuario i) {
+        try {
+            serv = FactoryService.createDespensaService();
+            serv.excluir(i);
+            return Response.status(Status.OK).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
@@ -96,19 +96,9 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
     @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Response list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @POST
-    @Path("remover")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Override
-    public Response remover(Receita t) {
         try {
-            serv = FactoryService.createReceitaService();
-            serv.excluir(t);
-            return Response.status(Status.OK).build();
+            serv = FactoryService.createDespensaService();
+            return Response.status(Status.OK).entity(serv.listar()).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }

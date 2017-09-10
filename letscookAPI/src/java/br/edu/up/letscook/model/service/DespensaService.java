@@ -5,6 +5,7 @@
  */
 package br.edu.up.letscook.model.service;
 
+import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Usuario;
 
 /**
@@ -12,8 +13,8 @@ import br.edu.up.letscook.model.entity.Usuario;
  * @author G0042204
  * @param <Receita>
  */
-public interface DespensaService<Geladeira> extends GenericService<Geladeira> {
+public interface DespensaService extends GenericService<DespensaUsuario> {
 
-    public Geladeira buscarPorUsuario(Usuario u);
+    public DespensaUsuario buscarPorUsuario(Usuario u);
 
 }

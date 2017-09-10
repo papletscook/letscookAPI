@@ -25,13 +25,13 @@ import br.edu.up.letscook.model.service.DespensaService;
  *
  * @author G0042204
  */
-public class ManipularDispensaJUnitTest {
+public class ManipularDespensaJUnitTest {
 
-    private final DespensaService<DespensaUsuario> serv = FactoryService.createInterfaceGeladeiraService();
+    private final DespensaService serv = FactoryService.createDespensaService();
 
     private final GenericDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
-    public ManipularDispensaJUnitTest() {
+    public ManipularDespensaJUnitTest() {
     }
 
     @BeforeClass

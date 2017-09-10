@@ -111,9 +111,4 @@ public class UsuarioController implements InterfaceRest<Usuario> {
         }
     }
 
-    @Override
-    public Response buscarPorNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
