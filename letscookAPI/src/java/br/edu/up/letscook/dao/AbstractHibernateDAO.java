@@ -27,7 +27,7 @@ public abstract class AbstractHibernateDAO {
 
     public void remove(Object obj) {
         getEm().getTransaction().begin();
-        getEm().remove(obj);
+        getEm().remove(getEm().merge(obj));
         getEm().getTransaction().commit();
     }
 

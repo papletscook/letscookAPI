@@ -26,6 +26,9 @@ public class PassoEtapa extends AbstractEntity {
     private String desc;
 
     @NotNull
+    private String dica;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TipoPasso tipo;
 
@@ -72,6 +75,14 @@ public class PassoEtapa extends AbstractEntity {
 
     public void setOrdem(Integer ordem) {
         this.ordem = ordem;
+    }
+
+    public String getDica() {
+        return dica;
+    }
+
+    public void setDica(String dica) {
+        this.dica = dica;
     }
 
 }
