@@ -9,6 +9,7 @@ import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.model.entity.Usuario;
 import java.util.List;
 import br.edu.up.letscook.dao.UsuarioDAO;
+import br.edu.up.letscook.dao.exception.UsuarioInexistenteException;
 
 /**
  *
@@ -49,6 +50,11 @@ public class UsuarioServiceImpl implements GenericService<Usuario>, UsuarioServi
     @Override
     public List<Usuario> listar() {
         return dao.listar();
+    }
+
+    @Override
+    public Usuario buscarPorEmail(Usuario u) throws UsuarioInexistenteException {
+        return dao.buscarPorEmail(u);
     }
 
 }

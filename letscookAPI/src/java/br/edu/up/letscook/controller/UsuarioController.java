@@ -73,6 +73,20 @@ public class UsuarioController implements InterfaceRest<Usuario> {
         }
     }
 
+    @GET
+    @Path("email/{email}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findByEmail(@PathParam("email") String email) {
+        try {
+            serv = FactoryService.createInterfaceUsuarioService();
+            Usuario r = new Usuario();
+            r.setEmail(email);
+            return Response.status(Status.OK).entity(serv.buscarPorEmail(r)).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
     @Override
     public Response atualizar(Usuario t) {
         try {

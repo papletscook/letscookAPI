@@ -15,27 +15,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class ReceitaDAOmpl extends AbstractHibernateDAO implements ReceitaDAO<Receita> {
-
-    /**
-     *
-     * @param t
-     */
-    @Override
-    public void cadastrar(Receita t) {
-        super.persist(t);
-    }
-
-    @Override
-    public void excluir(Receita t) {
-        super.remove(t);
-    }
-
-    @Override
-    public Receita editar(Receita t) {
-        super.merge(t);
-        return t;
-    }
+public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements ReceitaDAO<Receita> {
 
     @Override
     public List<Receita> listar() {

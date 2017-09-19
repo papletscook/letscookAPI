@@ -5,8 +5,6 @@
  */
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.model.entity.Ingrediente;
-
 /**
  *
  * @author G0042204

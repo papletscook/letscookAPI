@@ -13,23 +13,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class CategoriaReceitaDAO extends AbstractHibernateDAO implements GenericDAO<CategoriaReceita> {
-
-    @Override
-    public void cadastrar(CategoriaReceita t) {
-        super.persist(t);
-    }
-
-    @Override
-    public void excluir(CategoriaReceita t) {
-        super.remove(t);
-    }
-
-    @Override
-    public CategoriaReceita editar(CategoriaReceita t) {
-        super.merge(t);
-        return t;
-    }
+public class CategoriaReceitaDAO extends GenericHibernateDAO<CategoriaReceita> implements GenericDAO<CategoriaReceita> {
 
     @Override
     public List<CategoriaReceita> listar() {

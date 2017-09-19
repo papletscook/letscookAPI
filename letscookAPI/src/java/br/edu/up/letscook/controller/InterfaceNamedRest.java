@@ -5,7 +5,6 @@
  */
 package br.edu.up.letscook.controller;
 
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 /**

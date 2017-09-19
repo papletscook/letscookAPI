@@ -5,6 +5,7 @@
  */
 package br.edu.up.letscook.model.service;
 
+import br.edu.up.letscook.dao.exception.UsuarioInexistenteException;
 import br.edu.up.letscook.model.entity.Usuario;
 
 /**
@@ -14,5 +15,7 @@ import br.edu.up.letscook.model.entity.Usuario;
 public interface UsuarioService extends GenericService<Usuario> {
 
     public Boolean verificarCredencial(Usuario u) throws Exception;
+
+    public Usuario buscarPorEmail(Usuario u) throws UsuarioInexistenteException;
 
 }

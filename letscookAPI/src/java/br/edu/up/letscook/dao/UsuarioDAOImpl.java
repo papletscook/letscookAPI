@@ -14,23 +14,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class UsuarioDAOImpl extends AbstractHibernateDAO implements UsuarioDAO {
-
-    @Override
-    public void cadastrar(Usuario t) {
-        super.persist(t);
-    }
-
-    @Override
-    public void excluir(Usuario t) {
-        super.remove(t);
-    }
-
-    @Override
-    public Usuario editar(Usuario t) {
-        super.merge(t);
-        return t;
-    }
+public class UsuarioDAOImpl extends GenericHibernateDAO<Usuario> implements UsuarioDAO {
 
     @Override
     public List<Usuario> listar() {
