@@ -5,6 +5,8 @@
  */
 package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.FalhaAoCadastrarException;
+
 /**
  *
  * @author G0042204
@@ -13,8 +15,12 @@ package br.edu.up.letscook.dao;
 public abstract class GenericHibernateDAO<T> extends AbstractHibernateDAO implements GenericDAO<T> {
 
     @Override
-    public void cadastrar(T g) {
-        super.persist(g);
+    public void cadastrar(T g) throws FalhaAoCadastrarException {
+        try {
+            super.persist(g);
+        } catch (Exception e) {
+            throw new FalhaAoCadastrarException();
+        }
     }
 
     @Override

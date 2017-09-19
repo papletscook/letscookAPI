@@ -5,6 +5,7 @@
  */
 package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.FalhaAoCadastrarException;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface GenericDAO<T> {
 
-    public void cadastrar(T t);
+    public void cadastrar(T t) throws FalhaAoCadastrarException;
 
     public void excluir(T t);
 
