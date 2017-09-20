@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -24,12 +25,16 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EtapaReceita extends AbstractNamedEntity {
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "etapa_id", referencedColumnName = "id")
     private List<PassoEtapa> passos;
 
     @NotNull
     private Integer ordem;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "receita_id", nullable = false)
+    private Receita receita;
 
     public EtapaReceita() {
         passos = new ArrayList<>();
@@ -44,6 +49,9 @@ public class EtapaReceita extends AbstractNamedEntity {
     }
 
     public void setPassos(List<PassoEtapa> passos) {
+        passos.forEach((t) -> {
+            t.setEtapa(this);
+        });
         this.passos = passos;
     }
 
@@ -53,6 +61,14 @@ public class EtapaReceita extends AbstractNamedEntity {
 
     public void setOrdem(Integer ordem) {
         this.ordem = ordem;
+    }
+
+    public Receita getReceita() {
+        return receita;
+    }
+
+    public void setReceita(Receita receita) {
+        this.receita = receita;
     }
 
 }

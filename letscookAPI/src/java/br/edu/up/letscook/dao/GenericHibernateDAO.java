@@ -19,6 +19,7 @@ public abstract class GenericHibernateDAO<T> extends AbstractHibernateDAO implem
         try {
             super.persist(g);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new FalhaAoCadastrarException();
         }
     }

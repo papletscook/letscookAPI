@@ -5,29 +5,26 @@
  */
 package br.edu.up.letscook.model.enums;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author G0042204
  */
 public enum UnidadeMedidaEnum {
 
-    XICARA("xícara", 25d),
-    COLHER_SOPA("colher (sopa)", 25d),
-    COLHER_CHA("colher (chá)", 25d),
-    COLHER_SOBREMESA("colher (sobremesa)", 25d),
-    PITADA("pitada", 10d),
-    LITRO("litro", 25d),
-    MILITITRO("mililitro (ml)", 5d),
-    QUILO("quilograma (kg)", 50d),
-    GRAMA("grama (g)", 15d),
-    COPO("copo", 50d),
-    UNIDADE("unidade", 50d),
-    UNIDADE_PEQ("unidade (pequena)", 25d),
-    UNIDADE_MED("unidade (média)", 100d),
-    UNIDADE_GRD("unidade (grande)", 150d),
+    XICARA("xícara(s)", 25d),
+    COLHER_SOPA("colher(es) (sopa)", 25d),
+    COLHER_CHA("colher(es) (chá)", 25d),
+    COLHER_SOBREMESA("colher(es) (sobremesa)", 25d),
+    PITADA("pitada(s)", 10d),
+    LITRO("litro(s)", 25d),
+    MILITITRO("mililitro(s) (ml)", 5d),
+    QUILO("quilograma(s) (kg)", 50d),
+    GRAMA("grama(s) (g)", 15d),
+    COPO("copo(s)", 50d),
+    UNIDADE("unidade(s)", 50d),
+    UNIDADE_PEQ("unidade(s) (pequena)", 25d),
+    UNIDADE_MED("unidade(s) (média)", 100d),
+    UNIDADE_GRD("unidade(s) (grande)", 150d),
     DUZIA("dúzia", 1000d);
 
     String desc;
@@ -42,12 +39,8 @@ public enum UnidadeMedidaEnum {
         return desc;
     }
 
-    public List<UnidadeMedidaEnum> solidos() {
-        List<UnidadeMedidaEnum> und = new ArrayList<>();
-
-        und.add(GRAMA);
-
-        return und;
+    public Double getEscala() {
+        return escala;
     }
 
 }

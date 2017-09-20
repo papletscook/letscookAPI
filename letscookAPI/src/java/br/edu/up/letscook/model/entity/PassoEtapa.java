@@ -9,6 +9,8 @@ import br.edu.up.letscook.model.enums.TipoPasso;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -25,7 +27,6 @@ public class PassoEtapa extends AbstractEntity {
     @NotNull
     private String desc;
 
-    @NotNull
     private String dica;
 
     @NotNull
@@ -36,6 +37,10 @@ public class PassoEtapa extends AbstractEntity {
 
     @NotNull
     private Integer ordem;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "etapa_id", nullable = false)
+    private EtapaReceita etapa;
 
     public PassoEtapa() {
         tipo = TipoPasso.NORMAL;
@@ -83,6 +88,14 @@ public class PassoEtapa extends AbstractEntity {
 
     public void setDica(String dica) {
         this.dica = dica;
+    }
+
+    public EtapaReceita getEtapa() {
+        return etapa;
+    }
+
+    public void setEtapa(EtapaReceita etapa) {
+        this.etapa = etapa;
     }
 
 }
