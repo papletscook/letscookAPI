@@ -46,7 +46,7 @@ public class Receita extends AbstractNamedEntity {
     @Enumerated(EnumType.STRING)
     private StatusPublicacao status;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "receita_id", referencedColumnName = "id", nullable = false, insertable = true)
     private List<IngredienteReceita> ingts;
 
@@ -105,6 +105,7 @@ public class Receita extends AbstractNamedEntity {
     public void setEtapas(List<EtapaReceita> etapas) {
         etapas.forEach((t) -> {
             t.setReceita(this);
+            t.setOrdem(etapas.indexOf(t) + 1);
         });
         this.etapas = etapas;
     }

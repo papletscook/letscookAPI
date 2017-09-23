@@ -23,6 +23,7 @@ public interface InterfaceRest<T> {
 
     public Response atualizar(T t);
 
-    public Response remover(T t);
+    public Response remover(Long id);
+    
 
 }

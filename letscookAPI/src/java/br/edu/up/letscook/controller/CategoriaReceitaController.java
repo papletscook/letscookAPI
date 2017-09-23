@@ -17,6 +17,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import br.edu.up.letscook.model.service.GenericService;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PUT;
 
 /**
  *
@@ -60,8 +62,7 @@ public class CategoriaReceitaController implements InterfaceNamedRest<CategoriaR
         }
     }
 
-    @POST
-    @Path("atualizar")
+    @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
@@ -88,14 +89,15 @@ public class CategoriaReceitaController implements InterfaceNamedRest<CategoriaR
         }
     }
 
-    @POST
-    @Path("remover")
+    @DELETE
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response remover(CategoriaReceita i) {
+    public Response remover(@PathParam("id") Long id) {
         try {
             serv = FactoryService.createCategoriaReceitaService();
+            CategoriaReceita i = new CategoriaReceita();
+            i.setId(id);
             serv.excluir(i);
             return Response.status(Status.OK).build();
         } catch (Exception e) {

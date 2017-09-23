@@ -17,6 +17,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import br.edu.up.letscook.model.service.UsuarioService;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PUT;
 
 /**
  *
@@ -73,10 +75,11 @@ public class UsuarioController implements InterfaceRest<Usuario> {
         }
     }
 
-    @GET
-    @Path("email/{email}")
+    @POST
+    @Path("findByEmail")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findByEmail(@PathParam("email") String email) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response findByEmail(String email) {
         try {
             serv = FactoryService.createInterfaceUsuarioService();
             Usuario r = new Usuario();
@@ -87,6 +90,9 @@ public class UsuarioController implements InterfaceRest<Usuario> {
         }
     }
 
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Override
     public Response atualizar(Usuario t) {
         try {
@@ -110,14 +116,15 @@ public class UsuarioController implements InterfaceRest<Usuario> {
         }
     }
 
-    @POST
-    @Path("remover")
+    @DELETE
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response remover(Usuario t) {
+    public Response remover(@PathParam("id") Long id) {
         try {
             serv = FactoryService.createInterfaceUsuarioService();
+            Usuario t = new Usuario();
+            t.setId(id);
             serv.excluir(t);
             return Response.status(Status.OK).build();
         } catch (Exception e) {

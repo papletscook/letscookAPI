@@ -10,8 +10,10 @@ import br.edu.up.letscook.model.entity.Usuario;
 import br.edu.up.letscook.model.service.DespensaService;
 import br.edu.up.letscook.model.service.FactoryService;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -45,7 +47,7 @@ public class DespensaUsuarioController implements InterfaceRest<DespensaUsuario>
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-    
+
     @POST
     @Path("buscarPorUsuario")
     @Produces(MediaType.APPLICATION_JSON)
@@ -59,8 +61,7 @@ public class DespensaUsuarioController implements InterfaceRest<DespensaUsuario>
         }
     }
 
-    @POST
-    @Path("atualizar")
+    @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
@@ -89,14 +90,15 @@ public class DespensaUsuarioController implements InterfaceRest<DespensaUsuario>
         }
     }
 
-    @POST
-    @Path("remover")
+    @DELETE
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response remover(DespensaUsuario i) {
+    public Response remover(@PathParam("id") Long id) {
         try {
             serv = FactoryService.createDespensaService();
+            DespensaUsuario i = new DespensaUsuario();
+            i.setId(id);
             serv.excluir(i);
             return Response.status(Status.OK).build();
         } catch (Exception e) {
