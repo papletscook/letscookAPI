@@ -6,6 +6,7 @@
 package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
+import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.List;
 
@@ -21,5 +22,7 @@ public interface ReceitaService<Receita> extends GenericService<Receita> {
     public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc);
 
     public List<Receita> buscarPorCategoria(CategoriaReceita cat);
+
+    public List<Receita> buscarPorIngredientes(List<IngredienteReceita> ir);
 
 }

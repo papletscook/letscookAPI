@@ -24,6 +24,8 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
                     .getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
+        } finally {
+            this.close();
         }
     }
 
@@ -41,6 +43,8 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return new ArrayList<>();
+        } finally {
+            this.close();
         }
     }
 
@@ -53,6 +57,8 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return new ArrayList<>();
+        } finally {
+            this.close();
         }
     }
 
@@ -65,6 +71,8 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return new ArrayList<>();
+        } finally {
+            this.close();
         }
     }
 

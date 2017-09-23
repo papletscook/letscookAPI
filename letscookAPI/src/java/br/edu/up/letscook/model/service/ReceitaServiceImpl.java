@@ -12,6 +12,7 @@ import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.List;
 import br.edu.up.letscook.dao.ReceitaDAO;
+import br.edu.up.letscook.model.entity.IngredienteReceita;
 
 /**
  *
@@ -28,6 +29,11 @@ public class ReceitaServiceImpl implements ReceitaService<Receita> {
             throw new ServiceException("RN002 - Validação de receitas");
         }
         dao.cadastrar(r);
+    }
+
+    @Override
+    public List<Receita> buscarPorIngredientes(List<IngredienteReceita> ir) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

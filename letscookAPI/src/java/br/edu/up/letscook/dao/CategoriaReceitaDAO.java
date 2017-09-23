@@ -21,12 +21,20 @@ public class CategoriaReceitaDAO extends GenericHibernateDAO<CategoriaReceita> i
             return getEm().createQuery("FROM CategoriaReceita c").getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
+        } finally {
+            this.close();
         }
     }
 
     @Override
     public CategoriaReceita buscarPorId(CategoriaReceita t) {
-        return getEm().find(CategoriaReceita.class, t.getId());
+        try {
+            return getEm().find(CategoriaReceita.class, t.getId());
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.close();
+        }
     }
 
 }

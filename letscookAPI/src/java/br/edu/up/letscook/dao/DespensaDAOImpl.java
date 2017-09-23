@@ -22,12 +22,21 @@ public class DespensaDAOImpl extends GenericHibernateDAO<DespensaUsuario> implem
                     .getResultList();
         } catch (Exception e) {
             return null;
+        } finally {
+            this.close();
         }
     }
 
     @Override
     public DespensaUsuario buscarPorId(DespensaUsuario g) {
-        return getEm().find(DespensaUsuario.class, g.getId());
+        try {
+            return getEm().find(DespensaUsuario.class, g.getId());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            this.close();
+        }
     }
 
     @Override
@@ -39,6 +48,8 @@ public class DespensaDAOImpl extends GenericHibernateDAO<DespensaUsuario> implem
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        } finally {
+            this.close();
         }
     }
 

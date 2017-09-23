@@ -23,6 +23,8 @@ public class UsuarioDAOImpl extends GenericHibernateDAO<Usuario> implements Usua
                     .getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
+        } finally {
+            this.close();
         }
     }
 
@@ -38,6 +40,8 @@ public class UsuarioDAOImpl extends GenericHibernateDAO<Usuario> implements Usua
                     .setParameter("param1", u.getEmail()).getSingleResult();
         } catch (Exception e) {
             throw new UsuarioInexistenteException();
+        } finally {
+            this.close();
         }
     }
 

@@ -21,23 +21,34 @@ public class IngredienteDAOImpl extends GenericHibernateDAO<Ingrediente> impleme
             return getEm().createQuery("FROM Ingrediente i").getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
+        } finally {
+            this.close();
         }
     }
 
     @Override
-    public List<Ingrediente> listarPorNome(String nome) {
+    public List<Ingrediente> listarPorNome(String nome
+    ) {
         try {
             return getEm().createQuery("FROM Ingrediente r WHERE UPPER(r.nome) LIKE UPPER(:param)")
                     .setParameter("param", "%" + nome + "%")
                     .getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
+        } finally {
+            this.close();
         }
     }
 
     @Override
-    public Ingrediente buscarPorId(Ingrediente t) {
-        return getEm().find(Ingrediente.class, t.getId());
+    public Ingrediente buscarPorId(Ingrediente ts) {
+        try {
+            return getEm().find(Ingrediente.class, ts.getId());
+        } catch (Exception e) {
+            return null;
+        } finally {
+            this.close();
+        }
     }
 
 }
