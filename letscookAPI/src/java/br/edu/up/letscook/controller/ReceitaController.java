@@ -33,7 +33,6 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
     }
 
     @POST
-    @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override

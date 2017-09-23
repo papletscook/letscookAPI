@@ -33,7 +33,6 @@ public class CategoriaReceitaController implements InterfaceNamedRest<CategoriaR
     }
 
     @POST
-    @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override

@@ -33,7 +33,6 @@ public class IngredienteController implements InterfaceNamedRest<Ingrediente> {
     }
 
     @POST
-    @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override

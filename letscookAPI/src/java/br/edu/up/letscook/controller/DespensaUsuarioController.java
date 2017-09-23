@@ -34,7 +34,6 @@ public class DespensaUsuarioController implements InterfaceRest<DespensaUsuario>
     }
 
     @POST
-    @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
