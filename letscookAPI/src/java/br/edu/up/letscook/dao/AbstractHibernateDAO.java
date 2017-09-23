@@ -20,9 +20,15 @@ public abstract class AbstractHibernateDAO {
     private EntityManager em;
 
     public void persist(Object obj) {
-        getEm().getTransaction().begin();
-        getEm().persist(obj);
-        getEm().getTransaction().commit();
+        try {
+            getEm().getTransaction().begin();
+            getEm().persist(obj);
+            getEm().getTransaction().commit();
+        } catch (Exception e) {
+            getEm().getTransaction().rollback();
+            throw e;
+        }
+
     }
 
     public void remove(Object obj) {
@@ -40,6 +46,7 @@ public abstract class AbstractHibernateDAO {
     public EntityManager getEm() {
         if (emf == null) {
             emf = Persistence.createEntityManagerFactory("letscookAPIPU");
+//            emf = Persistence.createEntityManagerFactory("letscookAPI_test");
             em = emf.createEntityManager();
         }
         return em;

@@ -67,6 +67,7 @@ public class Receita extends AbstractNamedEntity {
 
     public void adicionarEtapa(EtapaReceita e) {
         e.setReceita(this);
+        e.setOrdem(getEtapas().size() + 1);
         getEtapas().add(e);
     }
 

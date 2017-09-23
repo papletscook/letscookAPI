@@ -6,6 +6,7 @@
 package br.edu.up.letscook.model.entity;
 
 import br.edu.up.letscook.model.enums.TipoPasso;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,7 +26,8 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class PassoEtapa extends AbstractEntity {
 
     @NotNull
-    private String desc;
+    @Column(name = "descricao")
+    private String descricao;
 
     private String dica;
 
@@ -47,15 +49,16 @@ public class PassoEtapa extends AbstractEntity {
     }
 
     public PassoEtapa(String desc) {
-        this.desc = desc;
+        this.descricao = desc;
+        tipo = TipoPasso.NORMAL;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public TipoPasso getTipo() {
@@ -88,10 +91,6 @@ public class PassoEtapa extends AbstractEntity {
 
     public void setDica(String dica) {
         this.dica = dica;
-    }
-
-    public EtapaReceita getEtapa() {
-        return etapa;
     }
 
     public void setEtapa(EtapaReceita etapa) {
