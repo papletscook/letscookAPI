@@ -46,8 +46,7 @@ public class Receita extends AbstractNamedEntity {
     @Enumerated(EnumType.STRING)
     private StatusPublicacao status;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "receita_id", referencedColumnName = "id", nullable = false, insertable = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receita")
     private List<IngredienteReceita> ingts;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita")
@@ -62,6 +61,7 @@ public class Receita extends AbstractNamedEntity {
     }
 
     public void adicionarIngrediente(IngredienteReceita i) {
+        i.setReceita(this);
         getIngts().add(i);
     }
 
@@ -143,6 +143,11 @@ public class Receita extends AbstractNamedEntity {
 
     public void setStatus(StatusPublicacao status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Long.compare(((Receita) obj).getId(), this.getId()) == 0;
     }
 
 }

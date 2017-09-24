@@ -12,13 +12,13 @@ import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.List;
 import br.edu.up.letscook.dao.ReceitaDAO;
-import br.edu.up.letscook.model.entity.IngredienteReceita;
+import br.edu.up.letscook.model.entity.Ingrediente;
 
 /**
  *
  * @author G0042204
  */
-public class ReceitaServiceImpl implements ReceitaService<Receita> {
+public class ReceitaServiceImpl implements ReceitaService {
 
     private final ReceitaDAO<Receita> dao = FactoryDAO.createInterfaceReceitaDAO();
 
@@ -32,7 +32,7 @@ public class ReceitaServiceImpl implements ReceitaService<Receita> {
     }
 
     @Override
-    public List<Receita> buscarPorIngredientes(List<IngredienteReceita> ir) {
+    public List<Receita> buscarPorIngredientes(List<Ingrediente> ir) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

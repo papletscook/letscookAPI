@@ -2,11 +2,10 @@ package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Ingrediente;
-import br.edu.up.letscook.model.entity.Receita;
 
 public class FactoryService {
 
-    public static ReceitaService<Receita> createReceitaService() {
+    public static ReceitaService createReceitaService() {
         return new ReceitaServiceImpl();
     }
 
@@ -21,8 +20,8 @@ public class FactoryService {
     public static UsuarioService createInterfaceUsuarioService() {
         return new UsuarioServiceImpl();
     }
-    
-    public static NamedEntityService<Ingrediente>  createInterfaceIngredienteService() {
+
+    public static NamedEntityService<Ingrediente> createInterfaceIngredienteService() {
         return new IngredienteServiceImpl();
     }
 

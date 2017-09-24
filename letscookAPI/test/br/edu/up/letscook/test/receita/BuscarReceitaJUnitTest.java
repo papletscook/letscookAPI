@@ -24,7 +24,7 @@ import br.edu.up.letscook.model.service.ReceitaService;
  */
 public class BuscarReceitaJUnitTest {
 
-    private ReceitaService<Receita> serv = FactoryService.createReceitaService();
+    private ReceitaService serv = FactoryService.createReceitaService();
 
     public BuscarReceitaJUnitTest() {
     }

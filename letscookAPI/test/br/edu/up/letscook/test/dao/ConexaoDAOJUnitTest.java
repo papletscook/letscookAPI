@@ -5,7 +5,6 @@
  */
 package br.edu.up.letscook.test.dao;
 
-import br.edu.up.letscook.dao.ConexaoSingleton;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.service.FactoryService;
 import org.junit.After;
@@ -22,7 +21,7 @@ import br.edu.up.letscook.model.service.ReceitaService;
  */
 public class ConexaoDAOJUnitTest {
 
-    private ReceitaService<Receita> serv = FactoryService.createReceitaService();
+    private ReceitaService serv = FactoryService.createReceitaService();
 
     public ConexaoDAOJUnitTest() {
     }

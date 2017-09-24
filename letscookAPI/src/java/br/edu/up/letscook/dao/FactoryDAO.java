@@ -11,6 +11,10 @@ public class FactoryDAO {
         return new UsuarioDAOImpl();
     }
 
+    public static IngredienteReceitaDAO createIngredienteReceitaDAO() {
+        return new IngredienteReceitaDAOImpl();
+    }
+
     public static GenericDAO<Receita> createReceitaDAO() {
         return new ReceitaDAOmpl();
     }

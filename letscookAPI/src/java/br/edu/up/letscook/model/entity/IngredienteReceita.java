@@ -36,6 +36,10 @@ public class IngredienteReceita extends AbstractEntity {
     @NotNull
     private Double quant;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "receita_id", nullable = false)
+    private Receita receita;
+
     public IngredienteReceita() {
     }
 
@@ -61,6 +65,14 @@ public class IngredienteReceita extends AbstractEntity {
 
     public void setQuant(Double quant) {
         this.quant = quant;
+    }
+
+    public void setReceita(Receita receita) {
+        this.receita = receita;
+    }
+
+    public Receita obterReceita() {
+        return receita;
     }
 
 }
