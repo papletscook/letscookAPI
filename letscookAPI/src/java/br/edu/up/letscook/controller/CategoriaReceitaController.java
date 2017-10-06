@@ -76,7 +76,6 @@ public class CategoriaReceitaController implements InterfaceNamedRest<CategoriaR
     }
 
     @GET
-    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Response list() {
