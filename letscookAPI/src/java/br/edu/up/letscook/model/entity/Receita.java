@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -27,6 +28,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "receita")
 public class Receita extends AbstractNamedEntity {
 
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")

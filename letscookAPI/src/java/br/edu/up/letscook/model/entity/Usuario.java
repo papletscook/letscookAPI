@@ -7,6 +7,7 @@ package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -18,6 +19,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "usuario")
 public class Usuario extends AbstractEntity {
 
     private String email, senha;

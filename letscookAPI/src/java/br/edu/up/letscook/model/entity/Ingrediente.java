@@ -11,12 +11,14 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 
 /**
  *
  * @author G0042204
  */
 @Entity
+@Table(name = "ingrediente")
 public class Ingrediente extends AbstractNamedEntity {
 
     @Enumerated(EnumType.STRING)
