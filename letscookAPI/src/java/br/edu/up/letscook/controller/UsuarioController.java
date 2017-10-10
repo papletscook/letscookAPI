@@ -5,6 +5,7 @@
  */
 package br.edu.up.letscook.controller;
 
+import br.edu.up.letscook.controller.in.FindByEmail;
 import br.edu.up.letscook.model.entity.Usuario;
 import br.edu.up.letscook.model.service.FactoryService;
 import javax.ws.rs.Consumes;
@@ -78,12 +79,11 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Path("findByEmail")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response findByEmail(String email) {
+    public Response findByEmail(FindByEmail find) {
         try {
-            System.out.println("email: " + email);
             serv = FactoryService.createInterfaceUsuarioService();
             Usuario r = new Usuario();
-            r.setEmail(email);
+            r.setEmail(find.getEmail());
             return Response.status(Status.OK).entity(serv.buscarPorEmail(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
