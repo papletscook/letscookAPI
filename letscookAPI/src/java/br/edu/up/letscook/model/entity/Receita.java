@@ -126,6 +126,9 @@ public class Receita extends AbstractNamedEntity {
     }
 
     public void setIngts(List<IngredienteReceita> ingts) {
+        ingts.forEach((t) -> {
+            t.setReceita(this);
+        });
         this.ingts = ingts;
     }
 

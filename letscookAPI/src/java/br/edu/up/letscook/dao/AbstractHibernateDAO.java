@@ -53,10 +53,8 @@ public abstract class AbstractHibernateDAO {
     }
 
     public void close() {
-        if (emf.isOpen()) {
-            em.close();
-            emf.close();
-        }
+        em.close();
+        emf.close();
     }
 
 }

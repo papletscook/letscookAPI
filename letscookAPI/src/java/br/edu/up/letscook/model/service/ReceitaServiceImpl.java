@@ -13,62 +13,64 @@ import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.List;
 import br.edu.up.letscook.dao.ReceitaDAO;
 import br.edu.up.letscook.model.entity.Ingrediente;
+import br.edu.up.letscook.model.enums.StatusPublicacao;
 
 /**
  *
  * @author G0042204
  */
 public class ReceitaServiceImpl implements ReceitaService {
-
+    
     private final ReceitaDAO<Receita> dao = FactoryDAO.createInterfaceReceitaDAO();
-
+    
     @Override
     public void cadastrar(Receita r) throws Exception {
-
+        
         if (r.getIngts().isEmpty() || r.getEtapas().isEmpty()) {
             throw new ServiceException("RN002 - Validação de receitas");
         }
+        r.setStatus(StatusPublicacao.POSTADA);
         dao.cadastrar(r);
     }
-
+    
     @Override
     public List<Receita> buscarPorIngredientes(List<Ingrediente> ir) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public List<Receita> buscarPorNome(String nome) {
         return dao.buscarPorNome(nome);
     }
-
+    
     @Override
     public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
         return dao.buscarPorNacionalidade(nasc);
     }
-
+    
     @Override
     public List<Receita> buscarPorCategoria(CategoriaReceita cat) {
         return dao.buscarPorCategoria(cat);
     }
-
+    
     @Override
     public Receita editar(Receita t) {
         return dao.editar(t);
     }
-
+    
     @Override
     public void excluir(Receita t) {
         dao.excluir(t);
     }
-
+    
     @Override
     public Receita buscarPorId(Receita t) {
         return dao.buscarPorId(t);
     }
-
+    
     @Override
     public List<Receita> listar() {
         return dao.listar();
     }
-
+    
 }

@@ -80,6 +80,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response findByEmail(String email) {
         try {
+            System.out.println("email: " + email);
             serv = FactoryService.createInterfaceUsuarioService();
             Usuario r = new Usuario();
             r.setEmail(email);

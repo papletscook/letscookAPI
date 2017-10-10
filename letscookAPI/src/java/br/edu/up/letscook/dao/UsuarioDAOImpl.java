@@ -36,9 +36,10 @@ public class UsuarioDAOImpl extends GenericHibernateDAO<Usuario> implements Usua
     @Override
     public Usuario buscarPorEmail(Usuario u) throws UsuarioInexistenteException {
         try {
-            return (Usuario) getEm().createQuery("FROM Usuario u WHERE u.email =:param1")
+            return (Usuario) getEm().createQuery("FROM Usuario WHERE UPPER(email) = UPPER(:param1)")
                     .setParameter("param1", u.getEmail()).getSingleResult();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new UsuarioInexistenteException();
         } finally {
             this.close();
