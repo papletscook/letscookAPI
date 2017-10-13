@@ -5,9 +5,11 @@
  */
 package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.UsuarioSemDespensaException;
 import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Usuario;
 import java.util.List;
+import javax.persistence.NoResultException;
 
 /**
  *
@@ -28,26 +30,24 @@ public class DespensaDAOImpl extends GenericHibernateDAO<DespensaUsuario> implem
     }
 
     @Override
-    public DespensaUsuario buscarPorId(DespensaUsuario g) {
+    public DespensaUsuario buscarPorId(DespensaUsuario g) throws Exception {
         try {
             return getEm().find(DespensaUsuario.class, g.getId());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
+            throw new Exception("Despensa Inexistente!");
         } finally {
             this.close();
         }
     }
 
     @Override
-    public DespensaUsuario buscarPorUsuario(Usuario u) {
+    public DespensaUsuario buscarPorUsuario(Usuario u) throws UsuarioSemDespensaException {
         try {
             return (DespensaUsuario) getEm().createQuery("FROM DespensaUsuario g WHERE g.dono = :param")
                     .setParameter("param", u)
                     .getSingleResult();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
+        } catch (NoResultException e) {
+            throw new UsuarioSemDespensaException();
         } finally {
             this.close();
         }

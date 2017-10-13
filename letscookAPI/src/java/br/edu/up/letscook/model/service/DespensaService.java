@@ -14,6 +14,6 @@ import br.edu.up.letscook.model.entity.Usuario;
  */
 public interface DespensaService extends GenericService<DespensaUsuario> {
 
-    public DespensaUsuario buscarPorUsuario(Usuario u);
+    public DespensaUsuario buscarPorUsuario(Usuario u) throws Exception;
 
 }

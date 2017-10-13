@@ -34,7 +34,7 @@ public class CategoriaReceitaService implements GenericService<CategoriaReceita>
     }
 
     @Override
-    public CategoriaReceita buscarPorId(CategoriaReceita t) {
+    public CategoriaReceita buscarPorId(CategoriaReceita t) throws Exception {
         return dao.buscarPorId(t);
     }
 

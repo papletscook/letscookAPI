@@ -10,6 +10,7 @@ import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Usuario;
 import java.util.List;
 import br.edu.up.letscook.dao.DespensaDAO;
+import br.edu.up.letscook.dao.exception.UsuarioSemDespensaException;
 
 /**
  *
@@ -38,12 +39,19 @@ public class DespensaServiceImpl implements DespensaService {
     }
 
     @Override
-    public DespensaUsuario buscarPorUsuario(Usuario u) {
-        return dao.buscarPorUsuario(u);
+    public DespensaUsuario buscarPorUsuario(Usuario u) throws Exception{
+        try {
+            return dao.buscarPorUsuario(u);
+        } catch (UsuarioSemDespensaException e) {
+            DespensaUsuario d = new DespensaUsuario();
+            d.setDono(u);
+            dao.cadastrar(d);
+            return d;
+        }
     }
 
     @Override
-    public DespensaUsuario buscarPorId(DespensaUsuario t) {
+    public DespensaUsuario buscarPorId(DespensaUsuario t) throws Exception {
         return dao.buscarPorId(t);
     }
 

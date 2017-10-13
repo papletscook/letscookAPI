@@ -38,7 +38,7 @@ public class UsuarioServiceImpl implements GenericService<Usuario>, UsuarioServi
     }
 
     @Override
-    public Usuario buscarPorId(Usuario t) {
+    public Usuario buscarPorId(Usuario t) throws Exception{
         return dao.buscarPorId(t);
     }
 

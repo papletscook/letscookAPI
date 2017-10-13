@@ -34,7 +34,7 @@ public class IngredienteServiceImpl implements NamedEntityService<Ingrediente> {
     }
 
     @Override
-    public Ingrediente buscarPorId(Ingrediente t) {
+    public Ingrediente buscarPorId(Ingrediente t) throws Exception {
         return dao.buscarPorId(t);
     }
 

@@ -38,14 +38,14 @@ public class IngredienteReceitaDAOImpl extends GenericHibernateDAO<IngredienteRe
     }
 
     @Override
-    public IngredienteReceita buscarPorId(IngredienteReceita t) {
+    public IngredienteReceita buscarPorId(IngredienteReceita t) throws Exception {
         try {
             return getEm().find(IngredienteReceita.class, t.getId());
         } catch (Exception e) {
+            throw new Exception("Ingrediente inexistente!");
         } finally {
             this.close();
         }
-        return null;
     }
 
 }

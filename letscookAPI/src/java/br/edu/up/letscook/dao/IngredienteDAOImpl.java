@@ -6,6 +6,7 @@
 package br.edu.up.letscook.dao;
 
 import br.edu.up.letscook.model.entity.Ingrediente;
+import br.edu.up.letscook.model.entity.IngredienteDespensa;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,11 +42,11 @@ public class IngredienteDAOImpl extends GenericHibernateDAO<Ingrediente> impleme
     }
 
     @Override
-    public Ingrediente buscarPorId(Ingrediente ts) {
+    public Ingrediente buscarPorId(Ingrediente ts) throws Exception {
         try {
             return getEm().find(Ingrediente.class, ts.getId());
         } catch (Exception e) {
-            return null;
+            throw new Exception("Ingrediente inexistente!");
         } finally {
             this.close();
         }

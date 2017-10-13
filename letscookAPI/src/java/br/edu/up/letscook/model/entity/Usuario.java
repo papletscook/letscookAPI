@@ -20,7 +20,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "usuario")
-public class Usuario extends AbstractEntity {
+public class Usuario extends AbstractNamedEntity {
 
     private String email, senha;
     @Temporal(TemporalType.TIMESTAMP)

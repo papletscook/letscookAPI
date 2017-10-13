@@ -23,6 +23,6 @@ public interface GenericDAO<T> {
 
     public List<T> listar();
 
-    public T buscarPorId(T t);
+    public T buscarPorId(T t) throws Exception;
 
 }

@@ -14,6 +14,6 @@ import br.edu.up.letscook.model.entity.Usuario;
  */
 public interface DespensaDAO<Geladeira> extends GenericDAO<Geladeira> {
 
-    public Geladeira buscarPorUsuario(Usuario u);
+    public Geladeira buscarPorUsuario(Usuario u) throws Exception;
 
 }

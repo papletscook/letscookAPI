@@ -5,6 +5,7 @@
  */
 package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.ReceitaInexistenteException;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
@@ -30,8 +31,14 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
     }
 
     @Override
-    public Receita buscarPorId(Receita t) {
-        return getEm().find(Receita.class, t.getId());
+    public Receita buscarPorId(Receita t) throws Exception{
+        try {
+            return getEm().find(Receita.class, t.getId());
+        } catch (Exception e) {
+            throw new ReceitaInexistenteException();
+        } finally {
+            super.close();
+        }
     }
 
     @Override

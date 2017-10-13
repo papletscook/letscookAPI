@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -35,6 +36,12 @@ public class EtapaReceita extends AbstractNamedEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = "receita_id", nullable = false)
     private Receita receita;
+
+    @Transient
+    private boolean checked;
+    
+    @Transient
+    private boolean done;
 
     public EtapaReceita() {
     }
@@ -71,6 +78,22 @@ public class EtapaReceita extends AbstractNamedEntity {
 
     public void setReceita(Receita receita) {
         this.receita = receita;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 
 }
