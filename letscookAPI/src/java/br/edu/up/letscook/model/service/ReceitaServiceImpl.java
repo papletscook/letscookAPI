@@ -12,6 +12,7 @@ import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.List;
 import br.edu.up.letscook.dao.ReceitaDAO;
+import br.edu.up.letscook.model.domain.ScoreReceita;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.enums.StatusPublicacao;
 
@@ -31,11 +32,6 @@ public class ReceitaServiceImpl implements ReceitaService {
         }
         r.setStatus(StatusPublicacao.POSTADA);
         dao.cadastrar(r);
-    }
-
-    @Override
-    public List<Receita> buscarPorIngredientes(List<Ingrediente> ir) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

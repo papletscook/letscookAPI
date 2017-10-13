@@ -5,7 +5,6 @@
  */
 package br.edu.up.letscook.model.service;
 
-import br.edu.up.letscook.model.domain.BuscaInteligente;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
@@ -15,7 +14,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public interface ReceitaService extends GenericService<Receita>, BuscaInteligente {
+public interface ReceitaService extends GenericService<Receita> {
 
     public List<Receita> buscarPorNome(String nome);
 

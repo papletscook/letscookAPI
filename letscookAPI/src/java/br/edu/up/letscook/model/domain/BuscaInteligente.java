@@ -15,5 +15,7 @@ import java.util.List;
  */
 public interface BuscaInteligente {
 
-    public List<Receita> buscarPorIngredientes(List<Ingrediente> ir);
+    public List<ScoreReceita> buscarPorIngredientes(List<Ingrediente> ir);
+
+    public ScoreReceita calcularScore(Receita r, List<Ingrediente> ir);
 }

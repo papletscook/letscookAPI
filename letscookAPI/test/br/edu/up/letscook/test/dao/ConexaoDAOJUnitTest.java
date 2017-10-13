@@ -43,11 +43,10 @@ public class ConexaoDAOJUnitTest {
     }
 
     @Test
-    public void hello() {
+    public void hello() throws Exception{
         
         Receita r = new Receita();
         r.setId(1l);
         assertNotNull("DAO", serv.buscarPorId(r));
-
     }
 }

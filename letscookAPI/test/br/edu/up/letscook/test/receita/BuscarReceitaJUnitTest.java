@@ -46,7 +46,7 @@ public class BuscarReceitaJUnitTest {
     }
 
     @Test
-    public void buscarPorId() {
+    public void buscarPorId() throws Exception {
         Receita g = new Receita();
         g.setId(4l);
         Assert.assertNotNull(serv.buscarPorId(g));

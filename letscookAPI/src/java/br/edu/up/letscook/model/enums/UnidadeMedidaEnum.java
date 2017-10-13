@@ -25,7 +25,7 @@ public enum UnidadeMedidaEnum {
     UNIDADE_PEQ("unidade(s) (pequena)", 25d),
     UNIDADE_MED("unidade(s) (média)", 100d),
     UNIDADE_GRD("unidade(s) (grande)", 150d),
-    DUZIA("dúzia", 1000d);
+    DUZIA("dúzia", 1200d);
 
     String desc;
     Double escala;

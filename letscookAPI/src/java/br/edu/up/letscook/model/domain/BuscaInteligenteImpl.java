@@ -7,21 +7,71 @@ package br.edu.up.letscook.model.domain;
 
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.IngredienteReceitaDAO;
+import br.edu.up.letscook.model.domain.filter.Filter;
+import br.edu.up.letscook.model.domain.filter.IngredienteExistentesFilter;
+import br.edu.up.letscook.model.domain.filter.IngredienteInexistentesFilter;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.entity.Receita;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BuscaInteligenteImpl implements BuscaInteligente {
 
+    @Override
+    public List<ScoreReceita> buscarPorIngredientes(List<Ingrediente> ir) {
+        IngredienteReceitaDAO dao = FactoryDAO.createIngredienteReceitaDAO();
+
+        List<IngredienteReceita> lst = dao.listarPorIngredientes(ir);
+        List<ScoreReceita> scores = null;
+        List<Receita> rList = new ArrayList<>();
+        lst.forEach((IngredienteReceita t) -> {
+            if (!rList.contains(t.obterReceita())) {
+                rList.add(t.obterReceita());
+            }
+        });
+
+        rList.forEach((t) -> {
+            scores.add(this.calcularScore(t, ir));
+        });
+
+        return scores;
+    }
 
     @Override
-    public List<Receita> buscarPorIngredientes(List<Ingrediente> ir) {
-        IngredienteReceitaDAO dao = FactoryDAO.createIngredienteReceitaDAO();
-        
-        List<IngredienteReceita> lst = dao.listarPorIngredientes(ir);
+    public ScoreReceita calcularScore(Receita r, List<Ingrediente> ir) {
+        ScoreReceita score = new ScoreReceita();
 
-        
+        List<Ingrediente> receita = new ArrayList<>();
+        r.getIngts().forEach((t) -> {
+            receita.add(t.getIngrediente());
+        });
+
+        Filter<Ingrediente> existentes = new IngredienteExistentesFilter(receita);
+        existentes.filter(ir).forEach((Ingrediente t) -> {
+            IngredienteReceita ing = this.buscarIngrediente(r, t);
+            if (ing != null) {
+                score.addScore(100 + (ing.getQuant() * ing.getuMedida().getEscala()));
+            }
+        });
+
+        Filter<Ingrediente> inexi = new IngredienteInexistentesFilter(receita);
+        inexi.filter(ir).forEach((Ingrediente t) -> {
+            IngredienteReceita ing = this.buscarIngrediente(r, t);
+            if (ing != null) {
+                score.addScore(-100 - (ing.getQuant() * ing.getuMedida().getEscala()));
+            }
+        });
+
+        return score;
+    }
+
+    public IngredienteReceita buscarIngrediente(Receita r, Ingrediente ing) {
+        for (IngredienteReceita ingt : r.getIngts()) {
+            if (ingt.getIngrediente().equals(ing)) {
+                return ingt;
+            }
+        }
         return null;
     }
 
