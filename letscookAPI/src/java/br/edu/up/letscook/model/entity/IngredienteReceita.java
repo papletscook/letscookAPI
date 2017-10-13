@@ -14,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -40,6 +41,9 @@ public class IngredienteReceita extends AbstractEntity {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "receita_id", nullable = false)
     private Receita receita;
+
+    @Transient
+    private boolean checked;
 
     public IngredienteReceita() {
     }
@@ -74,6 +78,14 @@ public class IngredienteReceita extends AbstractEntity {
 
     public Receita obterReceita() {
         return receita;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
 }
