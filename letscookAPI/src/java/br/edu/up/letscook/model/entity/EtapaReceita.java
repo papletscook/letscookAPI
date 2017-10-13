@@ -14,9 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -29,6 +30,7 @@ public class EtapaReceita extends AbstractNamedEntity {
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "etapa_id", referencedColumnName = "id")
+    @Fetch (FetchMode.SELECT)
     private List<PassoEtapa> passos;
 
     @NotNull

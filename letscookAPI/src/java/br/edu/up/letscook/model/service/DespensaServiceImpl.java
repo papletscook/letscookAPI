@@ -39,7 +39,7 @@ public class DespensaServiceImpl implements DespensaService {
     }
 
     @Override
-    public DespensaUsuario buscarPorUsuario(Usuario u) throws Exception{
+    public DespensaUsuario buscarPorUsuario(Usuario u) throws Exception {
         try {
             return dao.buscarPorUsuario(u);
         } catch (UsuarioSemDespensaException e) {

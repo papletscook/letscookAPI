@@ -20,7 +20,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -48,9 +49,11 @@ public class Receita extends AbstractNamedEntity {
     private StatusPublicacao status;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receita", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     private List<IngredienteReceita> ingts;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     private List<EtapaReceita> etapas;
 
     @ManyToOne(fetch = FetchType.EAGER)
