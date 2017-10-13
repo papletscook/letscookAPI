@@ -55,6 +55,8 @@ public abstract class AbstractHibernateDAO {
     public void close() {
         em.close();
         emf.close();
+        em = null;
+        emf = null;
     }
 
 }
