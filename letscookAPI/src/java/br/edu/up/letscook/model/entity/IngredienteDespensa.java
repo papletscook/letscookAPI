@@ -20,17 +20,17 @@ public class IngredienteDespensa extends AbstractEntity {
 
     @JoinColumn(name = "ingrediente_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Ingrediente i;
+    private Ingrediente ingrediente;
 
     public IngredienteDespensa() {
     }
 
-    public Ingrediente getI() {
-        return i;
+    public Ingrediente getIngrediente() {
+        return ingrediente;
     }
 
-    public void setI(Ingrediente i) {
-        this.i = i;
+    public void setIngrediente(Ingrediente ingrediente) {
+        this.ingrediente = ingrediente;
     }
 
 }

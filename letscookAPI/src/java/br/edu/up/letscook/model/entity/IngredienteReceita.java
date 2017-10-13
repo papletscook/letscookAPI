@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -26,7 +27,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class IngredienteReceita extends AbstractEntity {
 
     @JoinColumn(name = "ingrediente_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Ingrediente ingrediente;
 
     @Column(name = "unidade_medida")
@@ -36,7 +37,7 @@ public class IngredienteReceita extends AbstractEntity {
     @NotNull
     private Double quant;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "receita_id", nullable = false)
     private Receita receita;
 

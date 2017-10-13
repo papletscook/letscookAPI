@@ -13,7 +13,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -45,11 +44,9 @@ public class PassoEtapa extends AbstractEntity {
     @JoinColumn(name = "etapa_id", nullable = false)
     private EtapaReceita etapa;
 
-    @Transient
-    private boolean checked;
+    private transient boolean checked;
 
-    @Transient
-    private boolean done;
+    private transient boolean done;
 
     public PassoEtapa() {
         tipo = TipoPasso.NORMAL;

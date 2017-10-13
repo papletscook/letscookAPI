@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -26,7 +27,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EtapaReceita extends AbstractNamedEntity {
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "etapa_id", referencedColumnName = "id")
     private List<PassoEtapa> passos;
 
@@ -37,11 +38,9 @@ public class EtapaReceita extends AbstractNamedEntity {
     @JoinColumn(name = "receita_id", nullable = false)
     private Receita receita;
 
-    @Transient
-    private boolean checked;
-    
-    @Transient
-    private boolean done;
+    private transient boolean checked;
+
+    private transient boolean done;
 
     public EtapaReceita() {
     }

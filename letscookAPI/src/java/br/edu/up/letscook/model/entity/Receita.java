@@ -27,7 +27,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  * @author G0042204
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "receita")
 public class Receita extends AbstractNamedEntity {
 
@@ -48,10 +47,10 @@ public class Receita extends AbstractNamedEntity {
     @Enumerated(EnumType.STRING)
     private StatusPublicacao status;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receita")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receita", fetch = FetchType.EAGER)
     private List<IngredienteReceita> ingts;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER)
     private List<EtapaReceita> etapas;
 
     @ManyToOne(fetch = FetchType.EAGER)

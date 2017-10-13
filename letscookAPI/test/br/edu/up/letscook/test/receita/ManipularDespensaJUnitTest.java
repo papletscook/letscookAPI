@@ -18,7 +18,6 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import br.edu.up.letscook.dao.GenericDAO;
 import br.edu.up.letscook.dao.GenericNewDAO;
 import br.edu.up.letscook.model.service.DespensaService;
 
@@ -62,7 +61,7 @@ public class ManipularDespensaJUnitTest {
             i.setNome("Feijão");
 
             IngredienteDespensa id = new IngredienteDespensa();
-            id.setI(i);
+            id.setIngrediente(i);
 
             g.adicionarIngredientes(id);
 

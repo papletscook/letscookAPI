@@ -31,13 +31,13 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
     }
 
     @Override
-    public Receita buscarPorId(Receita t) throws Exception{
+    public Receita buscarPorId(Receita t) throws Exception {
         try {
-            return getEm().find(Receita.class, t.getId());
+            Receita find = getEm().find(Receita.class, t.getId());
+            super.close();
+            return find;
         } catch (Exception e) {
             throw new ReceitaInexistenteException();
-        } finally {
-            super.close();
         }
     }
 

@@ -5,7 +5,9 @@
  */
 package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.ReceitaInexistenteException;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
+import br.edu.up.letscook.model.entity.Receita;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.NoResultException;
@@ -57,11 +59,11 @@ public class CategoriaReceitaDAO extends GenericHibernateDAO<CategoriaReceita> i
     @Override
     public CategoriaReceita buscarPorId(CategoriaReceita ts) throws Exception {
         try {
-            return getEm().find(CategoriaReceita.class, ts.getId());
+            CategoriaReceita find = getEm().find(CategoriaReceita.class, ts.getId());
+            super.close();
+            return find;
         } catch (Exception e) {
             throw new Exception("Categoria inexistente!");
-        } finally {
-            this.close();
         }
     }
 
