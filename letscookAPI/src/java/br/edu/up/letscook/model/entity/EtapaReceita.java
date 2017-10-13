@@ -29,7 +29,7 @@ import org.hibernate.annotations.FetchMode;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EtapaReceita extends AbstractNamedEntity {
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, orphanRemoval=true)
     @JoinColumn(name = "etapa_id", referencedColumnName = "id")
     @Fetch(FetchMode.SELECT)
     private List<PassoEtapa> passos;

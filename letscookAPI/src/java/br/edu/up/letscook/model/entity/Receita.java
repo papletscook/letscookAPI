@@ -48,11 +48,11 @@ public class Receita extends AbstractNamedEntity {
     @Enumerated(EnumType.STRING)
     private StatusPublicacao status;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receita", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
     private List<IngredienteReceita> ingts;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
     private List<EtapaReceita> etapas;
 

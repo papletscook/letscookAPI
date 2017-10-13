@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -27,8 +29,8 @@ public class DespensaUsuario extends AbstractEntity {
     @ManyToOne(optional = false)
     private Usuario dono;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "despensa_usuario_id", referencedColumnName = "id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "despensa", orphanRemoval=true)
+    @Fetch(FetchMode.SELECT)
     private List<IngredienteDespensa> ings;
 
     public DespensaUsuario() {
@@ -45,6 +47,7 @@ public class DespensaUsuario extends AbstractEntity {
 
     public void setDono(Usuario dono) {
         this.dono = dono;
+        this.dono.setDespensa(this);
     }
 
     public List<IngredienteDespensa> getIngs() {
@@ -52,6 +55,9 @@ public class DespensaUsuario extends AbstractEntity {
     }
 
     public void setIngs(List<IngredienteDespensa> ings) {
+        ings.forEach((t) -> {
+            t.setDespensa(this);
+        });
         this.ings = ings;
     }
 

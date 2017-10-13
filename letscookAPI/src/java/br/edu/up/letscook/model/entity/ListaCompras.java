@@ -30,7 +30,7 @@ public class ListaCompras extends AbstractNamedEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
     @JoinColumn(name = "lista_compras_id", referencedColumnName = "id")
     private List<ItemLista> itens;
 

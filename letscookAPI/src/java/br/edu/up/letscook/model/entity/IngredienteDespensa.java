@@ -22,6 +22,10 @@ public class IngredienteDespensa extends AbstractEntity {
     @ManyToOne(optional = false)
     private Ingrediente ingrediente;
 
+    @JoinColumn(name = "despensa_usuario_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private DespensaUsuario despensa;
+
     public IngredienteDespensa() {
     }
 
@@ -31,6 +35,10 @@ public class IngredienteDespensa extends AbstractEntity {
 
     public void setIngrediente(Ingrediente ingrediente) {
         this.ingrediente = ingrediente;
+    }
+
+    public void setDespensa(DespensaUsuario despensa) {
+        this.despensa = despensa;
     }
 
 }

@@ -7,6 +7,8 @@ package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,6 +27,9 @@ public class Usuario extends AbstractNamedEntity {
     private String email, senha;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNasc;
+
+    @OneToOne(mappedBy = "dono")
+    private DespensaUsuario despensa;
 
     public Usuario() {
     }
@@ -52,6 +57,10 @@ public class Usuario extends AbstractNamedEntity {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
+    }
+
+    public void setDespensa(DespensaUsuario despensa) {
+        this.despensa = despensa;
     }
 
 }
