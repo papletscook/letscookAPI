@@ -8,12 +8,13 @@ package br.edu.up.letscook.dao;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.NoResultException;
 
 /**
  *
  * @author G0042204
  */
-public class CategoriaReceitaDAO extends GenericHibernateDAO<CategoriaReceita> implements GenericDAO<CategoriaReceita> {
+public class CategoriaReceitaDAO extends GenericHibernateDAO<CategoriaReceita> implements GenericNewDAO<CategoriaReceita> {
 
     @Override
     public List<CategoriaReceita> listar() {
@@ -27,11 +28,38 @@ public class CategoriaReceitaDAO extends GenericHibernateDAO<CategoriaReceita> i
     }
 
     @Override
-    public CategoriaReceita buscarPorId(CategoriaReceita t) {
+    public List<CategoriaReceita> listarPorNomeAproximado(String nome
+    ) {
         try {
-            return getEm().find(CategoriaReceita.class, t.getId());
+            return getEm().createQuery("FROM CategoriaReceita r WHERE UPPER(r.nome) LIKE UPPER(:param)")
+                    .setParameter("param", "%" + nome + "%")
+                    .getResultList();
         } catch (Exception e) {
-            return null;
+            return new ArrayList<>();
+        } finally {
+            this.close();
+        }
+    }
+
+    @Override
+    public CategoriaReceita buscarPorNome(CategoriaReceita ts) throws Exception {
+        try {
+            return (CategoriaReceita) getEm().createQuery("FROM CategoriaReceita r WHERE UPPER(r.nome) = UPPER(:param)")
+                    .setParameter("param", ts.getNome())
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            throw new Exception("Categoria inexistente!");
+        } finally {
+            this.close();
+        }
+    }
+
+    @Override
+    public CategoriaReceita buscarPorId(CategoriaReceita ts) throws Exception {
+        try {
+            return getEm().find(CategoriaReceita.class, ts.getId());
+        } catch (Exception e) {
+            throw new Exception("Categoria inexistente!");
         } finally {
             this.close();
         }

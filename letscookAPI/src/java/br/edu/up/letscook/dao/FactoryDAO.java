@@ -23,7 +23,7 @@ public class FactoryDAO {
         return new ReceitaDAOmpl();
     }
 
-    public static GenericDAO<CategoriaReceita> createCategoriaReceitaDAO() {
+    public static GenericNewDAO<CategoriaReceita> createCategoriaReceitaDAO() {
         return new CategoriaReceitaDAO();
     }
 
@@ -31,7 +31,7 @@ public class FactoryDAO {
         return new DespensaDAOImpl();
     }
 
-    public static NamedEntityDAO<Ingrediente> createInterfaceIngredienteDAO() {
+    public static GenericNewDAO<Ingrediente> createInterfaceIngredienteDAO() {
         return new IngredienteDAOImpl();
     }
 

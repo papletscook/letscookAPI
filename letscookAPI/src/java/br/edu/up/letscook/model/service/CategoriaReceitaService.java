@@ -8,7 +8,8 @@ package br.edu.up.letscook.model.service;
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import java.util.List;
-import br.edu.up.letscook.dao.GenericDAO;
+import br.edu.up.letscook.dao.GenericNewDAO;
+import br.edu.up.letscook.dao.exception.IngredienteInexistenteException;
 
 /**
  *
@@ -16,11 +17,16 @@ import br.edu.up.letscook.dao.GenericDAO;
  */
 public class CategoriaReceitaService implements GenericService<CategoriaReceita> {
 
-    private GenericDAO<CategoriaReceita> dao = FactoryDAO.createCategoriaReceitaDAO();
+    private GenericNewDAO<CategoriaReceita> dao = FactoryDAO.createCategoriaReceitaDAO();
 
     @Override
-    public void cadastrar(CategoriaReceita c) throws Exception {
-        dao.cadastrar(c);
+    public void cadastrar(CategoriaReceita t) throws Exception {
+        try {
+            dao.buscarPorNome(t);
+            throw new Exception("Categoria já cadastrada!");
+        } catch (IngredienteInexistenteException e) {
+            dao.cadastrar(t);
+        }
     }
 
     @Override
@@ -42,8 +48,5 @@ public class CategoriaReceitaService implements GenericService<CategoriaReceita>
     public List<CategoriaReceita> listar() {
         return dao.listar();
     }
-    
-    
-    
 
 }

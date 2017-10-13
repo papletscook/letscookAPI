@@ -19,6 +19,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import br.edu.up.letscook.dao.GenericDAO;
+import br.edu.up.letscook.dao.GenericNewDAO;
 import br.edu.up.letscook.model.service.DespensaService;
 
 /**
@@ -29,7 +30,7 @@ public class ManipularDespensaJUnitTest {
 
     private final DespensaService serv = FactoryService.createDespensaService();
 
-    private final GenericDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
+    private final GenericNewDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
     public ManipularDespensaJUnitTest() {
     }

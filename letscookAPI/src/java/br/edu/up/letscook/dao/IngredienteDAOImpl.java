@@ -5,16 +5,17 @@
  */
 package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.IngredienteInexistenteException;
 import br.edu.up.letscook.model.entity.Ingrediente;
-import br.edu.up.letscook.model.entity.IngredienteDespensa;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.NoResultException;
 
 /**
  *
  * @author G0042204
  */
-public class IngredienteDAOImpl extends GenericHibernateDAO<Ingrediente> implements NamedEntityDAO<Ingrediente> {
+public class IngredienteDAOImpl extends GenericHibernateDAO<Ingrediente> implements GenericNewDAO<Ingrediente> {
 
     @Override
     public List<Ingrediente> listar() {
@@ -28,7 +29,7 @@ public class IngredienteDAOImpl extends GenericHibernateDAO<Ingrediente> impleme
     }
 
     @Override
-    public List<Ingrediente> listarPorNome(String nome
+    public List<Ingrediente> listarPorNomeAproximado(String nome
     ) {
         try {
             return getEm().createQuery("FROM Ingrediente r WHERE UPPER(r.nome) LIKE UPPER(:param)")
@@ -36,6 +37,19 @@ public class IngredienteDAOImpl extends GenericHibernateDAO<Ingrediente> impleme
                     .getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
+        } finally {
+            this.close();
+        }
+    }
+
+    @Override
+    public Ingrediente buscarPorNome(Ingrediente ts) throws Exception {
+        try {
+            return (Ingrediente) getEm().createQuery("FROM Ingrediente r WHERE UPPER(r.nome) = UPPER(:param)")
+                    .setParameter("param", ts.getNome())
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            throw new IngredienteInexistenteException();
         } finally {
             this.close();
         }

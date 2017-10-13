@@ -6,7 +6,8 @@
 package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.NamedEntityDAO;
+import br.edu.up.letscook.dao.GenericNewDAO;
+import br.edu.up.letscook.dao.exception.IngredienteInexistenteException;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import java.util.List;
 
@@ -16,11 +17,16 @@ import java.util.List;
  */
 public class IngredienteServiceImpl implements NamedEntityService<Ingrediente> {
 
-    private final NamedEntityDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
+    private final GenericNewDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
     @Override
     public void cadastrar(Ingrediente t) throws Exception {
-        dao.cadastrar(t);
+        try {
+            dao.buscarPorNome(t);
+            throw new Exception("Ingrediente já cadastrado!");
+        } catch (IngredienteInexistenteException e) {
+            dao.cadastrar(t);
+        }
     }
 
     @Override
@@ -40,7 +46,7 @@ public class IngredienteServiceImpl implements NamedEntityService<Ingrediente> {
 
     @Override
     public List<Ingrediente> listarPorNome(String nome) {
-        return dao.listarPorNome(nome);
+        return dao.listarPorNomeAproximado(nome);
     }
 
     @Override
