@@ -29,7 +29,7 @@
     <persistence-unit name="letscookAPIPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <non-jta-data-source>java:/letscookds</non-jta-data-source>
-        <class>br.edu.up.letscook.model.entity.AvalicaoReceita</class>
+        <class>br.edu.up.letscook.model.entity.AvaliacaoReceita</class>
         <class>br.edu.up.letscook.model.entity.CategoriaReceita</class>
         <class>br.edu.up.letscook.model.entity.ComentarioReceita</class>
         <class>br.edu.up.letscook.model.entity.DespensaUsuario</class>
