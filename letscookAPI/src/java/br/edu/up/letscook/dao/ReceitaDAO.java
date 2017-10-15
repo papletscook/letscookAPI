@@ -6,6 +6,7 @@
 package br.edu.up.letscook.dao;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
+import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.List;
 
@@ -14,12 +15,12 @@ import java.util.List;
  * @author G0042204
  * @param <Receita>
  */
-public interface ReceitaDAO<Receita> extends GenericDAO<Receita> {
+public interface ReceitaDAO extends GenericDAO<Receita> {
 
     public List<Receita> buscarPorNome(String nome);
 
     public List<Receita> buscarPorCategoria(CategoriaReceita categoria);
 
-    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc);
+//    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc);
     
 }

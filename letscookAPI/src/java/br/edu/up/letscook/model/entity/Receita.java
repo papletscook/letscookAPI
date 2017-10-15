@@ -56,6 +56,14 @@ public class Receita extends AbstractNamedEntity {
     @Fetch(FetchMode.SELECT)
     private List<EtapaReceita> etapas;
 
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
+    private List<ComentarioReceita> comentarios;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
+    private List<AvaliacaoReceita> avalicoes;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "criador_id", referencedColumnName = "id")
     private Usuario criador;
@@ -136,6 +144,17 @@ public class Receita extends AbstractNamedEntity {
         this.ingts = ingts;
     }
 
+    public List<AvaliacaoReceita> getAvalicoes() {
+        return avalicoes;
+    }
+
+    public void setAvalicoes(List<AvaliacaoReceita> avalicoes) {
+        avalicoes.forEach((t) -> {
+            t.setReceita(this);
+        });
+        this.avalicoes = avalicoes;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -150,6 +169,17 @@ public class Receita extends AbstractNamedEntity {
 
     public void setStatus(StatusPublicacao status) {
         this.status = status;
+    }
+
+    public List<ComentarioReceita> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentarioReceita> comentarios) {
+        comentarios.forEach((t) -> {
+            t.setReceita(this);
+        });
+        this.comentarios = comentarios;
     }
 
     @Override

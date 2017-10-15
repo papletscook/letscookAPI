@@ -12,8 +12,6 @@ import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.List;
 import br.edu.up.letscook.dao.ReceitaDAO;
-import br.edu.up.letscook.model.domain.ScoreReceita;
-import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.enums.StatusPublicacao;
 
 /**
@@ -22,7 +20,7 @@ import br.edu.up.letscook.model.enums.StatusPublicacao;
  */
 public class ReceitaServiceImpl implements ReceitaService {
 
-    private final ReceitaDAO<Receita> dao = FactoryDAO.createInterfaceReceitaDAO();
+    private final ReceitaDAO dao = FactoryDAO.createInterfaceReceitaDAO();
 
     @Override
     public void cadastrar(Receita r) throws Exception {
@@ -39,10 +37,10 @@ public class ReceitaServiceImpl implements ReceitaService {
         return dao.buscarPorNome(nome);
     }
 
-    @Override
-    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
-        return dao.buscarPorNacionalidade(nasc);
-    }
+//    @Override
+//    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
+//        return dao.buscarPorNacionalidade(nasc);
+//    }
 
     @Override
     public List<Receita> buscarPorCategoria(CategoriaReceita cat) {

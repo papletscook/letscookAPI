@@ -20,8 +20,8 @@ import javax.validation.constraints.NotNull;
  * @author G0042204
  */
 @Entity
-@Table(name = "avalicao_usuario_receita")
-public class AvalicaoReceita extends AbstractEntity {
+@Table(name = "avaliacao_usuario_receita")
+public class AvaliacaoReceita extends AbstractEntity {
 
     @NotNull
     @Column(name = "valor")
@@ -36,11 +36,11 @@ public class AvalicaoReceita extends AbstractEntity {
     @ManyToOne(optional = false)
     private Usuario usuario;
 
-    @JoinColumn(name = "receita_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JoinColumn(name = "receita_id", nullable = false)
     private Receita receita;
 
-    public AvalicaoReceita() {
+    public AvaliacaoReceita() {
     }
 
     public Long getValor() {
@@ -59,20 +59,20 @@ public class AvalicaoReceita extends AbstractEntity {
         this.dataAvaliacao = dataAvaliacao;
     }
 
-    public br.edu.up.letscook.model.entity.Usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(br.edu.up.letscook.model.entity.Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public Receita getReceita() {
-        return receita;
     }
 
     public void setReceita(Receita receita) {
         this.receita = receita;
+    }
+
+    public Receita obterReceita() {
+        return this.receita;
     }
 
 }

@@ -5,9 +5,7 @@
  */
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.dao.exception.ReceitaInexistenteException;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
-import br.edu.up.letscook.model.entity.Receita;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.NoResultException;
@@ -16,7 +14,7 @@ import javax.persistence.NoResultException;
  *
  * @author G0042204
  */
-public class CategoriaReceitaDAO extends GenericHibernateDAO<CategoriaReceita> implements GenericNewDAO<CategoriaReceita> {
+public class CategoriaReceitaDAOImpl extends GenericHibernateDAO<CategoriaReceita> implements GenericNewDAO<CategoriaReceita> {
 
     @Override
     public List<CategoriaReceita> listar() {

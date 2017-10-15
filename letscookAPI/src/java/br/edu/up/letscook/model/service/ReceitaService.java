@@ -18,8 +18,9 @@ public interface ReceitaService extends GenericService<Receita> {
 
     public List<Receita> buscarPorNome(String nome);
 
-    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc);
+//    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc);
 
     public List<Receita> buscarPorCategoria(CategoriaReceita cat);
+    
 
 }

@@ -47,6 +47,20 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
         }
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response avaliar(Receita r) {
+        try {
+            serv = FactoryService.createReceitaService();
+            serv.cadastrar(r);
+            return Response.status(Status.OK).entity(r).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)

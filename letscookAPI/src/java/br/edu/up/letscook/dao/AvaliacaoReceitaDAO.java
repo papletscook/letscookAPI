@@ -5,15 +5,13 @@
  */
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.model.entity.DespensaUsuario;
-import br.edu.up.letscook.model.entity.Usuario;
+import br.edu.up.letscook.model.entity.AvaliacaoReceita;
 
 /**
  *
  * @author G0042204
  */
-public interface DespensaDAO extends GenericDAO<DespensaUsuario> {
-
-    public DespensaUsuario buscarPorUsuario(Usuario u) throws Exception;
-
+public interface AvaliacaoReceitaDAO extends GenericDAO<AvaliacaoReceita>{
+    
+    public AvaliacaoReceita buscarAvaliacaoUsuarioReceita(AvaliacaoReceita a) throws Exception;
 }

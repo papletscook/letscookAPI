@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements ReceitaDAO<Receita> {
+public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements ReceitaDAO {
 
     @Override
     public List<Receita> listar() {
@@ -69,18 +69,18 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
         }
     }
 
-    @Override
-    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
-        try {
-            return getEm().createQuery("FROM Receita r WHERE r.nasc = :param")
-                    .setParameter("param", nasc)
-                    .getResultList();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return new ArrayList<>();
-        } finally {
-            this.close();
-        }
-    }
+//    @Override
+//    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
+//        try {
+//            return getEm().createQuery("FROM Receita r WHERE r.nasc = :param")
+//                    .setParameter("param", nasc)
+//                    .getResultList();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            return new ArrayList<>();
+//        } finally {
+//            this.close();
+//        }
+//    }
 
 }

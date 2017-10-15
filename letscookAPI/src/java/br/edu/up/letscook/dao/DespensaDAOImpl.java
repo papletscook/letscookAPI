@@ -15,7 +15,7 @@ import javax.persistence.NoResultException;
  *
  * @author G0042204
  */
-public class DespensaDAOImpl extends GenericHibernateDAO<DespensaUsuario> implements DespensaDAO<DespensaUsuario> {
+public class DespensaDAOImpl extends GenericHibernateDAO<DespensaUsuario> implements DespensaDAO {
 
     @Override
     public List<DespensaUsuario> listar() {

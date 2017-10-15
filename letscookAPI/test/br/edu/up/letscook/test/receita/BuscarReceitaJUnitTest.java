@@ -64,9 +64,9 @@ public class BuscarReceitaJUnitTest {
         assertTrue(!serv.buscarPorCategoria(cat).isEmpty());
     }
 
-    @Test
-    public void buscarPorNacionalidade() {
-        assertTrue(!serv.buscarPorNacionalidade(NacionalidadeEnum.BRASIL).isEmpty());
-    }
+//    @Test
+//    public void buscarPorNacionalidade() {
+//        assertTrue(!serv.buscarPorNacionalidade(NacionalidadeEnum.BRASIL).isEmpty());
+//    }
 
 }

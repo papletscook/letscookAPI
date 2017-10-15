@@ -5,10 +5,14 @@
  */
 package br.edu.up.letscook.model.entity;
 
+import br.edu.up.letscook.model.enums.StatusPublicacao;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -32,11 +36,8 @@ public class ComentarioReceita extends AbstractEntity {
     @Column(name = "conteudo")
     private String conteudo;
 
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private StatusPublicacao status;
 
     @Basic(optional = false)
     @NotNull
@@ -48,7 +49,13 @@ public class ComentarioReceita extends AbstractEntity {
     @ManyToOne(optional = false)
     private Usuario usuario;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "receita_id", nullable = false)
+    private Receita receita;
+
     public ComentarioReceita() {
+        dataComentario = Calendar.getInstance().getTime();
+        status = StatusPublicacao.DESATIVADA;
     }
 
     public String getConteudo() {
@@ -59,11 +66,11 @@ public class ComentarioReceita extends AbstractEntity {
         this.conteudo = conteudo;
     }
 
-    public String getStatus() {
+    public StatusPublicacao getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusPublicacao status) {
         this.status = status;
     }
 
@@ -75,12 +82,16 @@ public class ComentarioReceita extends AbstractEntity {
         this.dataComentario = dataComentario;
     }
 
-    public br.edu.up.letscook.model.entity.Usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(br.edu.up.letscook.model.entity.Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public void setReceita(Receita receita) {
+        this.receita = receita;
     }
 
 }
