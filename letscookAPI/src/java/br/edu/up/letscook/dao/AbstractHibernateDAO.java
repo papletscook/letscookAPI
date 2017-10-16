@@ -27,6 +27,8 @@ public abstract class AbstractHibernateDAO {
         } catch (Exception e) {
             getEm().getTransaction().rollback();
             throw e;
+        }finally{
+            this.close();
         }
 
     }

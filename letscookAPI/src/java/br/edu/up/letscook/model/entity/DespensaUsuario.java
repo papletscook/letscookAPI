@@ -29,7 +29,7 @@ public class DespensaUsuario extends AbstractEntity {
     @ManyToOne(optional = false)
     private Usuario dono;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "despensa", orphanRemoval=true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "despensa", orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
     private List<IngredienteDespensa> ings;
 
@@ -39,10 +39,6 @@ public class DespensaUsuario extends AbstractEntity {
 
     public void adicionarIngredientes(IngredienteDespensa g) {
         ings.add(g);
-    }
-
-    public Usuario getDono() {
-        return dono;
     }
 
     public void setDono(Usuario dono) {

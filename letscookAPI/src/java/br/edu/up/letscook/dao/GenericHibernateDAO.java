@@ -19,7 +19,6 @@ public abstract class GenericHibernateDAO<T> extends AbstractHibernateDAO implem
         try {
             super.persist(g);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new FalhaAoCadastrarException();
         }
     }
@@ -27,11 +26,13 @@ public abstract class GenericHibernateDAO<T> extends AbstractHibernateDAO implem
     @Override
     public void excluir(T g) {
         super.remove(g);
+        this.close();
     }
 
     @Override
     public T editar(T g) {
         super.merge(g);
+        this.close();
         return g;
     }
 

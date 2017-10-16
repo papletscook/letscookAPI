@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
@@ -70,10 +69,6 @@ public class Usuario extends AbstractNamedImageEntity {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
-    }
-
-    public DespensaUsuario getDespensa() {
-        return despensa;
     }
 
     public void setDespensa(DespensaUsuario despensa) {
