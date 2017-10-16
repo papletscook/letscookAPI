@@ -22,8 +22,10 @@ public class BuscaInteligenteImpl implements BuscaInteligente {
     public List<ScoreReceita> buscarPorIngredientes(List<Ingrediente> ir) {
         IngredienteReceitaDAO dao = FactoryDAO.createIngredienteReceitaDAO();
         List<IngredienteReceita> lst = dao.listarPorIngredientes(ir);
+        
         List<ScoreReceita> scores = new ArrayList<>();
-        List<Receita> rList = new ArrayList<>();
+        List<Receita> rList = new ArrayList<>();        
+        
         lst.forEach((IngredienteReceita t) -> {
             if (!rList.contains(t.obterReceita())) {
                 rList.add(t.obterReceita());
@@ -58,8 +60,9 @@ public class BuscaInteligenteImpl implements BuscaInteligente {
         Filter<Ingrediente> inexi = new IngredienteInexistentesFilter(receita);
         inexi.filter(ir).forEach((Ingrediente t) -> {
             IngredienteReceita ing = this.buscarIngrediente(r, t);
+            System.out.println("ing");
             if (ing != null) {
-                score.addScore(-100 - (ing.getQuant() * ing.getuMedida().getEscala()));
+                score.addScore(-20 - (ing.getQuant() * ing.getuMedida().getEscala()));
             }
         });
 

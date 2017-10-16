@@ -6,7 +6,9 @@
 package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,6 +24,10 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "usuario")
 public class Usuario extends AbstractNamedEntity {
+
+    @Lob
+    @Column(columnDefinition = "LONG")
+    private String imagem;
 
     private String email, senha;
     @Temporal(TemporalType.TIMESTAMP)
@@ -45,7 +51,7 @@ public class Usuario extends AbstractNamedEntity {
     public String obterSenha() {
         return senha;
     }
-    
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -60,6 +66,14 @@ public class Usuario extends AbstractNamedEntity {
 
     public void setDespensa(DespensaUsuario despensa) {
         this.despensa = despensa;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
 }

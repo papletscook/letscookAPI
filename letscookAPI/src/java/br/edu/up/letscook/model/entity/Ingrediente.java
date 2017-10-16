@@ -6,6 +6,7 @@
 package br.edu.up.letscook.model.entity;
 
 import br.edu.up.letscook.model.enums.TipoIngrediente;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -45,6 +46,11 @@ public class Ingrediente extends AbstractNamedEntity {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Long.compare(((Ingrediente) obj).getId(), this.getId()) == 0;
     }
 
 }

@@ -6,6 +6,7 @@
 package br.edu.up.letscook.model.domain;
 
 import br.edu.up.letscook.model.entity.Ingrediente;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -46,11 +47,21 @@ public class BuscaInteligenteIT {
     public void testBuscarPorIngredientes() {
         System.out.println("buscarPorIngredientes");
         try {
-            List<Ingrediente> ir = null;
+            List<Ingrediente> ir = new ArrayList<>();
+
+            Ingrediente ing = new Ingrediente();
+            ing.setId(2l);
+
+            Ingrediente ing1 = new Ingrediente();
+            ing.setId(1l);
+
+            ir.add(ing1);
+            ir.add(ing);
+
             BuscaInteligente instance = new BuscaInteligenteImpl();
-            List<ScoreReceita> expResult = null;
             List<ScoreReceita> result = instance.buscarPorIngredientes(ir);
-            assertEquals(expResult, result);
+            System.out.println("end");
+
         } catch (Exception e) {
             fail(e.getMessage());
         }
