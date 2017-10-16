@@ -20,8 +20,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  *
  * @author G0042204
  */
-
-
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "usuario")
@@ -50,13 +48,20 @@ public class Usuario extends AbstractNamedImageEntity {
         this.email = email;
     }
 
-    @JsonIgnore
-    public String obterSenha() {
+    public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Date getDataNasc() {
@@ -67,16 +72,12 @@ public class Usuario extends AbstractNamedImageEntity {
         this.dataNasc = dataNasc;
     }
 
+    public DespensaUsuario getDespensa() {
+        return despensa;
+    }
+
     public void setDespensa(DespensaUsuario despensa) {
         this.despensa = despensa;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public Date getDataCriacao() {
