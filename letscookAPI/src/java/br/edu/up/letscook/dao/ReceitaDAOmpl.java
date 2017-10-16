@@ -8,7 +8,6 @@ package br.edu.up.letscook.dao;
 import br.edu.up.letscook.dao.exception.ReceitaInexistenteException;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Receita;
-import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.ArrayList;
 import java.util.List;
 

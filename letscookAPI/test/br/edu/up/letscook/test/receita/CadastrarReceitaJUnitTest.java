@@ -75,7 +75,7 @@ public class CadastrarReceitaJUnitTest {
             c.setId(4l);
             r.setCategoria(c);
             
-            r.setFoto("foto");
+            r.setImagem("foto");
             r.setCriador(u);
             r.adicionarIngrediente(ir);
             

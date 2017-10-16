@@ -7,6 +7,7 @@ package br.edu.up.letscook.model.entity;
 
 import br.edu.up.letscook.model.enums.StatusPublicacao;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,9 +16,11 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Fetch;
@@ -29,7 +32,7 @@ import org.hibernate.annotations.FetchMode;
  */
 @Entity
 @Table(name = "receita")
-public class Receita extends AbstractNamedEntity {
+public class Receita extends AbstractNamedImageEntity {
 
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -37,10 +40,6 @@ public class Receita extends AbstractNamedEntity {
 
     @NotNull
     private String descricao;
-
-    @Lob
-    @Column(columnDefinition = "LONG")
-    private String foto;
 
     @NotNull
     private Integer minsPreparo;
@@ -68,8 +67,17 @@ public class Receita extends AbstractNamedEntity {
     @JoinColumn(name = "criador_id", referencedColumnName = "id")
     private Usuario criador;
 
+    @NotNull
+    @Column(name = "data_publicacao")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataPublicacao;
+
+    @NotNull
+    @Column(name = "data_atualizacao")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataAtualizacao;
+
     public Receita() {
-        status = StatusPublicacao.DESATIVADA;
     }
 
     public void adicionarIngrediente(IngredienteReceita i) {
@@ -89,14 +97,6 @@ public class Receita extends AbstractNamedEntity {
 
     public void setCategoria(CategoriaReceita categoria) {
         this.categoria = categoria;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 
     public Integer getMinsPreparo() {
@@ -185,6 +185,22 @@ public class Receita extends AbstractNamedEntity {
     @Override
     public boolean equals(Object obj) {
         return Long.compare(((Receita) obj).getId(), this.getId()) == 0;
+    }
+
+    public Date getDataPublicacao() {
+        return dataPublicacao;
+    }
+
+    public void setDataPublicacao(Date dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
+    }
+
+    public Date getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(Date dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 
 }

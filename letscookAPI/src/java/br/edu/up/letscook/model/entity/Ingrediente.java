@@ -5,13 +5,7 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import br.edu.up.letscook.model.enums.TipoIngrediente;
-import java.util.Objects;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -20,32 +14,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ingrediente")
-public class Ingrediente extends AbstractNamedEntity {
-
-    @Enumerated(EnumType.STRING)
-    private TipoIngrediente tipo;
-
-    @Lob
-    @Column(columnDefinition = "LONG")
-    private String foto;
+public class Ingrediente extends AbstractNamedImageEntity {
 
     public Ingrediente() {
-    }
-
-    public TipoIngrediente getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoIngrediente tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 
     @Override
@@ -54,3 +25,5 @@ public class Ingrediente extends AbstractNamedEntity {
     }
 
 }
+
+

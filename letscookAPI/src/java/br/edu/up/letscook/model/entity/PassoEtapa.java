@@ -32,10 +32,6 @@ public class PassoEtapa extends AbstractEntity {
 
     private String dica;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private TipoPasso tipo;
-
     private Double minPasso;
 
     @NotNull
@@ -47,17 +43,15 @@ public class PassoEtapa extends AbstractEntity {
 
     @Transient
     private boolean checked;
-    
+
     @Transient
     private boolean done;
 
     public PassoEtapa() {
-        tipo = TipoPasso.NORMAL;
     }
 
     public PassoEtapa(String desc) {
         this.descricao = desc;
-        tipo = TipoPasso.NORMAL;
     }
 
     public String getDescricao() {
@@ -66,14 +60,6 @@ public class PassoEtapa extends AbstractEntity {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public TipoPasso getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoPasso tipo) {
-        this.tipo = tipo;
     }
 
     public Double getMinPasso() {

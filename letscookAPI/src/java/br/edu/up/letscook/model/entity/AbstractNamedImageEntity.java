@@ -6,26 +6,26 @@
 package br.edu.up.letscook.model.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author G0042204
  */
 @MappedSuperclass
-public abstract class AbstractNamedEntity extends AbstractEntity {
+public abstract class AbstractNamedImageEntity extends AbstractNamedEntity {
 
-    @NotNull
-    @Column(name = "nome")
-    private String nome;
+    @Lob
+    @Column(columnDefinition = "LONG")
+    private String imagem;
 
-    public String getNome() {
-        return nome;
+    public String getImagem() {
+        return imagem;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
 }
