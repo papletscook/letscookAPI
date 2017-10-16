@@ -5,7 +5,9 @@
  */
 package br.edu.up.letscook.controller;
 
+import br.edu.up.letscook.model.entity.AvaliacaoReceita;
 import br.edu.up.letscook.model.entity.Receita;
+import br.edu.up.letscook.model.service.AvaliacaoReceitaService;
 import br.edu.up.letscook.model.service.FactoryService;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -48,12 +50,13 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
     }
 
     @POST
+    @Path("/avaliar")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response avaliar(Receita r) {
+    public Response avaliar(AvaliacaoReceita r) {
         try {
-            serv = FactoryService.createReceitaService();
-            serv.cadastrar(r);
+            AvaliacaoReceitaService srv = FactoryService.createAvaliacaoReceitaService();
+            srv.cadastrar(r);
             return Response.status(Status.OK).entity(r).build();
         } catch (Exception e) {
             e.printStackTrace();

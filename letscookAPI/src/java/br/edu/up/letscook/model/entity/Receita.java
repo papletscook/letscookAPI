@@ -62,7 +62,7 @@ public class Receita extends AbstractNamedEntity {
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
-    private List<AvaliacaoReceita> avalicoes;
+    private List<AvaliacaoReceita> avaliacoes;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "criador_id", referencedColumnName = "id")
@@ -144,15 +144,15 @@ public class Receita extends AbstractNamedEntity {
         this.ingts = ingts;
     }
 
-    public List<AvaliacaoReceita> getAvalicoes() {
-        return avalicoes;
+    public List<AvaliacaoReceita> getAvaliacoes() {
+        return avaliacoes;
     }
 
-    public void setAvalicoes(List<AvaliacaoReceita> avalicoes) {
+    public void setAvaliacoes(List<AvaliacaoReceita> avalicoes) {
         avalicoes.forEach((t) -> {
             t.setReceita(this);
         });
-        this.avalicoes = avalicoes;
+        this.avaliacoes = avalicoes;
     }
 
     public String getDescricao() {

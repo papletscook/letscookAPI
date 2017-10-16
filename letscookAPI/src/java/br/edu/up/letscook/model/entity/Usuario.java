@@ -7,7 +7,6 @@ package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -43,10 +42,10 @@ public class Usuario extends AbstractNamedEntity {
     }
 
     @JsonIgnore
-    public String getSenha() {
+    public String obterSenha() {
         return senha;
     }
-
+    
     public void setSenha(String senha) {
         this.senha = senha;
     }

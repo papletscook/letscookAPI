@@ -55,7 +55,7 @@ public class ComentarioReceita extends AbstractEntity {
 
     public ComentarioReceita() {
         dataComentario = Calendar.getInstance().getTime();
-        status = StatusPublicacao.DESATIVADA;
+        status = StatusPublicacao.POSTADA;
     }
 
     public String getConteudo() {

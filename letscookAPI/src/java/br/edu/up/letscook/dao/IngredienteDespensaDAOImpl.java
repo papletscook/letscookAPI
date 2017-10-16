@@ -6,7 +6,6 @@
 package br.edu.up.letscook.dao;
 
 import br.edu.up.letscook.model.entity.IngredienteDespensa;
-import br.edu.up.letscook.model.entity.IngredienteReceita;
 import java.util.List;
 
 /**

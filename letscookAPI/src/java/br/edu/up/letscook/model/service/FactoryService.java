@@ -21,6 +21,10 @@ public class FactoryService {
         return new UsuarioServiceImpl();
     }
 
+    public static AvaliacaoReceitaService createAvaliacaoReceitaService() {
+        return new AvaliacaoReceitaServiceImpl();
+    }
+
     public static NamedEntityService<Ingrediente> createInterfaceIngredienteService() {
         return new IngredienteServiceImpl();
     }

@@ -44,7 +44,7 @@ public class UsuarioServiceImpl implements GenericService<Usuario>, UsuarioServi
 
     @Override
     public Boolean verificarCredencial(Usuario u) throws Exception {
-        return dao.buscarPorEmail(u).getSenha().equals(u.getSenha());
+        return dao.buscarPorEmail(u).obterSenha().equals(u.obterSenha());
     }
 
     @Override
