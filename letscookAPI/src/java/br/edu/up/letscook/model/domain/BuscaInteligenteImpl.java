@@ -21,9 +21,8 @@ public class BuscaInteligenteImpl implements BuscaInteligente {
     @Override
     public List<ScoreReceita> buscarPorIngredientes(List<Ingrediente> ir) {
         IngredienteReceitaDAO dao = FactoryDAO.createIngredienteReceitaDAO();
-
         List<IngredienteReceita> lst = dao.listarPorIngredientes(ir);
-        List<ScoreReceita> scores = null;
+        List<ScoreReceita> scores = new ArrayList<>();
         List<Receita> rList = new ArrayList<>();
         lst.forEach((IngredienteReceita t) -> {
             if (!rList.contains(t.obterReceita())) {
@@ -41,7 +40,8 @@ public class BuscaInteligenteImpl implements BuscaInteligente {
     @Override
     public ScoreReceita calcularScore(Receita r, List<Ingrediente> ir) {
         ScoreReceita score = new ScoreReceita();
-
+        score.setReceita(r);
+        
         List<Ingrediente> receita = new ArrayList<>();
         r.getIngts().forEach((t) -> {
             receita.add(t.getIngrediente());

@@ -27,7 +27,7 @@ public class IngredienteReceitaDAOImpl extends GenericHibernateDAO<IngredienteRe
     @Override
     public List<IngredienteReceita> listarPorIngredientes(List<Ingrediente> ingts) {
         try {
-            Query query = getEm().createQuery("FROM IngredienteReceita i WHERE i.ingrediente IN :list");
+            Query query = getEm().createQuery("FROM IngredienteReceita i JOIN FETCH i.receita r WHERE i.ingrediente IN :list");
             query.setParameter("list", ingts);
             return query.getResultList();
         } catch (Exception e) {

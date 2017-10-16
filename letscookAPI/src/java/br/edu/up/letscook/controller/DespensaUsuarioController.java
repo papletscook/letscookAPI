@@ -73,6 +73,7 @@ public class DespensaUsuarioController implements InterfaceRest<DespensaUsuario>
             BuscaInteligente bserv = new BuscaInteligenteImpl();
             return Response.status(Status.OK).entity(bserv.buscarPorIngredientes(r)).build();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
