@@ -47,17 +47,20 @@ public class CategoriaReceitaDAOImpl extends GenericHibernateDAO<CategoriaReceit
             return (CategoriaReceita) getEm().createQuery("FROM CategoriaReceita r WHERE UPPER(r.nome) = UPPER(:param)")
                     .setParameter("param", ts.getNome())
                     .getSingleResult();
-        } catch (NoResultException e) {
-            throw new Exception("Categoria inexistente!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
         } finally {
             this.close();
         }
     }
 
     @Override
-    public CategoriaReceita buscarPorId(CategoriaReceita ts) throws Exception {
+    public CategoriaReceita
+            buscarPorId(CategoriaReceita ts) throws Exception {
         try {
-            CategoriaReceita find = getEm().find(CategoriaReceita.class, ts.getId());
+            CategoriaReceita find = getEm().find(CategoriaReceita.class,
+                    ts.getId());
             super.close();
             return find;
         } catch (Exception e) {

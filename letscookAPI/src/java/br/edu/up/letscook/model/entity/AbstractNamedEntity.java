@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 public abstract class AbstractNamedEntity extends AbstractEntity {
 
     @NotNull
-    @Column(name = "nome")
+    @Column(name = "nome", unique = true)
     private String nome;
 
     public String getNome() {

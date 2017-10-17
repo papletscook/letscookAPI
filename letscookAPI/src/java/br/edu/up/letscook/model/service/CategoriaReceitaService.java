@@ -9,7 +9,7 @@ import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import java.util.List;
 import br.edu.up.letscook.dao.GenericNewDAO;
-import br.edu.up.letscook.dao.exception.IngredienteInexistenteException;
+import javax.persistence.NoResultException;
 
 /**
  *
@@ -24,7 +24,7 @@ public class CategoriaReceitaService implements GenericService<CategoriaReceita>
         try {
             dao.buscarPorNome(t);
             throw new Exception("Categoria já cadastrada!");
-        } catch (IngredienteInexistenteException e) {
+        } catch (NoResultException e) {
             dao.cadastrar(t);
         }
     }
