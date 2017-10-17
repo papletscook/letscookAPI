@@ -6,8 +6,6 @@
 package br.edu.up.letscook.dao;
 
 import br.edu.up.letscook.dao.exception.FalhaAoCadastrarException;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
@@ -24,7 +22,7 @@ public abstract class GenericHibernateDAO<T> extends AbstractHibernateDAO implem
         try {
             super.persist(g);
         } catch (Exception e) {
-            LOG.log(new LogRecord(Level.SEVERE, e.getStackTrace().toString()));
+            e.printStackTrace();
             throw new FalhaAoCadastrarException();
         }
     }

@@ -9,10 +9,10 @@ import br.edu.up.letscook.model.service.exception.ServiceException;
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Receita;
-import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import java.util.List;
 import br.edu.up.letscook.dao.ReceitaDAO;
 import br.edu.up.letscook.model.enums.StatusPublicacao;
+import java.util.Calendar;
 
 /**
  *
@@ -29,6 +29,8 @@ public class ReceitaServiceImpl implements ReceitaService {
             throw new ServiceException("RN002 - Validação de receitas");
         }
         r.setStatus(StatusPublicacao.POSTADA);
+        r.setDataPublicacao(Calendar.getInstance().getTime());
+        r.setDataAtualizacao(Calendar.getInstance().getTime());
         dao.cadastrar(r);
     }
 
@@ -41,7 +43,6 @@ public class ReceitaServiceImpl implements ReceitaService {
 //    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
 //        return dao.buscarPorNacionalidade(nasc);
 //    }
-
     @Override
     public List<Receita> buscarPorCategoria(CategoriaReceita cat) {
         return dao.buscarPorCategoria(cat);
@@ -49,6 +50,7 @@ public class ReceitaServiceImpl implements ReceitaService {
 
     @Override
     public Receita editar(Receita t) {
+        t.setDataAtualizacao(Calendar.getInstance().getTime());
         return dao.editar(t);
     }
 
