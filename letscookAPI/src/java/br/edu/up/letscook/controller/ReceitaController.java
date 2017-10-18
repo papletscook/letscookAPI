@@ -19,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import br.edu.up.letscook.model.service.GenericService;
+import br.edu.up.letscook.model.service.ReceitaService;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
 
@@ -29,7 +30,7 @@ import javax.ws.rs.PUT;
 @Path("/receita")
 public class ReceitaController implements InterfaceNamedRest<Receita> {
 
-    private GenericService<Receita> serv;
+    private ReceitaService serv;
 
     public ReceitaController() {
     }
@@ -89,7 +90,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             serv = FactoryService.createReceitaService();
             Receita r = new Receita();
             r.setNome(nome);
-            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
+            return Response.status(Status.OK).entity(serv.buscarPorNome(nome)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }

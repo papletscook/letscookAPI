@@ -25,24 +25,41 @@ public abstract class AbstractHibernateDAO {
             getEm().persist(obj);
             getEm().getTransaction().commit();
         } catch (Exception e) {
+            e.printStackTrace();
             getEm().getTransaction().rollback();
             throw e;
-        }finally{
+        } finally {
             this.close();
         }
 
     }
 
     public void remove(Object obj) {
-        getEm().getTransaction().begin();
-        getEm().remove(getEm().merge(obj));
-        getEm().getTransaction().commit();
+        try {
+            getEm().getTransaction().begin();
+            getEm().remove(getEm().merge(obj));
+            getEm().getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            getEm().getTransaction().rollback();
+            throw e;
+        } finally {
+            this.close();
+        }
     }
 
     public void merge(Object obj) {
-        getEm().getTransaction().begin();
-        getEm().merge(obj);
-        getEm().getTransaction().commit();
+        try {
+            getEm().getTransaction().begin();
+            getEm().merge(obj);
+            getEm().getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            getEm().getTransaction().rollback();
+            throw e;
+        } finally {
+            this.close();
+        }
     }
 
     public EntityManager getEm() {
