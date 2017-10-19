@@ -72,10 +72,13 @@ public abstract class AbstractHibernateDAO {
     }
 
     public void close() {
-        em.close();
-        emf.close();
-        em = null;
-        emf = null;
+        try {
+            em.close();
+            emf.close();
+            em = null;
+            emf = null;
+        } catch (Exception e) {
+        }
     }
 
 }
