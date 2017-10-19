@@ -55,11 +55,11 @@ public class Receita extends AbstractNamedImageEntity {
     @Fetch(FetchMode.SELECT)
     private List<EtapaReceita> etapas;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
     private List<ComentarioReceita> comentarios;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
     private List<AvaliacaoReceita> avaliacoes;
 

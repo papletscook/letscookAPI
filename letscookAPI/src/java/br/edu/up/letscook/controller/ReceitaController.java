@@ -18,7 +18,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import br.edu.up.letscook.model.service.GenericService;
 import br.edu.up.letscook.model.service.ReceitaService;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
@@ -105,6 +104,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             serv = FactoryService.createReceitaService();
             return Response.status(Status.OK).entity(serv.editar(t)).build();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
