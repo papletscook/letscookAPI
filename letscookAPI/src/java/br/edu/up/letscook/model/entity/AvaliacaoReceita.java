@@ -6,6 +6,7 @@
 package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -36,7 +37,7 @@ public class AvaliacaoReceita extends AbstractEntity {
     @ManyToOne(optional = false)
     private Usuario usuario;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "receita_id", nullable = false)
     private Receita receita;
 
