@@ -1,7 +1,7 @@
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.model.entity.AvaliacaoReceita;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
+import br.edu.up.letscook.model.entity.ComentarioReceita;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.Receita;
 
@@ -37,6 +37,10 @@ public class FactoryDAO {
 
     public static GenericNewDAO<Ingrediente> createInterfaceIngredienteDAO() {
         return new IngredienteDAOImpl();
+    }
+
+    public static GenericDAO<ComentarioReceita> createComentarioReceitaDAO() {
+        return new ComentarioReceitaDAOImpl();
     }
 
 }
