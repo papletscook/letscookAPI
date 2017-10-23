@@ -50,6 +50,9 @@ public class ListaCompras extends AbstractNamedEntity {
     }
 
     public void setItens(List<ItemLista> itens) {
+        itens.forEach((t) -> {
+            //t
+        });
         this.itens = itens;
     }
     

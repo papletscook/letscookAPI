@@ -50,7 +50,7 @@ public class ComentarioReceita extends AbstractEntity {
     @ManyToOne(optional = false)
     private Usuario usuario;
 
-    @ManyToOne(optional = false, cascade = CascadeType.REMOVE)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "receita_id", nullable = false)
     private Receita receita;
 
