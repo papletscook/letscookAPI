@@ -5,9 +5,15 @@
  */
 package br.edu.up.letscook.model.entity;
 
+import br.edu.up.letscook.model.enums.GeneroEnum;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,6 +41,15 @@ public class Usuario extends AbstractNamedImageEntity {
     @Column(name = "data_criacao")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    @Column(name = "genero")
+    private GeneroEnum genero;
+
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private List<ListaCompras> listaCompras;
 
     public Usuario() {
     }
@@ -81,6 +96,22 @@ public class Usuario extends AbstractNamedImageEntity {
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public GeneroEnum getGenero() {
+        return genero;
+    }
+
+    public void setGenero(GeneroEnum genero) {
+        this.genero = genero;
+    }
+
+    public List<ListaCompras> getListaCompras() {
+        return listaCompras;
+    }
+
+    public void setListaCompras(List<ListaCompras> listaCompras) {
+        this.listaCompras = listaCompras;
     }
 
 }
