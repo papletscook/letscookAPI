@@ -7,15 +7,18 @@ package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -30,9 +33,13 @@ public class ListaCompras extends AbstractNamedEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
-    @JoinColumn(name = "lista_compras_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "lista", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
     private List<ItemLista> itens;
+
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Usuario usuario;
 
     public ListaCompras() {
     }
@@ -51,11 +58,13 @@ public class ListaCompras extends AbstractNamedEntity {
 
     public void setItens(List<ItemLista> itens) {
         itens.forEach((t) -> {
-            //t
+            t.setLista(this);
         });
         this.itens = itens;
     }
-    
-    
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
 }

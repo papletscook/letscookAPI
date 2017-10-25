@@ -6,7 +6,10 @@
 package br.edu.up.letscook.model.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -16,7 +19,12 @@ import javax.persistence.Table;
 @Table(name = "item_lista")
 public class ItemLista extends AbstractNamedEntity {
 
+    @Transient
     private Boolean checked;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "lista_compras_id", nullable = false)
+    private ListaCompras lista;
 
     public ItemLista() {
         checked = false;
@@ -28,6 +36,10 @@ public class ItemLista extends AbstractNamedEntity {
 
     public void setChecked(Boolean checked) {
         this.checked = checked;
+    }
+
+    public void setLista(ListaCompras lista) {
+        this.lista = lista;
     }
 
 }

@@ -25,6 +25,7 @@ public class RestApplication extends Application {
         singletons.add(new IngredienteController());
         singletons.add(new CategoriaReceitaController());
         singletons.add(new DespensaUsuarioController());     
+        singletons.add(new ListaComprasController());     
         singletons.add(new UnidadeMedidaController());     
         
     }

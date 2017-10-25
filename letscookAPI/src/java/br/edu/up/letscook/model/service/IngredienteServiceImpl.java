@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class IngredienteServiceImpl implements NamedEntityService<Ingrediente> {
+public class IngredienteServiceImpl extends AbstractServiceImpl<Ingrediente> implements NamedEntityService<Ingrediente> {
 
     private final GenericNewDAO<Ingrediente> dao = FactoryDAO.createInterfaceIngredienteDAO();
 
