@@ -5,11 +5,15 @@
  */
 package br.edu.up.letscook.dao;
 
+import br.edu.up.letscook.dao.exception.UsuarioSemDespensaException;
+import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.ListaCompras;
+import br.edu.up.letscook.model.entity.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.NoResultException;
 
-public class ListaComprasDAOImpl extends GenericHibernateDAO<ListaCompras> implements GenericDAO<ListaCompras> {
+public class ListaComprasDAOImpl extends GenericHibernateDAO<ListaCompras> implements ListaComprasDAO {
 
     @Override
     public List<ListaCompras> listar() {
@@ -28,6 +32,19 @@ public class ListaComprasDAOImpl extends GenericHibernateDAO<ListaCompras> imple
             return getEm().find(ListaCompras.class, t.getId());
         } catch (Exception e) {
             throw new Exception("Lista inexistente!");
+        } finally {
+            this.close();
+        }
+    }
+
+    @Override
+    public List<ListaCompras> buscarPorUsuario(Usuario u) throws Exception {
+        try {
+            return getEm().createQuery("FROM ListaCompras g WHERE g.usuario = :param")
+                    .setParameter("param", u)
+                    .getResultList();
+        } catch (NoResultException e) {
+            return new ArrayList<>();
         } finally {
             this.close();
         }

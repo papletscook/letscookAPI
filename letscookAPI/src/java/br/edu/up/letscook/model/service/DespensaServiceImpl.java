@@ -20,6 +20,9 @@ import br.edu.up.letscook.dao.exception.UsuarioSemDespensaException;
 public class DespensaServiceImpl implements DespensaService {
 
     private DespensaDAO dao = FactoryDAO.createInterfaceGeladeiraDAO();
+    
+        private UsuarioService serv = FactoryService.createUsuarioService();
+
 
     public DespensaServiceImpl() {
     }

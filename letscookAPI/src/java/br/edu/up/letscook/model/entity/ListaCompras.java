@@ -67,4 +67,8 @@ public class ListaCompras extends AbstractNamedEntity {
         this.usuario = usuario;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
 }

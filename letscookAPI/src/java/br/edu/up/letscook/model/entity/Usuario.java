@@ -110,11 +110,14 @@ public class Usuario extends AbstractNamedImageEntity {
         this.genero = genero;
     }
 
-    public List<ListaCompras> getListaCompras() {
-        return listaCompras;
-    }
+//    public List<ListaCompras> getListaCompras() {
+//        return listaCompras;
+//    }
 
     public void setListaCompras(List<ListaCompras> listaCompras) {
+        listaCompras.forEach((t) -> {
+            t.setUsuario(this);
+        });
         this.listaCompras = listaCompras;
     }
 

@@ -24,7 +24,7 @@ import br.edu.up.letscook.model.service.UsuarioService;
  */
 public class VerificarCredencialUsuarioJUnitTest {
 
-    private UsuarioService serv = FactoryService.createInterfaceUsuarioService();
+    private UsuarioService serv = FactoryService.createUsuarioService();
 
     public VerificarCredencialUsuarioJUnitTest() {
     }

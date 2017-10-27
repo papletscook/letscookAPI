@@ -6,8 +6,11 @@
 package br.edu.up.letscook.controller;
 
 import br.edu.up.letscook.dao.FactoryDAO;
-import br.edu.up.letscook.dao.GenericDAO;
+import br.edu.up.letscook.dao.ListaComprasDAO;
 import br.edu.up.letscook.model.entity.ListaCompras;
+import br.edu.up.letscook.model.entity.Usuario;
+import br.edu.up.letscook.model.service.FactoryService;
+import br.edu.up.letscook.model.service.ListaComprasService;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,7 +30,7 @@ import javax.ws.rs.core.Response.Status;
 @Path("/listaCompras")
 public class ListaComprasController implements InterfaceRest<ListaCompras> {
 
-    private GenericDAO<ListaCompras> dao;
+    private ListaComprasService serv;
 
     public ListaComprasController() {
     }
@@ -38,8 +41,8 @@ public class ListaComprasController implements InterfaceRest<ListaCompras> {
     @Override
     public Response cadastrar(ListaCompras r) {
         try {
-            dao = FactoryDAO.createListaComprasDAO();
-            dao.cadastrar(r);
+            serv = FactoryService.createListaComprasService();
+            serv.cadastrar(r);
             return Response.status(Status.OK).entity(r).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
@@ -52,8 +55,8 @@ public class ListaComprasController implements InterfaceRest<ListaCompras> {
     @Override
     public Response atualizar(ListaCompras r) {
         try {
-            dao = FactoryDAO.createListaComprasDAO();
-            dao.editar(r);
+            serv = FactoryService.createListaComprasService();
+            serv.editar(r);
             return Response.status(Status.OK).entity(r).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
@@ -66,10 +69,10 @@ public class ListaComprasController implements InterfaceRest<ListaCompras> {
     @Override
     public Response get(@PathParam("id") Long id) {
         try {
-            dao = FactoryDAO.createListaComprasDAO();
+            serv = FactoryService.createListaComprasService();
             ListaCompras r = new ListaCompras();
             r.setId(id);
-            return Response.status(Status.OK).entity(dao.buscarPorId(r)).build();
+            return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
@@ -81,11 +84,24 @@ public class ListaComprasController implements InterfaceRest<ListaCompras> {
     @Override
     public Response remover(@PathParam("id") Long id) {
         try {
-            dao = FactoryDAO.createListaComprasDAO();
+            serv = FactoryService.createListaComprasService();
             ListaCompras i = new ListaCompras();
             i.setId(id);
-            dao.excluir(i);
+            serv.excluir(i);
             return Response.status(Status.OK).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
+    @POST
+    @Path("buscarPorUsuario")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response buscarPorUsuario(Usuario r) {
+        try {
+            serv = FactoryService.createListaComprasService();
+            return Response.status(Status.OK).entity(serv.buscarPorUsuario(r)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
@@ -96,8 +112,8 @@ public class ListaComprasController implements InterfaceRest<ListaCompras> {
     @Override
     public Response list() {
         try {
-            dao = FactoryDAO.createListaComprasDAO();
-            return Response.status(Status.OK).entity(dao.listar()).build();
+            serv = FactoryService.createListaComprasService();
+            return Response.status(Status.OK).entity(serv.listar()).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }

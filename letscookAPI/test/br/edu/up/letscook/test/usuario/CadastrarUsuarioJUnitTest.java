@@ -23,7 +23,7 @@ import br.edu.up.letscook.model.service.UsuarioService;
  */
 public class CadastrarUsuarioJUnitTest {
 
-    private UsuarioService serv = FactoryService.createInterfaceUsuarioService();
+    private UsuarioService serv = FactoryService.createUsuarioService();
 
     public CadastrarUsuarioJUnitTest() {
     }

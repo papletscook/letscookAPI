@@ -17,7 +17,7 @@ public class FactoryService {
         return new DespensaServiceImpl();
     }
 
-    public static UsuarioService createInterfaceUsuarioService() {
+    public static UsuarioService createUsuarioService() {
         return new UsuarioServiceImpl();
     }
 
@@ -27,6 +27,10 @@ public class FactoryService {
 
     public static NamedEntityService<Ingrediente> createInterfaceIngredienteService() {
         return new IngredienteServiceImpl();
+    }
+    
+    public static ListaComprasService createListaComprasService(){
+        return new ListaComprasServiceImpl();
     }
 
 }

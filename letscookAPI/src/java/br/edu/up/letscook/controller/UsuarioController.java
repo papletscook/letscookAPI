@@ -39,7 +39,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Override
     public Response cadastrar(Usuario u) {
         try {
-            serv = FactoryService.createInterfaceUsuarioService();
+            serv = FactoryService.createUsuarioService();
             serv.cadastrar(u);
             return Response.status(Status.OK).entity(u).build();
         } catch (Exception e) {
@@ -53,7 +53,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response verificarCredencial(Usuario u) {
         try {
-            serv = FactoryService.createInterfaceUsuarioService();
+            serv = FactoryService.createUsuarioService();
             return Response.status(Status.OK).entity(serv.verificarCredencial(u)).build();
         } catch (Exception e) {
             return Response.status(Status.BAD_REQUEST).entity(e).build();
@@ -66,7 +66,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Override
     public Response get(@PathParam("id") Long id) {
         try {
-            serv = FactoryService.createInterfaceUsuarioService();
+            serv = FactoryService.createUsuarioService();
             Usuario r = new Usuario();
             r.setId(id);
             return Response.status(Status.OK).entity(serv.buscarPorId(r)).build();
@@ -81,7 +81,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response findByEmail(FindByEmail find) {
         try {
-            serv = FactoryService.createInterfaceUsuarioService();
+            serv = FactoryService.createUsuarioService();
             Usuario r = new Usuario();
             r.setEmail(find.getEmail());
             return Response.status(Status.OK).entity(serv.buscarPorEmail(r)).build();
@@ -96,7 +96,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Override
     public Response atualizar(Usuario t) {
         try {
-            serv = FactoryService.createInterfaceUsuarioService();
+            serv = FactoryService.createUsuarioService();
             return Response.status(Status.OK).entity(serv.editar(t)).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
@@ -109,7 +109,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Override
     public Response list() {
         try {
-            serv = FactoryService.createInterfaceUsuarioService();
+            serv = FactoryService.createUsuarioService();
             return Response.status(Status.OK).entity(serv.listar()).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
@@ -122,7 +122,7 @@ public class UsuarioController implements InterfaceRest<Usuario> {
     @Override
     public Response remover(@PathParam("id") Long id) {
         try {
-            serv = FactoryService.createInterfaceUsuarioService();
+            serv = FactoryService.createUsuarioService();
             Usuario t = new Usuario();
             t.setId(id);
             serv.excluir(t);

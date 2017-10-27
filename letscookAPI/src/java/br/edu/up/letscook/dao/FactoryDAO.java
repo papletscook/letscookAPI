@@ -44,7 +44,7 @@ public class FactoryDAO {
         return new ComentarioReceitaDAOImpl();
     }
 
-    public static GenericDAO<ListaCompras> createListaComprasDAO() {
+    public static ListaComprasDAO createListaComprasDAO() {
         return new ListaComprasDAOImpl();
     }
 
