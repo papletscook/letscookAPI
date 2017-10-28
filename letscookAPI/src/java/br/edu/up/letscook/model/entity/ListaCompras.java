@@ -38,7 +38,7 @@ public class ListaCompras extends AbstractNamedEntity {
     private List<ItemLista> itens;
 
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
 
     public ListaCompras() {
@@ -65,10 +65,6 @@ public class ListaCompras extends AbstractNamedEntity {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
     }
 
 }

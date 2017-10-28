@@ -5,17 +5,15 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import br.edu.up.letscook.model.enums.StatusPublicacao;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -32,7 +30,7 @@ import org.hibernate.annotations.FetchMode;
  */
 @Entity
 @Table(name = "receita")
-public class Receita extends AbstractNamedImageEntity {
+public class Receita extends PublicEntity {
 
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -43,9 +41,6 @@ public class Receita extends AbstractNamedImageEntity {
 
     @NotNull
     private Integer minsPreparo;
-
-    @Enumerated(EnumType.STRING)
-    private StatusPublicacao status;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
@@ -76,6 +71,10 @@ public class Receita extends AbstractNamedImageEntity {
     @Column(name = "data_atualizacao")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAtualizacao;
+
+    @Lob
+    @Column(columnDefinition = "LONG")
+    private String imagem;
 
     public Receita() {
     }
@@ -163,14 +162,6 @@ public class Receita extends AbstractNamedImageEntity {
         this.descricao = descricao;
     }
 
-    public StatusPublicacao getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusPublicacao status) {
-        this.status = status;
-    }
-
     public List<ComentarioReceita> getComentarios() {
         return comentarios;
     }
@@ -201,6 +192,14 @@ public class Receita extends AbstractNamedImageEntity {
 
     public void setDataAtualizacao(Date dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
 }
