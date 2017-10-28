@@ -32,12 +32,12 @@ import javax.ws.rs.PUT;
  */
 @Path("/receita")
 public class ReceitaController implements InterfaceNamedRest<Receita> {
-    
+
     private ReceitaService serv;
-    
+
     public ReceitaController() {
     }
-    
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -52,7 +52,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-    
+
     @POST
     @Path("/avaliar")
     @Produces(MediaType.APPLICATION_JSON)
@@ -67,7 +67,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-    
+
     @POST
     @Path("/comentar")
     @Produces(MediaType.APPLICATION_JSON)
@@ -82,7 +82,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-    
+
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -97,7 +97,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-    
+
     @POST
     @Path("buscarPorNome")
     @Produces(MediaType.APPLICATION_JSON)
@@ -113,7 +113,20 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-    
+
+    @POST
+    @Path("buscarPorCategoria")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response buscarPorCategoria(CategoriaReceita cat) {
+        try {
+            serv = FactoryService.createReceitaService();
+            return Response.status(Status.OK).entity(serv.buscarPorCategoria(cat)).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -127,7 +140,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-    
+
     @POST
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -140,7 +153,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-    
+
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -161,5 +174,5 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
     public Response list() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

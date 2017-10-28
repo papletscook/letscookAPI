@@ -8,6 +8,7 @@ package br.edu.up.letscook.dao;
 import br.edu.up.letscook.dao.exception.ReceitaInexistenteException;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Receita;
+import br.edu.up.letscook.model.enums.StatusPublicacao;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,9 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
     @Override
     public List<Receita> listar() {
         try {
-            return getEm().createQuery("FROM Receita r")
+            return getEm().createQuery("FROM Receita r WHERE 1=1"
+                    + "AND r.status = :param1")
+                    .setParameter("param1", StatusPublicacao.POSTADA)
                     .getResultList();
         } catch (Exception e) {
             return new ArrayList<>();
@@ -43,8 +46,11 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
     @Override
     public List<Receita> buscarPorNome(String nome) {
         try {
-            return getEm().createQuery("FROM Receita r WHERE UPPER(r.nome) LIKE UPPER(:param)")
+            return getEm().createQuery("FROM Receita r WHERE 1=1 "
+                    + "AND UPPER(r.nome) LIKE UPPER(:param)"
+                    + "AND r.status = :param1")
                     .setParameter("param", "%" + nome + "%")
+                    .setParameter("param1", StatusPublicacao.POSTADA)
                     .getResultList();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -57,8 +63,11 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
     @Override
     public List<Receita> buscarPorCategoria(CategoriaReceita categoria) {
         try {
-            return getEm().createQuery("FROM Receita r WHERE r.categoria = :param")
+            return getEm().createQuery("FROM Receita r WHERE 1=1"
+                    + "AND r.categoria = :param "
+                    + "AND r.status = :param1")
                     .setParameter("param", categoria)
+                    .setParameter("param1", StatusPublicacao.POSTADA)
                     .getResultList();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -68,18 +77,22 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
         }
     }
 
-//    @Override
-//    public List<Receita> buscarPorNacionalidade(NacionalidadeEnum nasc) {
-//        try {
-//            return getEm().createQuery("FROM Receita r WHERE r.nasc = :param")
-//                    .setParameter("param", nasc)
-//                    .getResultList();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            return new ArrayList<>();
-//        } finally {
-//            this.close();
-//        }
-//    }
+    @Override
+    public List<Receita> buscarBemAvaliadas() {
+        try {
+            return getEm().createQuery("SELECT r FROM Receita r"
+                    + "LEFT JOIN r.avaliacoes avs "
+                    + "WHERE 1=1"
+                    + "AND r.status = :param1"
+                    + "ORDER BY SUM(avs.valor) DESC")
+                    .setParameter("param1", StatusPublicacao.POSTADA)
+                    .getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ArrayList<>();
+        } finally {
+            this.close();
+        }
+    }
 
 }
