@@ -69,4 +69,9 @@ public class ReceitaServiceImpl implements ReceitaService {
         return dao.listar();
     }
 
+    @Override
+    public List<Receita> buscarBemAvaliadas() {
+        return dao.buscarBemAvaliadas();
+    }
+
 }

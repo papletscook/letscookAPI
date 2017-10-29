@@ -80,12 +80,13 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
     @Override
     public List<Receita> buscarBemAvaliadas() {
         try {
-            return getEm().createQuery("SELECT r FROM Receita r"
-                    + "LEFT JOIN r.avaliacoes avs "
-                    + "WHERE 1=1"
-                    + "AND r.status = :param1"
-                    + "ORDER BY SUM(avs.valor) DESC")
+            return getEm().createQuery("SELECT av.receita FROM AvaliacaoReceita av "
+                    + "WHERE 1=1 "
+                    + "AND av.receita.status = :param1 "
+                    + "GROUP BY  av.receita "
+                    + "ORDER BY AVG(av.valor) DESC")
                     .setParameter("param1", StatusPublicacao.POSTADA)
+                    .setMaxResults(16)
                     .getResultList();
         } catch (Exception e) {
             System.out.println(e.getMessage());

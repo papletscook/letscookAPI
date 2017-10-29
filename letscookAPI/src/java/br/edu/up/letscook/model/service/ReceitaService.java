@@ -19,4 +19,6 @@ public interface ReceitaService extends GenericService<Receita> {
 
     public List<Receita> buscarPorCategoria(CategoriaReceita cat);
 
+    public List<Receita> buscarBemAvaliadas();
+
 }

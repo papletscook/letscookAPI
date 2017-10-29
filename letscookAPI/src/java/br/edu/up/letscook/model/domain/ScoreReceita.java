@@ -35,7 +35,6 @@ public class ScoreReceita {
     
     public void addScore(Double score){
         this.score += score;
-        System.out.println("add");
     }
 
     public void setScore(Double score) {

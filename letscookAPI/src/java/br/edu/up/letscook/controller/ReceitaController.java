@@ -127,6 +127,19 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
         }
     }
 
+    @POST
+    @Path("buscarBemAvaliadas")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON) 
+    public Response buscarBemAvaliadas() {
+        try {
+            serv = FactoryService.createReceitaService();
+            return Response.status(Status.OK).entity(serv.buscarBemAvaliadas()).build();
+        } catch (Exception e) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+    }
+
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

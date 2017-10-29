@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -75,6 +76,9 @@ public class Receita extends PublicEntity {
     @Lob
     @Column(columnDefinition = "LONG")
     private String imagem;
+
+    @Transient
+    private Double score;
 
     public Receita() {
     }
@@ -143,6 +147,10 @@ public class Receita extends PublicEntity {
         this.ingts = ingts;
     }
 
+    public void addScore(Double score) {
+        this.score += score;
+    }
+
     public List<AvaliacaoReceita> getAvaliacoes() {
         return avaliacoes;
     }
@@ -200,6 +208,14 @@ public class Receita extends PublicEntity {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
     }
 
 }
