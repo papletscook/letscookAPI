@@ -10,6 +10,7 @@ import br.edu.up.letscook.model.entity.Usuario;
 import java.util.List;
 import br.edu.up.letscook.dao.UsuarioDAO;
 import br.edu.up.letscook.dao.exception.UsuarioInexistenteException;
+import java.util.Calendar;
 
 /**
  *
@@ -24,6 +25,7 @@ public class UsuarioServiceImpl implements GenericService<Usuario>, UsuarioServi
 
     @Override
     public void cadastrar(Usuario t) throws Exception {
+        t.setDataCriacao(Calendar.getInstance().getTime());
         dao.cadastrar(t);
     }
 
