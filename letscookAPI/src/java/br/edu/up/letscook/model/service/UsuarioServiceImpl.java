@@ -26,6 +26,7 @@ public class UsuarioServiceImpl implements GenericService<Usuario>, UsuarioServi
     @Override
     public void cadastrar(Usuario t) throws Exception {
         t.setDataCriacao(Calendar.getInstance().getTime());
+        t.setImagem("imagem");
         dao.cadastrar(t);
     }
 
