@@ -5,11 +5,8 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import br.edu.up.letscook.model.enums.TipoPasso;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;

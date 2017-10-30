@@ -19,7 +19,6 @@ import javax.persistence.Transient;
 @Table(name = "item_lista")
 public class ItemLista extends AbstractNamedEntity {
 
-    @Transient
     private Boolean checked;
 
     @ManyToOne(optional = false)

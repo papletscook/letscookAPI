@@ -47,7 +47,7 @@ public class Receita extends PublicEntity {
     @Fetch(FetchMode.SELECT)
     private List<IngredienteReceita> ingts;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receita", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
     private List<EtapaReceita> etapas;
 
@@ -118,10 +118,10 @@ public class Receita extends PublicEntity {
     }
 
     public void setEtapas(List<EtapaReceita> etapas) {
-        etapas.forEach((t) -> {
-            t.setReceita(this);
-            t.setOrdem(etapas.indexOf(t) + 1);
-        });
+        for (int i = 0; i < etapas.size(); i++) {
+            etapas.get(i).setOrdem(i + 1);
+            etapas.get(i).setReceita(this);
+        }
         this.etapas = etapas;
     }
 

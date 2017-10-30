@@ -11,6 +11,8 @@ import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Receita;
 import java.util.List;
 import br.edu.up.letscook.dao.ReceitaDAO;
+import br.edu.up.letscook.model.domain.BuscaInteligente;
+import br.edu.up.letscook.model.domain.BuscaInteligenteImpl;
 import br.edu.up.letscook.model.enums.StatusPublicacao;
 import java.util.Calendar;
 
@@ -21,6 +23,8 @@ import java.util.Calendar;
 public class ReceitaServiceImpl implements ReceitaService {
 
     private final ReceitaDAO dao = FactoryDAO.createInterfaceReceitaDAO();
+
+    private BuscaInteligente bserv = new BuscaInteligenteImpl();
 
     @Override
     public void cadastrar(Receita r) throws Exception {

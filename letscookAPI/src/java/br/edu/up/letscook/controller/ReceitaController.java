@@ -102,13 +102,10 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
     @Path("buscarPorNome")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Override
-    public Response listarPorNome(String nome) {
+    public Response listarPorNome(Receita r) {
         try {
             serv = FactoryService.createReceitaService();
-            Receita r = new Receita();
-            r.setNome(nome);
-            return Response.status(Status.OK).entity(serv.buscarPorNome(nome)).build();
+            return Response.status(Status.OK).entity(serv.buscarPorNome(r.getNome())).build();
         } catch (Exception e) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
@@ -130,7 +127,7 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
     @POST
     @Path("buscarBemAvaliadas")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON) 
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response buscarBemAvaliadas() {
         try {
             serv = FactoryService.createReceitaService();
@@ -185,6 +182,11 @@ public class ReceitaController implements InterfaceNamedRest<Receita> {
 
     @Override
     public Response list() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Response listarPorNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -7,6 +7,7 @@ package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +34,7 @@ public class ListaCompras extends AbstractNamedEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
 
-    @OneToMany(mappedBy = "lista", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "lista", fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.ALL)
     @Fetch(FetchMode.SELECT)
     private List<ItemLista> itens;
 

@@ -29,8 +29,7 @@ import org.hibernate.annotations.FetchMode;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EtapaReceita extends AbstractNamedEntity {
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, orphanRemoval=true)
-    @JoinColumn(name = "etapa_id", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "etapa", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
     private List<PassoEtapa> passos;
 
@@ -64,11 +63,10 @@ public class EtapaReceita extends AbstractNamedEntity {
     }
 
     public void setPassos(List<PassoEtapa> passos) {
-        passos.forEach((t) -> {
-            t.setEtapa(this);
-            t.setOrdem(passos.indexOf(t) + 1);
-        });
-
+        for (int i = 0; i < passos.size(); i++) {
+            passos.get(i).setOrdem(i + 1);
+            passos.get(i).setEtapa(this);
+        }
         this.passos = passos;
     }
 
