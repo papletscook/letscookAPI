@@ -12,11 +12,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceUsuarioService;
 import br.edu.up.letscook.model.util.UsuarioDecorator;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import br.edu.up.letscook.model.service.UsuarioService;
 
 /**
  *
@@ -24,7 +24,7 @@ import static org.junit.Assert.fail;
  */
 public class VerificarCredencialUsuarioJUnitTest {
 
-    private InterfaceUsuarioService serv = FactoryService.createInterfaceUsuarioService();
+    private UsuarioService serv = FactoryService.createUsuarioService();
 
     public VerificarCredencialUsuarioJUnitTest() {
     }

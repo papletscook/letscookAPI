@@ -9,7 +9,6 @@ import br.edu.up.letscook.model.entity.CategoriaReceita;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 import br.edu.up.letscook.model.service.FactoryService;
-import br.edu.up.letscook.model.service.InterfaceReceitaService;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -17,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import br.edu.up.letscook.model.service.ReceitaService;
 
 /**
  *
@@ -24,7 +24,7 @@ import org.junit.Test;
  */
 public class BuscarReceitaJUnitTest {
 
-    private InterfaceReceitaService<Receita> serv = FactoryService.createReceitaService();
+    private ReceitaService serv = FactoryService.createReceitaService();
 
     public BuscarReceitaJUnitTest() {
     }
@@ -46,7 +46,7 @@ public class BuscarReceitaJUnitTest {
     }
 
     @Test
-    public void buscarPorId() {
+    public void buscarPorId() throws Exception {
         Receita g = new Receita();
         g.setId(4l);
         Assert.assertNotNull(serv.buscarPorId(g));
@@ -64,9 +64,9 @@ public class BuscarReceitaJUnitTest {
         assertTrue(!serv.buscarPorCategoria(cat).isEmpty());
     }
 
-    @Test
-    public void buscarPorNacionalidade() {
-        assertTrue(!serv.buscarPorNacionalidade(NacionalidadeEnum.BRASIL).isEmpty());
-    }
+//    @Test
+//    public void buscarPorNacionalidade() {
+//        assertTrue(!serv.buscarPorNacionalidade(NacionalidadeEnum.BRASIL).isEmpty());
+//    }
 
 }

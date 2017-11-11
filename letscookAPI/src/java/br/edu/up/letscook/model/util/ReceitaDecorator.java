@@ -6,13 +6,12 @@
 package br.edu.up.letscook.model.util;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
-import br.edu.up.letscook.model.entity.Etapa;
+import br.edu.up.letscook.model.entity.EtapaReceita;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.entity.PassoEtapa;
 import br.edu.up.letscook.model.entity.Receita;
 import br.edu.up.letscook.model.entity.Usuario;
-import br.edu.up.letscook.model.enums.NacionalidadeEnum;
 
 /**
  *
@@ -27,7 +26,7 @@ public class ReceitaDecorator {
 
         Ingrediente in = new Ingrediente();
         in.setNome("Maracujá");
-        ir.setI(in);
+        ir.setIngrediente(in);
         r.adicionarIngrediente(ir);
 
         CategoriaReceita cat = new CategoriaReceita();
@@ -37,12 +36,11 @@ public class ReceitaDecorator {
         Usuario u = new Usuario();
         u.setId(1l);
         r.setCriador(u);
-        r.setNasc(NacionalidadeEnum.BRASIL);
 
         r.setNome("TORTA DE MARACUJÁ");
         r.setMinsPreparo(45);
 
-        Etapa e = new Etapa();
+        EtapaReceita e = new EtapaReceita();
         e.setNome("BASE");
         e.adicionarPasso(new PassoEtapa("Em um processar ou liquidificador, bata os biscoitos (com recheio mesmo) até obter uma farinha grossa."));
         e.adicionarPasso(new PassoEtapa("Derreta a manteiga no micro-ondas por 30 segundos e misture com o biscoito triturado"));
@@ -52,7 +50,7 @@ public class ReceitaDecorator {
 
         r.adicionarEtapa(e);
 
-        Etapa e1 = new Etapa();
+        EtapaReceita e1 = new EtapaReceita();
         e1.setNome("RECHEIOS");
         e1.adicionarPasso(new PassoEtapa("Bata no liquidificador, o leite condensado, o creme de leite e o suco de maracujá concentrado"));
         e1.adicionarPasso(new PassoEtapa("À parte, dissolva a 1 pacote de gelatina incolor como descrito pelo fabricante (retire uma colher de sopa do pacote e use para a cobertura)"));
@@ -69,7 +67,7 @@ public class ReceitaDecorator {
 
         r.adicionarEtapa(e1);
 
-        Etapa e2 = new Etapa();
+        EtapaReceita e2 = new EtapaReceita();
         e2.setNome("CALDA");
         e2.adicionarPasso(new PassoEtapa("Coloque a polpa de um maracujá grande com meia xícara de açúcar em uma panela e deixe ferver mexendo sempre"));
         e2.adicionarPasso(new PassoEtapa("Deixe esfriar e coloque 1 colher de sopa de gelatina sem sabor dissolvida"));
@@ -88,13 +86,13 @@ public class ReceitaDecorator {
 
         Ingrediente in = new Ingrediente();
         in.setNome("Maracujá");
-        ir.setI(in);
+        ir.setIngrediente(in);
         r.adicionarIngrediente(ir);
 
         r.setNome("TORTA DE MARACUJÁ");
         r.setMinsPreparo(45);
 
-        Etapa e = new Etapa();
+        EtapaReceita e = new EtapaReceita();
         e.setNome("BASE");
         e.adicionarPasso(new PassoEtapa("Em um processar ou liquidificador, bata os biscoitos (com recheio mesmo) até obter uma farinha grossa."));
         e.adicionarPasso(new PassoEtapa("Derreta a manteiga no micro-ondas por 30 segundos e misture com o biscoito triturado"));
@@ -104,7 +102,7 @@ public class ReceitaDecorator {
 
         r.adicionarEtapa(e);
 
-        Etapa e1 = new Etapa();
+        EtapaReceita e1 = new EtapaReceita();
         e1.setNome("RECHEIOS");
         e1.adicionarPasso(new PassoEtapa("Bata no liquidificador, o leite condensado, o creme de leite e o suco de maracujá concentrado"));
         e1.adicionarPasso(new PassoEtapa("À parte, dissolva a 1 pacote de gelatina incolor como descrito pelo fabricante (retire uma colher de sopa do pacote e use para a cobertura)"));
@@ -121,7 +119,7 @@ public class ReceitaDecorator {
 
         r.adicionarEtapa(e1);
 
-        Etapa e2 = new Etapa();
+        EtapaReceita e2 = new EtapaReceita();
         e2.setNome("CALDA");
         e2.adicionarPasso(new PassoEtapa("Coloque a polpa de um maracujá grande com meia xícara de açúcar em uma panela e deixe ferver mexendo sempre"));
         e2.adicionarPasso(new PassoEtapa("Deixe esfriar e coloque 1 colher de sopa de gelatina sem sabor dissolvida"));

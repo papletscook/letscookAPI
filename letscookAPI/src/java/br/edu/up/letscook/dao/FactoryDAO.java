@@ -1,33 +1,51 @@
 package br.edu.up.letscook.dao;
 
 import br.edu.up.letscook.model.entity.CategoriaReceita;
-import br.edu.up.letscook.model.entity.Dispensa;
+import br.edu.up.letscook.model.entity.ComentarioReceita;
+import br.edu.up.letscook.model.entity.Ingrediente;
+import br.edu.up.letscook.model.entity.ListaCompras;
 import br.edu.up.letscook.model.entity.Receita;
 
 public class FactoryDAO {
 
-    public static InterfaceUsuarioDAO createUsuarioDAO() {
-        return new UsuarioDAO();
+    public static UsuarioDAO createUsuarioDAO() {
+        return new UsuarioDAOImpl();
     }
 
-    public static InterfaceDAO<Receita> createReceitaDAO() {
-        return new ReceitaDAO();
+    public static IngredienteReceitaDAO createIngredienteReceitaDAO() {
+        return new IngredienteReceitaDAOImpl();
     }
 
-    public static InterfaceReceitaDAO<Receita> createInterfaceReceitaDAO() {
-        return new ReceitaDAO();
+    public static GenericDAO<Receita> createReceitaDAO() {
+        return new ReceitaDAOmpl();
     }
 
-    public static InterfaceDAO<CategoriaReceita> createCategoriaReceitaDAO() {
-        return new CategoriaReceitaDAO();
+    public static ReceitaDAO createInterfaceReceitaDAO() {
+        return new ReceitaDAOmpl();
     }
 
-    public static InterfaceGeladeiraDAO<Dispensa> createInterfaceGeladeiraDAO() {
-        return new DispensaDAO();
+    public static GenericNewDAO<CategoriaReceita> createCategoriaReceitaDAO() {
+        return new CategoriaReceitaDAOImpl();
     }
 
-    public static InterfaceIngredienteDAO createInterfaceIngredienteDAO() {
-        return new IngredienteDAO();
+    public static AvaliacaoReceitaDAO createAvaliacaoReceitaDAO() {
+        return new AvaliacaoReceitaDAOImpl();
+    }
+
+    public static DespensaDAO createInterfaceGeladeiraDAO() {
+        return new DespensaDAOImpl();
+    }
+
+    public static GenericNewDAO<Ingrediente> createInterfaceIngredienteDAO() {
+        return new IngredienteDAOImpl();
+    }
+
+    public static GenericDAO<ComentarioReceita> createComentarioReceitaDAO() {
+        return new ComentarioReceitaDAOImpl();
+    }
+
+    public static ListaComprasDAO createListaComprasDAO() {
+        return new ListaComprasDAOImpl();
     }
 
 }

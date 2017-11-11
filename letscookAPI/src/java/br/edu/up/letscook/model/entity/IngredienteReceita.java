@@ -5,33 +5,87 @@
  */
 package br.edu.up.letscook.model.entity;
 
-import javax.persistence.CascadeType;
+import br.edu.up.letscook.model.enums.UnidadeMedidaEnum;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_INGREDIENTE_RECEITA")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "ingrediente_receita")
 public class IngredienteReceita extends AbstractEntity {
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "INGREDIENTE_ID")
-    private Ingrediente i;
+    @JoinColumn(name = "ingrediente_id", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Ingrediente ingrediente;
+
+    @Column(name = "unidade_medida")
+    @Enumerated(EnumType.STRING)
+    private UnidadeMedidaEnum uMedida;
+
+    @NotNull
+    private Double quant;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "receita_id", nullable = false)
+    private Receita receita;
+
+    @Transient
+    private boolean checked;
 
     public IngredienteReceita() {
     }
 
-    public Ingrediente getI() {
-        return i;
+    public Ingrediente getIngrediente() {
+        return ingrediente;
     }
 
-    public void setI(Ingrediente i) {
-        this.i = i;
+    public void setIngrediente(Ingrediente ingrediente) {
+        this.ingrediente = ingrediente;
+    }
+
+    public UnidadeMedidaEnum getuMedida() {
+        return uMedida;
+    }
+
+    public void setuMedida(UnidadeMedidaEnum uMedida) {
+        this.uMedida = uMedida;
+    }
+
+    public Double getQuant() {
+        return quant;
+    }
+
+    public void setQuant(Double quant) {
+        this.quant = quant;
+    }
+
+    public void setReceita(Receita receita) {
+        this.receita = receita;
+    }
+
+    public Receita obterReceita() {
+        return receita;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
 }

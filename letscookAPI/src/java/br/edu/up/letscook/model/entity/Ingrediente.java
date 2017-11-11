@@ -13,10 +13,17 @@ import javax.persistence.Table;
  * @author G0042204
  */
 @Entity
-@Table(name = "LETSCOOK_INGREDIENTE")
-public class Ingrediente extends AbstractNamedEntity {
+@Table(name = "ingrediente")
+public class Ingrediente extends AbstractNamedImageEntity {
 
     public Ingrediente() {
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return Long.compare(((Ingrediente) obj).getId(), this.getId()) == 0;
+    }
+
 }
+
+

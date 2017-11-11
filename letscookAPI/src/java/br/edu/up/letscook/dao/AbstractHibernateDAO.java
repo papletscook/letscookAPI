@@ -6,6 +6,8 @@
 package br.edu.up.letscook.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -13,37 +15,69 @@ import javax.persistence.EntityManager;
  */
 public abstract class AbstractHibernateDAO {
 
-    protected EntityManager em = ConexaoSingleton.getInstance();
+    private EntityManagerFactory emf;
 
-    public void persist(Object o) {
+    private EntityManager em;
+
+    public void persist(Object obj) {
         try {
-            em.getTransaction().begin();
-            em.persist(o);
-            em.getTransaction().commit();
+            getEm().getTransaction().begin();
+            getEm().persist(obj);
+            getEm().getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            e.printStackTrace();
+            getEm().getTransaction().rollback();
+            throw e;
         } finally {
-            close();
+            this.close();
+        }
+
+    }
+
+    public void remove(Object obj) {
+        try {
+            getEm().getTransaction().begin();
+            getEm().remove(getEm().merge(obj));
+            getEm().getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            getEm().getTransaction().rollback();
+            throw e;
+        } finally {
+            this.close();
         }
     }
 
-    public void remove(Object o) {
-        em.getTransaction().begin();
-        em.remove(em.merge(o));
-        em.getTransaction().commit();
-        close();
+    public void merge(Object obj) {
+        try {
+            getEm().getTransaction().begin();
+            getEm().merge(obj);
+            getEm().getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            getEm().getTransaction().rollback();
+            throw e;
+        } finally {
+            this.close();
+        }
     }
 
-    public void merge(Object o) {
-        em.getTransaction().begin();
-        em.merge(o);
-        em.getTransaction().commit();
-        close();
+    public EntityManager getEm() {
+        if (emf == null) {
+            emf = Persistence.createEntityManagerFactory("letscookAPIPU");
+//            emf = Persistence.createEntityManagerFactory("letscookAPI_test");
+            em = emf.createEntityManager();
+        }
+        return em;
     }
 
     public void close() {
-        if (em.isOpen()) {
+        try {
             em.close();
+            emf.close();
+            em = null;
+            emf = null;
+        } catch (Exception e) {
         }
     }
 
