@@ -11,7 +11,7 @@ package br.edu.up.letscook.model.enums;
  */
 public enum UnidadeMedidaEnum {
 
-    A_GOSTO("a gosto", 25d),
+    A_GOSTO("a gosto", 0d),
     XICARA("xícara(s)", 25d),
     COLHER_SOPA("colher(es) (sopa)", 25d),
     COLHER_CHA("colher(es) (chá)", 25d),
