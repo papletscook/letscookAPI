@@ -8,7 +8,6 @@ package br.edu.up.letscook.dao;
 import br.edu.up.letscook.model.entity.CategoriaReceita;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.NoResultException;
 
 /**
  *

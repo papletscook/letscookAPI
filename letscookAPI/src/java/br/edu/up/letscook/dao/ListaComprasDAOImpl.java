@@ -5,8 +5,6 @@
  */
 package br.edu.up.letscook.dao;
 
-import br.edu.up.letscook.dao.exception.UsuarioSemDespensaException;
-import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.ListaCompras;
 import br.edu.up.letscook.model.entity.Usuario;
 import java.util.ArrayList;
