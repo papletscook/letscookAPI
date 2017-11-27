@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author G0042204
  */
-public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements ReceitaDAO {
+public class ReceitaDAOImpl extends GenericHibernateDAO<Receita> implements ReceitaDAO {
 
     @Override
     public List<Receita> listar() {
@@ -46,9 +46,30 @@ public class ReceitaDAOmpl extends GenericHibernateDAO<Receita> implements Recei
     @Override
     public List<Receita> buscarPorNome(String nome) {
         try {
-            return getEm().createQuery("FROM Receita r WHERE 1=1 "
-                    + "AND UPPER(r.nome) LIKE UPPER(:param)"
-                    + "AND r.status = :param1")
+//            return getEm().createQuery("SELECT i FROM IngredienteReceita i "
+//                    + "JOIN FETCH i.receita "
+//                    + "WHERE 1=1 "
+//                    + "AND i.receita.status = :param1 "
+//                    + "AND ( "
+//                    + "UPPER(i.receita.nome) LIKE UPPER(:param) "
+//                    + "OR "
+//                    + "UPPER(i.ingrediente.nome) LIKE UPPER(:param) "
+//                    + ")"
+//                    + "GROUP BY i.receita")
+//                    .setParameter("param", "%" + nome + "%")
+//                    .setParameter("param1", StatusPublicacao.POSTADA)
+//                    .getResultList();
+
+            return getEm().createQuery("SELECT r FROM Receita r "
+                    + "JOIN r.ingts i "
+                    + "WHERE 1=1 "
+                    + "AND r.status = :param1 "
+                    + "AND ( "
+                    + "UPPER(r.nome) LIKE UPPER(:param) "
+                    + "OR "
+                    + "UPPER(i.ingrediente.nome) LIKE UPPER(:param) "
+                    + ")"
+                    + "GROUP BY r.id")
                     .setParameter("param", "%" + nome + "%")
                     .setParameter("param1", StatusPublicacao.POSTADA)
                     .getResultList();

@@ -17,11 +17,11 @@ public class FactoryDAO {
     }
 
     public static GenericDAO<Receita> createReceitaDAO() {
-        return new ReceitaDAOmpl();
+        return new ReceitaDAOImpl();
     }
 
     public static ReceitaDAO createInterfaceReceitaDAO() {
-        return new ReceitaDAOmpl();
+        return new ReceitaDAOImpl();
     }
 
     public static GenericNewDAO<CategoriaReceita> createCategoriaReceitaDAO() {
