@@ -46,19 +46,6 @@ public class ReceitaDAOImpl extends GenericHibernateDAO<Receita> implements Rece
     @Override
     public List<Receita> buscarPorNome(String nome) {
         try {
-//            return getEm().createQuery("SELECT i FROM IngredienteReceita i "
-//                    + "JOIN FETCH i.receita "
-//                    + "WHERE 1=1 "
-//                    + "AND i.receita.status = :param1 "
-//                    + "AND ( "
-//                    + "UPPER(i.receita.nome) LIKE UPPER(:param) "
-//                    + "OR "
-//                    + "UPPER(i.ingrediente.nome) LIKE UPPER(:param) "
-//                    + ")"
-//                    + "GROUP BY i.receita")
-//                    .setParameter("param", "%" + nome + "%")
-//                    .setParameter("param1", StatusPublicacao.POSTADA)
-//                    .getResultList();
 
             return getEm().createQuery("SELECT r FROM Receita r "
                     + "JOIN r.ingts i "
@@ -68,6 +55,8 @@ public class ReceitaDAOImpl extends GenericHibernateDAO<Receita> implements Rece
                     + "UPPER(r.nome) LIKE UPPER(:param) "
                     + "OR "
                     + "UPPER(i.ingrediente.nome) LIKE UPPER(:param) "
+                    + "OR "
+                    + "UPPER(r.descricao) LIKE UPPER(:param) "
                     + ")"
                     + "GROUP BY r.id")
                     .setParameter("param", "%" + nome + "%")
