@@ -61,6 +61,7 @@ public class ReceitaDAOImpl extends GenericHibernateDAO<Receita> implements Rece
                     + "GROUP BY r.id")
                     .setParameter("param", "%" + nome + "%")
                     .setParameter("param1", StatusPublicacao.POSTADA)
+                    .setMaxResults(20)
                     .getResultList();
         } catch (Exception e) {
             System.out.println(e.getMessage());
