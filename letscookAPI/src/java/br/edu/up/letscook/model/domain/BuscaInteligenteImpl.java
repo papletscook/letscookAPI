@@ -22,10 +22,10 @@ public class BuscaInteligenteImpl implements BuscaInteligente {
     public List<ScoreReceita> buscarPorIngredientes(List<Ingrediente> ir) {
         IngredienteReceitaDAO dao = FactoryDAO.createIngredienteReceitaDAO();
         List<IngredienteReceita> lst = dao.listarPorIngredientes(ir);
-        
+
         List<ScoreReceita> scores = new ArrayList<>();
-        List<Receita> rList = new ArrayList<>();        
-        
+        List<Receita> rList = new ArrayList<>();
+
         lst.forEach((IngredienteReceita t) -> {
             if (!rList.contains(t.obterReceita())) {
                 rList.add(t.obterReceita());
@@ -43,12 +43,20 @@ public class BuscaInteligenteImpl implements BuscaInteligente {
     public ScoreReceita calcularScore(Receita r, List<Ingrediente> ir) {
         ScoreReceita score = new ScoreReceita();
         score.setReceita(r);
-        
+
         List<Ingrediente> receita = new ArrayList<>();
         r.getIngts().forEach((t) -> {
             receita.add(t.getIngrediente());
         });
 
+        receita.forEach((t) -> {
+            IngredienteReceita ing = this.buscarIngrediente(r, t);
+            score.addScoreTotal(100 + (ing.getQuant() * ing.getuMedida().getEscala()));
+        });
+
+        /**
+         * Existentes
+         */
         Filter<Ingrediente> existentes = new IngredienteExistentesFilter(receita);
         existentes.filter(ir).forEach((Ingrediente t) -> {
             IngredienteReceita ing = this.buscarIngrediente(r, t);
@@ -57,15 +65,18 @@ public class BuscaInteligenteImpl implements BuscaInteligente {
             }
         });
 
+        /**
+         * Inexistentes
+         */
         Filter<Ingrediente> inexi = new IngredienteInexistentesFilter(receita);
         inexi.filter(ir).forEach((Ingrediente t) -> {
             IngredienteReceita ing = this.buscarIngrediente(r, t);
-            System.out.println("ing");
+//            System.out.println("ing");
             if (ing != null) {
                 score.addScore(-20 - (ing.getQuant() * ing.getuMedida().getEscala()));
             }
         });
-
+        
         return score;
     }
 

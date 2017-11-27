@@ -17,8 +17,14 @@ public class ScoreReceita {
 
     private Double score;
 
+    private Double scoreTotal;
+
+    private Double compt;
+
     public ScoreReceita() {
         this.score = 0d;
+        this.scoreTotal = 0d;
+        this.compt = 0d;
     }
 
     public Receita getReceita() {
@@ -32,13 +38,33 @@ public class ScoreReceita {
     public Double getScore() {
         return score;
     }
-    
-    public void addScore(Double score){
+
+    public void addScore(Double score) {
         this.score += score;
+    }
+
+    public void addScoreTotal(Double scoreTotal) {
+        this.scoreTotal += scoreTotal;
     }
 
     public void setScore(Double score) {
         this.score = score;
+    }
+
+    public Double getScoreTotal() {
+        return scoreTotal;
+    }
+
+    public void setScoreTotal(Double scoreTotal) {
+        this.scoreTotal = scoreTotal;
+    }
+
+    public Double getCompt() {
+        return this.scoreTotal / this.score;
+    }
+
+    public void setCompt(Double compt) {
+        this.compt = compt;
     }
 
 }

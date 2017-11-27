@@ -25,9 +25,14 @@ public class UsuarioServiceImpl implements GenericService<Usuario>, UsuarioServi
 
     @Override
     public void cadastrar(Usuario t) throws Exception {
-        t.setDataCriacao(Calendar.getInstance().getTime());
-        t.setImagem("imagem");
-        dao.cadastrar(t);
+        try {
+            dao.buscarPorEmail(t);
+            throw new Exception("E-mail já cadastrado!");
+        } catch (UsuarioInexistenteException e) {
+            t.setDataCriacao(Calendar.getInstance().getTime());
+            t.setImagem("imagem");
+            dao.cadastrar(t);
+        }
     }
 
     @Override
@@ -41,7 +46,7 @@ public class UsuarioServiceImpl implements GenericService<Usuario>, UsuarioServi
     }
 
     @Override
-    public Usuario buscarPorId(Usuario t) throws Exception{
+    public Usuario buscarPorId(Usuario t) throws Exception {
         return dao.buscarPorId(t);
     }
 

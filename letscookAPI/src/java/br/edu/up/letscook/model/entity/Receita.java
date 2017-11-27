@@ -80,6 +80,9 @@ public class Receita extends PublicEntity {
     @Transient
     private Double score;
 
+    @Transient
+    private Double rating;
+
     public Receita() {
     }
 
@@ -96,6 +99,14 @@ public class Receita extends PublicEntity {
 
     public CategoriaReceita getCategoria() {
         return categoria;
+    }
+
+    public Double getRating() {
+        double valor = 0l;
+        for (AvaliacaoReceita ava : this.avaliacoes) {
+            valor += ava.getValor();
+        }
+        return valor / this.avaliacoes.size();
     }
 
     public void setCategoria(CategoriaReceita categoria) {
@@ -216,6 +227,10 @@ public class Receita extends PublicEntity {
 
     public void setScore(Double score) {
         this.score = score;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
 }

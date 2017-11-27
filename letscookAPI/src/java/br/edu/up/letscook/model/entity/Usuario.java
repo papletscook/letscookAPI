@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -51,10 +49,14 @@ public class Usuario extends AbstractNamedImageEntity {
     @Column(name = "genero")
     private GeneroEnum genero;
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, orphanRemoval = false)
     @Fetch(FetchMode.SELECT)
     private List<ListaCompras> listaCompras;
 
+    @NotNull
+    @Column(name = "admin")
+    private boolean administrator;
+;
     public Usuario() {
     }
 
@@ -113,12 +115,19 @@ public class Usuario extends AbstractNamedImageEntity {
 //    public List<ListaCompras> getListaCompras() {
 //        return listaCompras;
 //    }
-
     public void setListaCompras(List<ListaCompras> listaCompras) {
         listaCompras.forEach((t) -> {
             t.setUsuario(this);
         });
         this.listaCompras = listaCompras;
+    }
+
+    public boolean isAdmin() {
+        return administrator;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.administrator = admin;
     }
 
 }

@@ -6,7 +6,6 @@
 package br.edu.up.letscook.model.entity;
 
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -26,7 +25,7 @@ public class AvaliacaoReceita extends AbstractEntity {
 
     @NotNull
     @Column(name = "valor")
-    private Long valor;
+    private Double valor;
 
     @NotNull
     @Column(name = "data_avaliacao")
@@ -44,11 +43,11 @@ public class AvaliacaoReceita extends AbstractEntity {
     public AvaliacaoReceita() {
     }
 
-    public Long getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Long valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
