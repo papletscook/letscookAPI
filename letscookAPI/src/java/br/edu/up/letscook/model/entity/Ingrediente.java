@@ -18,6 +18,10 @@ public class Ingrediente extends AbstractNamedImageEntity {
 
     public Ingrediente() {
     }
+    
+    public Ingrediente(Long id){
+        this.setId(id);
+    }
 
     @Override
     public boolean equals(Object obj) {

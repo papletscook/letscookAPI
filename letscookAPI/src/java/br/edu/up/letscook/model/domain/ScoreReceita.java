@@ -60,7 +60,7 @@ public class ScoreReceita {
     }
 
     public Double getCompt() {
-        return this.scoreTotal / this.score;
+        return this.score / this.scoreTotal;
     }
 
     public void setCompt(Double compt) {

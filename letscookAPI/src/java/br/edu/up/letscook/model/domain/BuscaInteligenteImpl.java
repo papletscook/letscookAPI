@@ -73,7 +73,7 @@ public class BuscaInteligenteImpl implements BuscaInteligente {
             IngredienteReceita ing = this.buscarIngrediente(r, t);
 //            System.out.println("ing");
             if (ing != null) {
-                score.addScore(-20 - (ing.getQuant() * ing.getuMedida().getEscala()));
+                score.addScore(-100 - (ing.getQuant() * ing.getuMedida().getEscala()));
             }
         });
         
