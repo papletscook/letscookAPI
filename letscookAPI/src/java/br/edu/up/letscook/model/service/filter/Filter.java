@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.letscook.model.domain.filter;
+package br.edu.up.letscook.model.service.filter;
 
 import java.util.List;
 

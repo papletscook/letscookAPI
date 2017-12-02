@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.letscook.model.domain;
+package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.model.entity.Receita;
 
@@ -60,7 +60,7 @@ public class ScoreReceita {
     }
 
     public Double getCompt() {
-        return this.score / this.scoreTotal;
+        return (this.score / this.scoreTotal) * 100;
     }
 
     public void setCompt(Double compt) {

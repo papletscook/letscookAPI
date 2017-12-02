@@ -5,8 +5,7 @@
  */
 package br.edu.up.letscook.controller;
 
-import br.edu.up.letscook.model.domain.BuscaInteligente;
-import br.edu.up.letscook.model.domain.BuscaInteligenteImpl;
+import br.edu.up.letscook.model.service.BuscaInteligenteServiceImpl;
 import br.edu.up.letscook.model.entity.DespensaUsuario;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.Usuario;
@@ -24,6 +23,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import br.edu.up.letscook.model.service.BuscaInteligenteService;
 
 /**
  *
@@ -70,7 +70,7 @@ public class DespensaUsuarioController implements InterfaceRest<DespensaUsuario>
     @Consumes(MediaType.APPLICATION_JSON)
     public Response buscarPorIngredientes(List<Ingrediente> r) {
         try {
-            BuscaInteligente bserv = new BuscaInteligenteImpl();
+            BuscaInteligenteService bserv = new BuscaInteligenteServiceImpl();
             return Response.status(Status.OK).entity(bserv.buscarPorIngredientes(r)).build();
         } catch (Exception e) {
             e.printStackTrace();

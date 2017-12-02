@@ -5,6 +5,9 @@
  */
 package br.edu.up.letscook.model.domain;
 
+import br.edu.up.letscook.model.service.ScoreReceita;
+import br.edu.up.letscook.model.service.BuscaInteligenteServiceImpl;
+import br.edu.up.letscook.model.service.BuscaInteligenteService;
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.GenericNewDAO;
 import br.edu.up.letscook.model.entity.Ingrediente;
@@ -60,7 +63,7 @@ public class BuscaInteligenteIT {
             ir.add(ing1);
             ir.add(ing);
 
-            BuscaInteligente instance = new BuscaInteligenteImpl();
+            BuscaInteligenteService instance = new BuscaInteligenteServiceImpl();
             List<ScoreReceita> result = instance.buscarPorIngredientes(ir);
             
             result.forEach((t) -> {

@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.up.letscook.model.domain;
+package br.edu.up.letscook.model.service;
 
 import br.edu.up.letscook.dao.FactoryDAO;
 import br.edu.up.letscook.dao.IngredienteReceitaDAO;
-import br.edu.up.letscook.model.domain.filter.Filter;
-import br.edu.up.letscook.model.domain.filter.IngredienteExistentesFilter;
-import br.edu.up.letscook.model.domain.filter.IngredienteInexistentesFilter;
+import br.edu.up.letscook.model.service.filter.Filter;
+import br.edu.up.letscook.model.service.filter.IngredienteExistentesFilter;
+import br.edu.up.letscook.model.service.filter.IngredienteInexistentesFilter;
 import br.edu.up.letscook.model.entity.Ingrediente;
 import br.edu.up.letscook.model.entity.IngredienteReceita;
 import br.edu.up.letscook.model.entity.Receita;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuscaInteligenteImpl implements BuscaInteligente {
+public class BuscaInteligenteServiceImpl implements BuscaInteligenteService {
 
     @Override
     public List<ScoreReceita> buscarPorIngredientes(List<Ingrediente> ir) {

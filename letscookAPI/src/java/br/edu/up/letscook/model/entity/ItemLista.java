@@ -6,10 +6,10 @@
 package br.edu.up.letscook.model.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
  *
@@ -25,6 +25,10 @@ public class ItemLista extends AbstractNamedEntity {
     @JoinColumn(name = "lista_compras_id", nullable = false)
     private ListaCompras lista;
 
+    @JoinColumn(name = "ingrediente_id", referencedColumnName = "id")
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    private Ingrediente ingrediente;
+
     public ItemLista() {
         checked = false;
     }
@@ -39,6 +43,14 @@ public class ItemLista extends AbstractNamedEntity {
 
     public void setLista(ListaCompras lista) {
         this.lista = lista;
+    }
+
+    public Ingrediente getIngrediente() {
+        return ingrediente;
+    }
+
+    public void setIngrediente(Ingrediente ingrediente) {
+        this.ingrediente = ingrediente;
     }
 
 }
